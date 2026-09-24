@@ -1,0 +1,3245 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LOOKISM HUB | Crews</title>
+
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: #050505;
+            color: #fff;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================================
+           BACKGROUND
+        ========================================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -10;
+
+            pointer-events: none;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(229, 9, 20, 0.10),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 15% 70%,
+                    rgba(100, 0, 0, 0.08),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #090303,
+                    #050505 50%,
+                    #020202
+                );
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        header {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 76px;
+
+            z-index: 1000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background:
+                rgba(3,3,3,0.86);
+
+            backdrop-filter:
+                blur(18px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.05);
+        }
+
+
+        .logo {
+
+            font-size: 22px;
+
+            font-weight: 1000;
+
+            letter-spacing: 2px;
+        }
+
+
+        .logo span {
+
+            color: #e50914;
+        }
+
+
+        nav {
+
+            display: flex;
+
+            gap: 30px;
+
+            align-items: center;
+        }
+
+
+        nav a {
+
+            position: relative;
+
+            color: #666;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+
+        nav a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -8px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #e50914;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover,
+        nav a.active {
+
+            color: #fff;
+        }
+
+
+        nav a:hover::after,
+        nav a.active::after {
+
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           PAGE HEADER
+        ========================================================= */
+
+        .page-header {
+
+            position: relative;
+
+            min-height: 530px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding:
+                130px 7% 90px;
+
+            overflow: hidden;
+
+            border-bottom:
+                1px solid #1c1010;
+        }
+
+
+        .page-header::before {
+
+            content: "CREWS";
+
+            position: absolute;
+
+            right: -2%;
+
+            bottom: -55px;
+
+            font-size:
+                clamp(150px, 25vw, 360px);
+
+            font-weight: 1000;
+
+            letter-spacing: -15px;
+
+            color:
+                rgba(255,255,255,0.018);
+
+            line-height: 0.8;
+
+            pointer-events: none;
+        }
+
+
+        .page-header::after {
+
+            content: "";
+
+            position: absolute;
+
+            right: 7%;
+
+            top: 25%;
+
+            width: 300px;
+
+            height: 300px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(229,9,20,0.08);
+
+            filter:
+                blur(100px);
+
+            pointer-events: none;
+        }
+
+
+        .header-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+
+        .eyebrow {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+
+            color: #e50914;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+        }
+
+
+        .eyebrow::before {
+
+            content: "";
+
+            width: 35px;
+
+            height: 2px;
+
+            background: #e50914;
+        }
+
+
+        .header-content h1 {
+
+            font-size:
+                clamp(65px, 11vw, 145px);
+
+            line-height: 0.78;
+
+            letter-spacing: -6px;
+
+            text-transform: uppercase;
+        }
+
+
+        .header-content h1 span {
+
+            color: #e50914;
+        }
+
+
+        .header-description {
+
+            max-width: 650px;
+
+            margin-top: 30px;
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================================================
+           STATS BAR
+        ========================================================= */
+
+        .stats-bar {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border-bottom:
+                1px solid #211010;
+
+            background: #080808;
+        }
+
+
+        .stat-box {
+
+            padding: 28px 7%;
+
+            border-right:
+                1px solid #211010;
+        }
+
+
+        .stat-box:last-child {
+
+            border-right: none;
+        }
+
+
+        .stat-number {
+
+            color: #e50914;
+
+            font-size: 28px;
+
+            font-weight: 1000;
+
+            line-height: 1;
+        }
+
+
+        .stat-label {
+
+            margin-top: 8px;
+
+            color: #555;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           DATABASE SECTION
+        ========================================================= */
+
+        .database {
+
+            padding:
+                100px 7%;
+        }
+
+
+        .database-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: end;
+
+            gap: 30px;
+
+            margin-bottom: 40px;
+        }
+
+
+        .database-title .label {
+
+            color: #e50914;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .database-title h2 {
+
+            font-size:
+                clamp(38px, 5vw, 65px);
+
+            line-height: 0.9;
+
+            letter-spacing: -3px;
+
+            text-transform: uppercase;
+        }
+
+
+        .search-box {
+
+            width: 320px;
+
+            position: relative;
+        }
+
+
+        .search-box input {
+
+            width: 100%;
+
+            padding: 15px 45px 15px 17px;
+
+            outline: none;
+
+            color: #ddd;
+
+            border:
+                1px solid #2a1515;
+
+            border-radius: 5px;
+
+            background: #0b0b0b;
+
+            font-size: 11px;
+
+            transition: 0.3s;
+        }
+
+
+        .search-box input:focus {
+
+            border-color: #e50914;
+
+            box-shadow:
+                0 0 25px
+                rgba(229,9,20,0.08);
+        }
+
+
+        .search-icon {
+
+            position: absolute;
+
+            right: 16px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #555;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================================================
+           FILTERS
+        ========================================================= */
+
+        .filters {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .filter {
+
+            padding:
+                9px 15px;
+
+            color: #666;
+
+            border:
+                1px solid #251414;
+
+            background: #090909;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            transition: 0.25s;
+        }
+
+
+        .filter:hover,
+        .filter.active {
+
+            color: #fff;
+
+            border-color: #e50914;
+
+            background:
+                rgba(229,9,20,0.10);
+        }
+
+
+        /* =========================================================
+           CREW GRID
+        ========================================================= */
+
+        .crew-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .crew-card {
+
+            position: relative;
+
+            min-height: 430px;
+
+            overflow: hidden;
+
+            border:
+                1px solid #241414;
+
+            border-radius: 8px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #101010,
+                    #070707
+                );
+
+            transition:
+                transform 0.35s,
+                border-color 0.35s;
+
+            cursor: pointer;
+        }
+
+
+        .crew-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                #771016;
+        }
+
+
+        .crew-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    transparent 45%,
+                    rgba(229,9,20,0.06)
+                );
+
+            pointer-events: none;
+        }
+
+
+        .crew-number {
+
+            position: absolute;
+
+            top: 20px;
+
+            left: 20px;
+
+            z-index: 3;
+
+            color: #e50914;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+
+        .crew-symbol {
+
+            position: absolute;
+
+            right: 20px;
+
+            top: 12px;
+
+            color:
+                rgba(255,255,255,0.035);
+
+            font-size: 110px;
+
+            font-weight: 1000;
+
+            line-height: 1;
+        }
+
+
+        .crew-content {
+
+            position: absolute;
+
+            left: 25px;
+
+            right: 25px;
+
+            bottom: 25px;
+
+            z-index: 3;
+        }
+
+
+        .crew-status {
+
+            display: inline-block;
+
+            margin-bottom: 9px;
+
+            padding: 5px 8px;
+
+            color: #e50914;
+
+            border:
+                1px solid rgba(229,9,20,0.25);
+
+            background:
+                rgba(229,9,20,0.06);
+
+            border-radius: 3px;
+
+            font-size: 7px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        .crew-content h3 {
+
+            font-size: 30px;
+
+            line-height: 1;
+
+            text-transform: uppercase;
+
+            letter-spacing: -1px;
+        }
+
+
+        .crew-description {
+
+            margin-top: 10px;
+
+            color: #666;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        .crew-meta {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 8px;
+
+            margin-top: 20px;
+
+            padding-top: 15px;
+
+            border-top:
+                1px solid #1e1212;
+        }
+
+
+        .meta-item span {
+
+            display: block;
+
+            color: #444;
+
+            font-size: 7px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        .meta-item strong {
+
+            display: block;
+
+            margin-top: 4px;
+
+            color: #bbb;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           CREW DETAIL PANEL
+        ========================================================= */
+
+        .detail-panel {
+
+            position: fixed;
+
+            top: 0;
+
+            right: -500px;
+
+            width: min(500px, 100%);
+
+            height: 100vh;
+
+            z-index: 2000;
+
+            overflow-y: auto;
+
+            padding: 40px;
+
+            background:
+                #090909;
+
+            border-left:
+                1px solid #321313;
+
+            box-shadow:
+                -20px 0 80px
+                rgba(0,0,0,0.7);
+
+            transition:
+                right 0.4s ease;
+        }
+
+
+        .detail-panel.open {
+
+            right: 0;
+        }
+
+
+        .close-panel {
+
+            position: absolute;
+
+            right: 25px;
+
+            top: 20px;
+
+            width: 35px;
+
+            height: 35px;
+
+            border:
+                1px solid #2a1515;
+
+            border-radius: 4px;
+
+            color: #777;
+
+            background: #0d0d0d;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            transition: 0.25s;
+        }
+
+
+        .close-panel:hover {
+
+            color: #fff;
+
+            border-color: #e50914;
+        }
+
+
+        .panel-number {
+
+            margin-top: 45px;
+
+            color: #e50914;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+
+        .panel-title {
+
+            margin-top: 15px;
+
+            font-size: 50px;
+
+            line-height: 0.9;
+
+            text-transform: uppercase;
+
+            letter-spacing: -2px;
+        }
+
+
+        .panel-description {
+
+            margin-top: 25px;
+
+            color: #777;
+
+            font-size: 12px;
+
+            line-height: 1.9;
+        }
+
+
+        .panel-section {
+
+            margin-top: 40px;
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid #211010;
+        }
+
+
+        .panel-section h4 {
+
+            color: #e50914;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+
+        .member-list {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .member {
+
+            padding: 9px 11px;
+
+            color: #aaa;
+
+            border:
+                1px solid #251515;
+
+            background: #0c0c0c;
+
+            border-radius: 4px;
+
+            font-size: 9px;
+        }
+
+
+        /* =========================================================
+           OVERLAY
+        ========================================================= */
+
+        .overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1500;
+
+            background:
+                rgba(0,0,0,0.7);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: 0.3s;
+        }
+
+
+        .overlay.active {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        /* =========================================================
+           CREW CONNECTIONS
+        ========================================================= */
+
+        .connections {
+
+            padding:
+                110px 7%;
+
+            background: #080808;
+
+            border-top:
+                1px solid #1c1010;
+
+            border-bottom:
+                1px solid #1c1010;
+        }
+
+
+        .connections-header {
+
+            margin-bottom: 45px;
+        }
+
+
+        .connections-header .label {
+
+            color: #e50914;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+
+        .connections-header h2 {
+
+            margin-top: 12px;
+
+            font-size:
+                clamp(40px, 6vw, 70px);
+
+            line-height: 0.9;
+
+            letter-spacing: -3px;
+
+            text-transform: uppercase;
+        }
+
+
+        .network {
+
+            position: relative;
+
+            min-height: 420px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .network-center {
+
+            width: 150px;
+
+            height: 150px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid #e50914;
+
+            border-radius: 50%;
+
+            background:
+                #0d0505;
+
+            box-shadow:
+                0 0 70px
+                rgba(229,9,20,0.12);
+
+            text-align: center;
+
+            font-size: 15px;
+
+            font-weight: 1000;
+
+            letter-spacing: 1px;
+        }
+
+
+        .network-node {
+
+            position: absolute;
+
+            width: 115px;
+
+            height: 115px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid #2b1515;
+
+            border-radius: 50%;
+
+            background: #0b0b0b;
+
+            color: #777;
+
+            text-align: center;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+
+        .network-node:hover {
+
+            color: #fff;
+
+            border-color: #e50914;
+
+            box-shadow:
+                0 0 30px
+                rgba(229,9,20,0.1);
+        }
+
+
+        .node-one {
+            top: 20px;
+            left: 20%;
+        }
+
+
+        .node-two {
+            top: 20px;
+            right: 20%;
+        }
+
+
+        .node-three {
+            bottom: 20px;
+            left: 20%;
+        }
+
+
+        .node-four {
+            bottom: 20px;
+            right: 20%;
+        }
+
+
+        .network-line {
+
+            position: absolute;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #431414,
+                    transparent
+                );
+
+            transform-origin: center;
+
+            z-index: -1;
+        }
+
+
+        .line-one {
+
+            width: 40%;
+
+            transform:
+                rotate(25deg);
+        }
+
+
+        .line-two {
+
+            width: 40%;
+
+            transform:
+                rotate(-25deg);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            padding:
+                55px 7% 30px;
+
+            border-top:
+                1px solid #1a0e0e;
+        }
+
+
+        .footer-main {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 40px;
+
+            padding-bottom: 40px;
+        }
+
+
+        .footer-logo {
+
+            font-size: 23px;
+
+            font-weight: 1000;
+
+            letter-spacing: 2px;
+        }
+
+
+        .footer-logo span {
+
+            color: #e50914;
+        }
+
+
+        .footer-text {
+
+            max-width: 350px;
+
+            margin-top: 12px;
+
+            color: #555;
+
+            font-size: 10px;
+
+            line-height: 1.8;
+        }
+
+
+        .footer-nav {
+
+            display: flex;
+
+            gap: 35px;
+        }
+
+
+        .footer-nav-column h4 {
+
+            margin-bottom: 14px;
+
+            color: #666;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .footer-nav-column a {
+
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: #444;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            transition: 0.25s;
+        }
+
+
+        .footer-nav-column a:hover {
+
+            color: #e50914;
+        }
+
+
+        .copyright {
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid #171010;
+
+            color: #3d3d3d;
+
+            font-size: 9px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           ANIMATION
+        ========================================================= */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .crew-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+
+                height: auto;
+
+                padding: 15px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 14px;
+            }
+
+
+            nav a {
+
+                font-size: 8px;
+            }
+
+
+            .page-header {
+
+                min-height: 600px;
+
+                padding:
+                    160px 20px 80px;
+            }
+
+
+            .stats-bar {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .stat-box {
+
+                padding: 25px 20px;
+
+                border-bottom:
+                    1px solid #211010;
+            }
+
+
+            .database {
+
+                padding:
+                    80px 20px;
+            }
+
+
+            .database-top {
+
+                flex-direction: column;
+
+                align-items: start;
+            }
+
+
+            .search-box {
+
+                width: 100%;
+            }
+
+
+            .crew-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .connections {
+
+                padding:
+                    80px 20px;
+            }
+
+
+            .network {
+
+                min-height: 500px;
+            }
+
+
+            .node-one {
+                left: 2%;
+            }
+
+
+            .node-two {
+                right: 2%;
+            }
+
+
+            .node-three {
+                left: 2%;
+            }
+
+
+            .node-four {
+                right: 2%;
+            }
+
+
+            .footer-main {
+
+                flex-direction: column;
+            }
+
+
+            .footer-nav {
+
+                flex-wrap: wrap;
+            }
+
+        }
+
+
+        @media (max-width: 430px) {
+
+            .page-header h1 {
+
+                font-size: 65px;
+
+                letter-spacing: -4px;
+            }
+
+
+            .panel-title {
+
+                font-size: 40px;
+            }
+
+
+            .detail-panel {
+
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <header>
+
+        <div class="logo">
+            LOOK<span>ISM</span> HUB
+        </div>
+
+
+        <nav>
+
+            <a href="home.html">
+                Home
+            </a>
+
+
+            <a href="characters.html">
+                Characters
+            </a>
+
+
+            <a href="index.html">
+                Fights
+            </a>
+
+
+            <a
+                href="crews.html"
+                class="active"
+            >
+                Crews
+            </a>
+
+
+            <a href="timeline.html">
+                Timeline
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         PAGE HEADER
+    ========================================================== -->
+
+    <section class="page-header">
+
+        <div class="header-content reveal">
+
+            <div class="eyebrow">
+                ORGANIZATIONS DATABASE
+            </div>
+
+
+            <h1>
+
+                CREW
+                <span>WARS.</span>
+
+            </h1>
+
+
+            <p class="header-description">
+
+                Power in the LOOKISM universe is rarely
+                held by a single fighter. Crews form alliances,
+                control territories, recruit talented fighters
+                and clash with rival organizations.
+
+                <br><br>
+
+                Explore the major groups, their members,
+                leaders and connections.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         DATABASE STATS
+    ========================================================== -->
+
+    <section class="stats-bar">
+
+        <div class="stat-box">
+
+            <div
+                class="stat-number"
+                id="crewCount"
+            >
+                08
+            </div>
+
+            <div class="stat-label">
+                Crews Tracked
+            </div>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div
+                class="stat-number"
+                id="memberCount"
+            >
+                42+
+            </div>
+
+            <div class="stat-label">
+                Known Members
+            </div>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div class="stat-number">
+                04
+            </div>
+
+            <div class="stat-label">
+                Major Generations
+            </div>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div class="stat-number">
+                24/7
+            </div>
+
+            <div class="stat-label">
+                Conflict
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CREW DATABASE
+    ========================================================== -->
+
+    <section class="database">
+
+
+        <div class="database-top">
+
+
+            <div class="database-title reveal">
+
+                <div class="label">
+                    ARCHIVE // 001
+                </div>
+
+
+                <h2>
+                    CREW
+                    <br>
+                    DATABASE
+                </h2>
+
+            </div>
+
+
+            <div class="search-box reveal">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search crews..."
+                >
+
+
+                <div class="search-icon">
+                    ⌕
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FILTERS -->
+
+        <div class="filters reveal">
+
+            <button
+                class="filter active"
+                data-filter="all"
+            >
+                All
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="major"
+            >
+                Major
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="minor"
+            >
+                Minor
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="allied"
+            >
+                Allied
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="former"
+            >
+                Former
+            </button>
+
+        </div>
+
+
+
+        <!-- CREWS -->
+
+        <div
+            class="crew-grid"
+            id="crewGrid"
+        >
+
+
+            <!-- BIG DEAL -->
+
+            <article
+                class="crew-card reveal"
+                data-name="Big Deal"
+                data-type="major"
+                data-crew="bigdeal"
+            >
+
+                <div class="crew-number">
+                    01
+                </div>
+
+
+                <div class="crew-symbol">
+                    BD
+                </div>
+
+
+                <div class="crew-content">
+
+                    <div class="crew-status">
+                        Major Crew
+                    </div>
+
+
+                    <h3>
+                        Big Deal
+                    </h3>
+
+
+                    <p class="crew-description">
+
+                        A prominent crew associated with
+                        the J High era and the streets of
+                        Gangnam.
+
+                    </p>
+
+
+                    <div class="crew-meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Leader
+                            </span>
+
+                            <strong>
+                                Jake Kim
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Major
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- GOD DOG -->
+
+            <article
+                class="crew-card reveal"
+                data-name="God Dog"
+                data-type="major"
+                data-crew="goddog"
+            >
+
+                <div class="crew-number">
+                    02
+                </div>
+
+
+                <div class="crew-symbol">
+                    GD
+                </div>
+
+
+                <div class="crew-content">
+
+                    <div class="crew-status">
+                        Former Crew
+                    </div>
+
+
+                    <h3>
+                        God Dog
+                    </h3>
+
+
+                    <p class="crew-description">
+
+                        A crew that became involved in
+                        the conflicts surrounding Johan Seong
+                        and the early generations.
+
+                    </p>
+
+
+                    <div class="crew-meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Leader
+                            </span>
+
+                            <strong>
+                                Johan Seong
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+                            <span>
+                                Status
+                            </span>
+
+                            <strong>
+                                Former
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- HOSTEL -->
+
+            <article
+                class="crew-card reveal"
+                data-name="Hostel"
+                data-type="major"
+                data-crew="hostel"
+            >
+
+                <div class="crew-number">
+                    03
+                </div>
+
+
+                <div class="crew-symbol">
+                    HS
+                </div>
+
+
+                <div class="crew-content">
+
+                    <div class="crew-status">
+                        Major Crew
+                    </div>
+
+
+                    <h3>
+                        Hostel
+                    </h3>
+
+
+                    <p class="crew-description">
+
+                        An organization built around
+                        protecting abandoned and vulnerable
+                        youths.
+
+                    </p>
+
+
+                    <div class="crew-meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Key Figure
+                            </span>
+
+                            <strong>
+                                Eli Jang
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Major
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ANSANG -->
+
+            <article
+                class="crew-card reveal"
+                data-name="Ansang Public"
+                data-type="minor"
+                data-crew="ansang"
+            >
+
+                <div class="crew-number">
+                    04
+                </div>
+
+
+                <div class="crew-symbol">
+                    AP
+                </div>
+
+
+                <div class="crew-content">
+
+                    <div class="crew-status">
+                        Regional Crew
+                    </div>
+
+
+                    <h3>
+                        Ansan
+                    </h3>
+
+
+                    <p class="crew-description">
+
+                        A regional group connected to the
+                        conflicts and power struggles of
+                        the second generation.
+
+                    </p>
+
+
+                    <div class="crew-meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Key Figure
+                            </span>
+
+                            <strong>
+                                Hudson Ahn
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Regional
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- WORKERS -->
+
+            <article
+                class="crew-card reveal"
+                data-name="Workers"
+                data-type="major"
+                data-crew="workers"
+            >
+
+                <div class="crew-number">
+                    05
+                </div>
+
+
+                <div class="crew-symbol">
+                    W
+                </div>
+
+
+                <div class="crew-content">
+
+                    <div class="crew-status">
+                        Major Organization
+                    </div>
+
+
+                    <h3>
+                        Workers
+                    </h3>
+
+
+                    <p class="crew-description">
+
+                        A large organization whose activities
+                        extend beyond ordinary street-level
+                        crew conflicts.
+
+                    </p>
+
+
+                    <div class="crew-meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Organization
+                            </span>
+
+                            <strong>
+                                Workers
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Major
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ALLIED -->
+
+            <article
+                class="crew-card reveal"
+                data-name="J High Allies"
+                data-type="allied"
+                data-crew="jhigh"
+            >
+
+                <div class="crew-number">
+                    06
+                </div>
+
+
+                <div class="crew-symbol">
+                    JH
+                </div>
+
+
+                <div class="crew-content">
+
+                    <div class="crew-status">
+                        Allied Group
+                    </div>
+
+
+                    <h3>
+                        J High
+                    </h3>
+
+
+                    <p class="crew-description">
+
+                        The group surrounding Daniel and his
+                        classmates, connecting several major
+                        characters throughout the story.
+
+                    </p>
+
+
+                    <div class="crew-meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Key Figure
+                            </span>
+
+                            <strong>
+                                Daniel Park
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Allied
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ILLEGAL CREW -->
+
+            <article
+                class="crew-card reveal"
+                data-name="Ilhwa"
+                data-type="minor"
+                data-crew="ilhwa"
+            >
+
+                <div class="crew-number">
+                    07
+                </div>
+
+
+                <div class="crew-symbol">
+                    IH
+                </div>
+
+
+                <div class="crew-content">
+
+                    <div class="crew-status">
+                        Regional Group
+                    </div>
+
+
+                    <h3>
+                        Ilhwa
+                    </h3>
+
+
+                    <p class="crew-description">
+
+                        A regional organization associated
+                        with the broader crew conflicts.
+
+                    </p>
+
+
+                    <div class="crew-meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Status
+                            </span>
+
+                            <strong>
+                                Active
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Minor
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- BURN KNuckles -->
+
+            <article
+                class="crew-card reveal"
+                data-name="Burn Knuckles"
+                data-type="allied"
+                data-crew="burnknuckles"
+            >
+
+                <div class="crew-number">
+                    08
+                </div>
+
+
+                <div class="crew-symbol">
+                    BK
+                </div>
+
+
+                <div class="crew-content">
+
+                    <div class="crew-status">
+                        Allied Group
+                    </div>
+
+
+                    <h3>
+                        Burn Knuckles
+                    </h3>
+
+
+                    <p class="crew-description">
+
+                        A group strongly associated with
+                        Vasco and his pursuit of protecting
+                        people around him.
+
+                    </p>
+
+
+                    <div class="crew-meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Leader
+                            </span>
+
+                            <strong>
+                                Vasco
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meta-item">
+
+                            <span>
+                                Type
+                            </span>
+
+                            <strong>
+                                Allied
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <div
+            id="noResults"
+            style="
+                display:none;
+                padding:70px 20px;
+                text-align:center;
+                color:#555;
+                font-size:11px;
+                letter-spacing:2px;
+                text-transform:uppercase;
+            "
+        >
+            No crews found.
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CREW CONNECTIONS
+    ========================================================== -->
+
+    <section class="connections">
+
+
+        <div class="connections-header reveal">
+
+            <div class="label">
+                RELATIONSHIP MAP
+            </div>
+
+
+            <h2>
+                THE CREW
+                <br>
+                NETWORK.
+            </h2>
+
+        </div>
+
+
+
+        <div class="network">
+
+
+            <div class="network-line line-one"></div>
+
+
+            <div class="network-line line-two"></div>
+
+
+            <div class="network-center">
+
+                LOOKISM
+                <br>
+                NETWORK
+
+            </div>
+
+
+            <div class="network-node node-one">
+
+                BIG
+                <br>
+                DEAL
+
+            </div>
+
+
+            <div class="network-node node-two">
+
+                HOSTEL
+
+            </div>
+
+
+            <div class="network-node node-three">
+
+                J HIGH
+
+            </div>
+
+
+            <div class="network-node node-four">
+
+                WORKERS
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+
+        <div class="footer-main">
+
+
+            <div>
+
+                <div class="footer-logo">
+                    LOOK<span>ISM</span> HUB
+                </div>
+
+
+                <p class="footer-text">
+
+                    A fan-made database for exploring
+                    characters, crews, fights and events
+                    from the LOOKISM universe.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-nav">
+
+
+                <div class="footer-nav-column">
+
+                    <h4>
+                        Explore
+                    </h4>
+
+
+                    <a href="home.html">
+                        Home
+                    </a>
+
+
+                    <a href="characters.html">
+                        Characters
+                    </a>
+
+
+                    <a href="index.html">
+                        Fights
+                    </a>
+
+                </div>
+
+
+
+                <div class="footer-nav-column">
+
+                    <h4>
+                        Universe
+                    </h4>
+
+
+                    <a href="crews.html">
+                        Crews
+                    </a>
+
+
+                    <a href="timeline.html">
+                        Timeline
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="copyright">
+
+            LOOKISM HUB is a fan-made project.
+
+            <br>
+
+            LOOKISM is created by Taejun Pak.
+            This website is not affiliated with
+            WEBTOON or the original creators.
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         DETAIL PANEL
+    ========================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <aside
+        class="detail-panel"
+        id="detailPanel"
+    >
+
+        <button
+            class="close-panel"
+            id="closePanel"
+        >
+            ×
+        </button>
+
+
+        <div
+            class="panel-number"
+            id="panelNumber"
+        >
+            CREW // 001
+        </div>
+
+
+        <h2
+            class="panel-title"
+            id="panelTitle"
+        >
+            Big Deal
+        </h2>
+
+
+        <p
+            class="panel-description"
+            id="panelDescription"
+        >
+        </p>
+
+
+        <div class="panel-section">
+
+            <h4>
+                Known Members
+            </h4>
+
+
+            <div
+                class="member-list"
+                id="memberList"
+            ></div>
+
+        </div>
+
+
+        <div class="panel-section">
+
+            <h4>
+                Information
+            </h4>
+
+
+            <div
+                id="panelInfo"
+                style="
+                    color:#777;
+                    font-size:11px;
+                    line-height:1.9;
+                "
+            ></div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           CREW DATABASE
+        ===================================================== */
+
+        const crewData = {
+
+            bigdeal: {
+
+                number: "CREW // 001",
+
+                title: "Big Deal",
+
+                description:
+                    "Big Deal is a prominent crew associated with Jake Kim and the conflicts surrounding the second generation.",
+
+                members: [
+                    "Jake Kim",
+                    "Jerry Kwon",
+                    "Jason Yoon",
+                    "Brad Lee",
+                    "Sinu Han"
+                ],
+
+                info:
+                    "<strong style='color:#aaa'>Leader:</strong> Jake Kim<br><strong style='color:#aaa'>Classification:</strong> Major Crew<br><strong style='color:#aaa'>Known Association:</strong> Gangnam"
+            },
+
+
+            goddog: {
+
+                number: "CREW // 002",
+
+                title: "God Dog",
+
+                description:
+                    "God Dog was a crew associated with Johan Seong and his search for strength and purpose.",
+
+                members: [
+                    "Johan Seong",
+                    "Zack Lee",
+                    "God Dog Members"
+                ],
+
+                info:
+                    "<strong style='color:#aaa'>Key Figure:</strong> Johan Seong<br><strong style='color:#aaa'>Classification:</strong> Former Crew<br><strong style='color:#aaa'>Status:</strong> Historical"
+            },
+
+
+            hostel: {
+
+                number: "CREW // 003",
+
+                title: "Hostel",
+
+                description:
+                    "Hostel is an organization connected to Eli Jang and a group of youths seeking protection and belonging.",
+
+                members: [
+                    "Eli Jang",
+                    "Warren Chae",
+                    "Olly Wang",
+                    "Heather",
+                    "Hostel Members"
+                ],
+
+                info:
+                    "<strong style='color:#aaa'>Key Figure:</strong> Eli Jang<br><strong style='color:#aaa'>Classification:</strong> Major Crew<br><strong style='color:#aaa'>Known Association:</strong> Hostel"
+            },
+
+
+            ansang: {
+
+                number: "CREW // 004",
+
+                title: "Ansan",
+
+                description:
+                    "Ansan represents a regional power group involved in the second-generation crew conflicts.",
+
+                members: [
+                    "Hudson Ahn",
+                    "Ansan Members"
+                ],
+
+                info:
+                    "<strong style='color:#aaa'>Key Figure:</strong> Hudson Ahn<br><strong style='color:#aaa'>Classification:</strong> Regional Group<br><strong style='color:#aaa'>Area:</strong> Ansan"
+            },
+
+
+            workers: {
+
+                number: "ORGANIZATION // 005",
+
+                title: "Workers",
+
+                description:
+                    "Workers is a large organization with influence extending beyond conventional street crews.",
+
+                members: [
+                    "Eugene",
+                    "Vivi",
+                    "Samuel Seo",
+                    "Jake Kim",
+                    "Workers Members"
+                ],
+
+                info:
+                    "<strong style='color:#aaa'>Organization:</strong> Workers<br><strong style='color:#aaa'>Classification:</strong> Major Organization<br><strong style='color:#aaa'>Structure:</strong> Multiple Affiliates"
+            },
+
+
+            jhigh: {
+
+                number: "GROUP // 006",
+
+                title: "J High",
+
+                description:
+                    "J High connects Daniel Park and several characters whose relationships become important throughout the story.",
+
+                members: [
+                    "Daniel Park",
+                    "Zack Lee",
+                    "Vasco",
+                    "Jay Hong",
+                    "Zoe Park"
+                ],
+
+                info:
+                    "<strong style='color:#aaa'>Key Figure:</strong> Daniel Park<br><strong style='color:#aaa'>Classification:</strong> Allied Group<br><strong style='color:#aaa'>Location:</strong> J High"
+            },
+
+
+            ilhwa: {
+
+                number: "CREW // 007",
+
+                title: "Ilhwa",
+
+                description:
+                    "Ilhwa is represented as a regional group within the wider network of crew conflicts.",
+
+                members: [
+                    "Regional Members"
+                ],
+
+                info:
+                    "<strong style='color:#aaa'>Classification:</strong> Regional Group<br><strong style='color:#aaa'>Status:</strong> Active"
+            },
+
+
+            burnknuckles: {
+
+                number: "GROUP // 008",
+
+                title: "Burn Knuckles",
+
+                description:
+                    "Burn Knuckles is closely associated with Vasco and his personal code of protecting people.",
+
+                members: [
+                    "Vasco",
+                    "Jace Park",
+                    "Burn Knuckles Members"
+                ],
+
+                info:
+                    "<strong style='color:#aaa'>Leader:</strong> Vasco<br><strong style='color:#aaa'>Classification:</strong> Allied Group<br><strong style='color:#aaa'>Known Association:</strong> J High"
+            }
+
+        };
+
+
+
+        /* =====================================================
+           SEARCH + FILTER
+        ===================================================== */
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const cards =
+            document.querySelectorAll(
+                ".crew-card"
+            );
+
+
+        const filters =
+            document.querySelectorAll(
+                ".filter"
+            );
+
+
+        const noResults =
+            document.getElementById(
+                "noResults"
+            );
+
+
+        let currentFilter = "all";
+
+
+        function filterCrews() {
+
+            const search =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            let visibleCount = 0;
+
+
+            cards.forEach(card => {
+
+                const name =
+                    card.dataset.name
+                        .toLowerCase();
+
+
+                const type =
+                    card.dataset.type
+                        .toLowerCase();
+
+
+                const matchesSearch =
+                    name.includes(search);
+
+
+                const matchesFilter =
+                    currentFilter === "all" ||
+                    type === currentFilter;
+
+
+                if (
+                    matchesSearch &&
+                    matchesFilter
+                ) {
+
+                    card.style.display =
+                        "block";
+
+                    visibleCount++;
+
+                }
+
+                else {
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            });
+
+
+            noResults.style.display =
+                visibleCount === 0
+                    ? "block"
+                    : "none";
+
+        }
+
+
+        searchInput.addEventListener(
+            "input",
+            filterCrews
+        );
+
+
+        filters.forEach(filter => {
+
+            filter.addEventListener(
+                "click",
+                () => {
+
+                    filters.forEach(
+                        item =>
+                            item.classList.remove(
+                                "active"
+                            )
+                    );
+
+
+                    filter.classList.add(
+                        "active"
+                    );
+
+
+                    currentFilter =
+                        filter.dataset.filter;
+
+
+                    filterCrews();
+
+                }
+            );
+
+        });
+
+
+
+        /* =====================================================
+           DETAIL PANEL
+        ===================================================== */
+
+        const panel =
+            document.getElementById(
+                "detailPanel"
+            );
+
+
+        const overlay =
+            document.getElementById(
+                "overlay"
+            );
+
+
+        const closePanel =
+            document.getElementById(
+                "closePanel"
+            );
+
+
+        const panelNumber =
+            document.getElementById(
+                "panelNumber"
+            );
+
+
+        const panelTitle =
+            document.getElementById(
+                "panelTitle"
+            );
+
+
+        const panelDescription =
+            document.getElementById(
+                "panelDescription"
+            );
+
+
+        const memberList =
+            document.getElementById(
+                "memberList"
+            );
+
+
+        const panelInfo =
+            document.getElementById(
+                "panelInfo"
+            );
+
+
+        cards.forEach(card => {
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    const crew =
+                        crewData[
+                            card.dataset.crew
+                        ];
+
+
+                    if (!crew) return;
+
+
+                    panelNumber.textContent =
+                        crew.number;
+
+
+                    panelTitle.textContent =
+                        crew.title;
+
+
+                    panelDescription.textContent =
+                        crew.description;
+
+
+                    memberList.innerHTML =
+                        "";
+
+
+                    crew.members.forEach(
+                        member => {
+
+                            const element =
+                                document.createElement(
+                                    "div"
+                                );
+
+
+                            element.className =
+                                "member";
+
+
+                            element.textContent =
+                                member;
+
+
+                            memberList.appendChild(
+                                element
+                            );
+
+                        }
+                    );
+
+
+                    panelInfo.innerHTML =
+                        crew.info;
+
+
+                    panel.classList.add(
+                        "open"
+                    );
+
+
+                    overlay.classList.add(
+                        "active"
+                    );
+
+
+                    document.body.style.overflow =
+                        "hidden";
+
+                }
+            );
+
+        });
+
+
+
+        function closeCrewPanel() {
+
+            panel.classList.remove(
+                "open"
+            );
+
+            overlay.classList.remove(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        closePanel.addEventListener(
+            "click",
+            closeCrewPanel
+        );
+
+
+        overlay.addEventListener(
+            "click",
+            closeCrewPanel
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeCrewPanel();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "visible"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.1
+                }
+            );
+
+
+        revealElements.forEach(
+            element => {
+
+                observer.observe(
+                    element
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           HEADER SCROLL
+        ===================================================== */
+
+        const header =
+            document.querySelector(
+                "header"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                if (
+                    window.scrollY > 40
+                ) {
+
+                    header.style.background =
+                        "rgba(3,3,3,0.96)";
+
+                }
+
+                else {
+
+                    header.style.background =
+                        "rgba(3,3,3,0.86)";
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
+```
