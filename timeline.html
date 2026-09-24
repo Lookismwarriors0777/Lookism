@@ -5,10 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LOOKISM HUB — Timeline</title>
+<title>LOOKISM HUB — Story Timeline</title>
 
 <style>
-
 /* =========================================================
    RESET
 ========================================================= */
@@ -30,23 +29,28 @@ body{
     overflow-x:hidden;
 }
 
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
 :root{
     --red:#e50914;
-    --dark-red:#7d070d;
+    --red-bright:#ff2732;
+    --dark-red:#70070d;
     --bg:#050505;
-    --panel:#0d0d0d;
-    --line:#222;
-    --muted:#777;
+    --panel:#0c0c0c;
+    --panel-2:#101010;
+    --line:#242424;
+    --muted:#666;
+    --soft:#999;
+    --green:#50d890;
+    --yellow:#e6b84a;
 }
 
 ::selection{
     background:var(--red);
-    color:white;
+    color:#fff;
+}
+
+button,
+input{
+    font:inherit;
 }
 
 
@@ -59,24 +63,30 @@ body{
     top:0;
     left:0;
     width:100%;
-    height:75px;
-
+    height:74px;
     z-index:1000;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:0 7%;
+    padding:0 6%;
 
-    background:rgba(5,5,5,.88);
-    backdrop-filter:blur(15px);
+    background:rgba(5,5,5,.86);
+    backdrop-filter:blur(18px);
 
-    border-bottom:1px solid rgba(255,255,255,.06);
+    border-bottom:1px solid rgba(255,255,255,.07);
+
+    transition:.3s;
+}
+
+.navbar.scrolled{
+    background:rgba(3,3,3,.98);
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
 }
 
 .logo{
-    font-size:21px;
+    font-size:20px;
     font-weight:1000;
     letter-spacing:3px;
 }
@@ -87,25 +97,22 @@ body{
 
 .nav-links{
     display:flex;
-    gap:28px;
+    gap:26px;
 }
 
 .nav-links a{
     color:#666;
     text-decoration:none;
-
     font-size:9px;
     font-weight:900;
     letter-spacing:1.5px;
-
     text-transform:uppercase;
-
     transition:.25s;
 }
 
 .nav-links a:hover,
 .nav-links a.active{
-    color:white;
+    color:#fff;
 }
 
 
@@ -114,12 +121,10 @@ body{
 ========================================================= */
 
 .hero{
-    min-height:650px;
-
-    padding:150px 7% 90px;
+    min-height:690px;
+    padding:155px 6% 90px;
 
     position:relative;
-
     display:flex;
     align-items:center;
 
@@ -129,19 +134,16 @@ body{
 }
 
 .hero::before{
-    content:"TIMELINE";
+    content:"ARCHIVE";
 
     position:absolute;
-
     right:-60px;
-    bottom:-50px;
+    bottom:-55px;
 
     font-size:clamp(100px,17vw,250px);
-
     font-weight:1000;
 
     color:rgba(255,255,255,.018);
-
     letter-spacing:-10px;
 
     pointer-events:none;
@@ -152,22 +154,20 @@ body{
 
     position:absolute;
 
-    width:500px;
-    height:500px;
+    width:550px;
+    height:550px;
 
-    right:8%;
-    top:10%;
+    right:4%;
+    top:5%;
 
-    background:rgba(229,9,20,.07);
+    background:rgba(229,9,20,.075);
 
-    filter:blur(120px);
-
+    filter:blur(130px);
     border-radius:50%;
 }
 
 .hero-content{
-    max-width:900px;
-
+    max-width:1050px;
     position:relative;
     z-index:2;
 }
@@ -181,14 +181,13 @@ body{
 
     font-size:9px;
     font-weight:900;
-
     letter-spacing:4px;
 }
 
 .small-label::before{
     content:"";
 
-    width:40px;
+    width:42px;
     height:2px;
 
     background:var(--red);
@@ -197,12 +196,10 @@ body{
 .hero h1{
     margin-top:25px;
 
-    font-size:clamp(65px,11vw,145px);
-
+    font-size:clamp(65px,11vw,150px);
     line-height:.78;
 
     letter-spacing:-7px;
-
     text-transform:uppercase;
 }
 
@@ -211,24 +208,178 @@ body{
 }
 
 .hero p{
-    max-width:620px;
+    max-width:650px;
 
-    margin-top:35px;
+    margin-top:38px;
 
     color:#666;
 
     font-size:12px;
-
     line-height:1.9;
+}
+
+.hero-status{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+
+    margin-top:30px;
+}
+
+.status-chip{
+    padding:9px 12px;
+
+    border:1px solid #252525;
+    background:#0a0a0a;
+
+    color:#777;
+
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.status-chip.current{
+    color:#fff;
+    border-color:#68151a;
+    background:rgba(229,9,20,.08);
+}
+
+.status-chip.current::before{
+    content:"●";
+    color:var(--red);
+    margin-right:7px;
 }
 
 
 /* =========================================================
-   ARCHIVE CONTROL
+   CURRENT STORY PANEL
+========================================================= */
+
+.current-story{
+    margin-top:-45px;
+    position:relative;
+    z-index:10;
+
+    padding:0 6%;
+}
+
+.current-inner{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1.4fr .6fr;
+
+    border:1px solid #391114;
+
+    background:
+        linear-gradient(
+            120deg,
+            #130506,
+            #090909 65%
+        );
+
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+}
+
+.current-main{
+    padding:38px;
+}
+
+.current-label{
+    color:var(--red);
+
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.current-main h2{
+    margin-top:13px;
+
+    font-size:clamp(35px,5vw,65px);
+    line-height:.85;
+
+    letter-spacing:-3px;
+    text-transform:uppercase;
+}
+
+.current-main p{
+    max-width:680px;
+
+    margin-top:20px;
+
+    color:#777;
+
+    font-size:11px;
+    line-height:1.8;
+}
+
+.current-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+
+    margin-top:22px;
+}
+
+.current-meta span{
+    padding:8px 10px;
+
+    border:1px solid #2b2b2b;
+    background:#080808;
+
+    color:#888;
+
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.current-meta .live{
+    color:#fff;
+    border-color:#67151a;
+}
+
+.current-side{
+    padding:38px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    border-left:1px solid #291113;
+    background:rgba(0,0,0,.15);
+}
+
+.current-number{
+    color:var(--red);
+
+    font-size:58px;
+    font-weight:1000;
+    line-height:.8;
+}
+
+.current-side small{
+    margin-top:12px;
+
+    color:#555;
+
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+
+/* =========================================================
+   CONTROLS
 ========================================================= */
 
 .controls{
-    padding:35px 7%;
+    padding:65px 6% 30px;
 
     background:#080808;
 
@@ -248,26 +399,23 @@ body{
 
 .filters{
     display:flex;
-    gap:8px;
+    gap:7px;
     flex-wrap:wrap;
 }
 
 .filter{
-    padding:10px 15px;
+    padding:10px 14px;
 
     color:#666;
-
     background:#0b0b0b;
 
     border:1px solid #242424;
-
     border-radius:3px;
 
     cursor:pointer;
 
     font-size:8px;
     font-weight:900;
-
     letter-spacing:1px;
 
     text-transform:uppercase;
@@ -277,7 +425,7 @@ body{
 
 .filter:hover,
 .filter.active{
-    color:white;
+    color:#fff;
 
     border-color:var(--red);
 
@@ -285,16 +433,14 @@ body{
 }
 
 .search{
-    width:230px;
+    width:260px;
 
-    padding:11px 15px;
+    padding:12px 15px;
 
-    color:white;
-
+    color:#fff;
     background:#0a0a0a;
 
     border:1px solid #242424;
-
     outline:none;
 
     border-radius:3px;
@@ -303,11 +449,22 @@ body{
 }
 
 .search:focus{
-    border-color:#641016;
+    border-color:#73151b;
 }
 
 .search::placeholder{
     color:#444;
+}
+
+.result-count{
+    margin-top:14px;
+
+    color:#444;
+
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
 }
 
 
@@ -317,14 +474,13 @@ body{
 
 .archive{
     max-width:1250px;
-
     margin:auto;
 
-    padding:110px 7%;
+    padding:90px 6%;
 }
 
 .archive-header{
-    margin-bottom:55px;
+    margin-bottom:45px;
 }
 
 .archive-header span{
@@ -332,7 +488,6 @@ body{
 
     font-size:8px;
     font-weight:900;
-
     letter-spacing:3px;
 }
 
@@ -340,12 +495,21 @@ body{
     margin-top:12px;
 
     font-size:clamp(45px,6vw,80px);
-
     line-height:.85;
 
     letter-spacing:-4px;
-
     text-transform:uppercase;
+}
+
+.archive-header p{
+    max-width:620px;
+
+    margin-top:20px;
+
+    color:#555;
+
+    font-size:10px;
+    line-height:1.8;
 }
 
 
@@ -355,26 +519,17 @@ body{
 
 .arc-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:14px;
 }
 
-
-/* =========================================================
-   ARC CARD
-========================================================= */
-
 .arc-card{
-    min-height:370px;
+    min-height:400px;
 
     position:relative;
 
     display:flex;
     flex-direction:column;
-
     justify-content:flex-end;
 
     padding:28px;
@@ -382,7 +537,6 @@ body{
     overflow:hidden;
 
     border:1px solid #242424;
-
     border-radius:6px;
 
     background:
@@ -396,13 +550,21 @@ body{
 
     transition:
         transform .3s,
-        border-color .3s;
+        border-color .3s,
+        background .3s;
 }
 
 .arc-card:hover{
     transform:translateY(-7px);
 
     border-color:#68151a;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #080707
+        );
 }
 
 .arc-card::before{
@@ -417,6 +579,32 @@ body{
             rgba(229,9,20,.12),
             transparent 35%
         );
+}
+
+.arc-card::after{
+    content:"";
+
+    position:absolute;
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--red),
+        transparent
+    );
+
+    transform:scaleX(0);
+
+    transition:.3s;
+}
+
+.arc-card:hover::after{
+    transform:scaleX(1);
 }
 
 .arc-number{
@@ -441,10 +629,36 @@ body{
 
     font-size:7px;
     font-weight:900;
-
     letter-spacing:2px;
 
     text-transform:uppercase;
+}
+
+.arc-status{
+    position:absolute;
+
+    top:23px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:5px 7px;
+
+    border:1px solid #282828;
+
+    color:#555;
+
+    font-size:6px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    white-space:nowrap;
+}
+
+.arc-status.current{
+    color:#fff;
+    border-color:#65141a;
+    background:rgba(229,9,20,.08);
 }
 
 .arc-content{
@@ -454,11 +668,9 @@ body{
 
 .arc-content h3{
     font-size:27px;
-
     line-height:.95;
 
     text-transform:uppercase;
-
     letter-spacing:-1px;
 }
 
@@ -468,19 +680,26 @@ body{
     color:#666;
 
     font-size:9px;
-
     line-height:1.7;
+}
+
+.arc-chapters{
+    margin-top:13px;
+
+    color:#555;
+
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
 }
 
 .arc-meta{
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    margin-top:20px;
-
+    margin-top:18px;
     padding-top:15px;
 
     border-top:1px solid #202020;
@@ -490,9 +709,7 @@ body{
     color:#444;
 
     font-size:7px;
-
     font-weight:900;
-
     letter-spacing:1px;
 }
 
@@ -502,13 +719,37 @@ body{
 
 
 /* =========================================================
-   FEATURED ARC
+   NO RESULTS
+========================================================= */
+
+.no-results{
+    display:none;
+
+    padding:50px 20px;
+
+    text-align:center;
+
+    border:1px dashed #282828;
+
+    color:#555;
+
+    font-size:10px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.no-results.show{
+    display:block;
+}
+
+
+/* =========================================================
+   FEATURED
 ========================================================= */
 
 .featured{
     margin-top:14px;
-
-    min-height:450px;
+    min-height:440px;
 
     position:relative;
 
@@ -527,32 +768,24 @@ body{
 }
 
 .featured::after{
-    content:"";
+    content:"614";
 
     position:absolute;
 
-    width:450px;
-    height:450px;
+    right:-20px;
+    bottom:-65px;
 
-    right:-100px;
-    top:-100px;
+    color:rgba(229,9,20,.05);
 
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(229,9,20,.16),
-            transparent 65%
-        );
+    font-size:230px;
+    font-weight:1000;
 }
 
 .featured-content{
     position:relative;
-
     z-index:2;
 
-    max-width:700px;
+    max-width:720px;
 }
 
 .featured-label{
@@ -560,7 +793,6 @@ body{
 
     font-size:8px;
     font-weight:900;
-
     letter-spacing:3px;
 }
 
@@ -568,11 +800,9 @@ body{
     margin-top:18px;
 
     font-size:clamp(45px,6vw,85px);
-
     line-height:.82;
 
     letter-spacing:-4px;
-
     text-transform:uppercase;
 }
 
@@ -584,7 +814,6 @@ body{
     color:#777;
 
     font-size:11px;
-
     line-height:1.9;
 }
 
@@ -593,18 +822,14 @@ body{
 
     padding:14px 20px;
 
-    color:white;
-
+    color:#fff;
     background:var(--red);
 
     border:0;
-
     cursor:pointer;
 
     font-size:8px;
-
     font-weight:900;
-
     letter-spacing:2px;
 
     text-transform:uppercase;
@@ -613,9 +838,92 @@ body{
 }
 
 .featured-button:hover{
-    background:#ff1824;
-
+    background:var(--red-bright);
     transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   RECENT HISTORY
+========================================================= */
+
+.recent{
+    padding:95px 6%;
+
+    background:#080808;
+
+    border-top:1px solid #191919;
+    border-bottom:1px solid #191919;
+}
+
+.recent-container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.section-heading span{
+    color:var(--red);
+
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.section-heading h2{
+    margin-top:12px;
+
+    font-size:55px;
+    line-height:.85;
+
+    letter-spacing:-3px;
+    text-transform:uppercase;
+}
+
+.recent-list{
+    margin-top:50px;
+
+    border-top:1px solid #222;
+}
+
+.recent-item{
+    display:grid;
+    grid-template-columns:100px 1fr auto;
+    gap:25px;
+    align-items:center;
+
+    padding:20px 0;
+
+    border-bottom:1px solid #1c1c1c;
+}
+
+.recent-ep{
+    color:var(--red);
+
+    font-size:12px;
+    font-weight:1000;
+}
+
+.recent-title{
+    font-size:11px;
+    font-weight:900;
+
+    text-transform:uppercase;
+}
+
+.recent-date{
+    color:#555;
+
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.recent-item.current{
+    background:linear-gradient(
+        90deg,
+        rgba(229,9,20,.045),
+        transparent
+    );
 }
 
 
@@ -624,17 +932,15 @@ body{
 ========================================================= */
 
 .map-section{
-    padding:100px 7%;
+    padding:100px 6%;
 
-    background:#080808;
+    background:#050505;
 
-    border-top:1px solid #191919;
     border-bottom:1px solid #191919;
 }
 
 .map-container{
     max-width:1100px;
-
     margin:auto;
 }
 
@@ -646,9 +952,7 @@ body{
     color:var(--red);
 
     font-size:8px;
-
     font-weight:900;
-
     letter-spacing:3px;
 }
 
@@ -656,11 +960,9 @@ body{
     margin-top:12px;
 
     font-size:55px;
-
     line-height:.85;
 
     letter-spacing:-3px;
-
     text-transform:uppercase;
 }
 
@@ -677,8 +979,7 @@ body{
 }
 
 .story-progress{
-    width:75%;
-
+    width:92%;
     height:100%;
 
     background:
@@ -694,8 +995,7 @@ body{
 .story-points{
     display:grid;
 
-    grid-template-columns:
-        repeat(5,1fr);
+    grid-template-columns:repeat(6,1fr);
 
     gap:10px;
 }
@@ -729,11 +1029,16 @@ body{
         0 0 20px rgba(229,9,20,.45);
 }
 
+.story-point.current .story-dot{
+    box-shadow:
+        0 0 0 5px rgba(229,9,20,.12),
+        0 0 25px rgba(229,9,20,.6);
+}
+
 .story-point strong{
     display:block;
 
-    font-size:10px;
-
+    font-size:9px;
     text-transform:uppercase;
 }
 
@@ -745,28 +1050,25 @@ body{
     color:#555;
 
     font-size:8px;
-
     line-height:1.5;
 }
 
 
 /* =========================================================
-   ERA STATISTICS
+   STATS
 ========================================================= */
 
 .stats{
-    padding:100px 7%;
+    padding:100px 6%;
 }
 
 .stats-grid{
     max-width:1100px;
-
     margin:auto;
 
     display:grid;
 
-    grid-template-columns:
-        repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
     gap:12px;
 }
@@ -782,8 +1084,7 @@ body{
 .stat-number{
     color:var(--red);
 
-    font-size:40px;
-
+    font-size:38px;
     font-weight:1000;
 }
 
@@ -793,10 +1094,73 @@ body{
     color:#555;
 
     font-size:8px;
-
     font-weight:900;
-
     letter-spacing:2px;
+}
+
+
+/* =========================================================
+   OFFICIAL SOURCE
+========================================================= */
+
+.source-section{
+    padding:50px 6%;
+
+    border-top:1px solid #191919;
+
+    background:#080808;
+}
+
+.source-inner{
+    max-width:1100px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+}
+
+.source-text span{
+    color:var(--red);
+
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.source-text p{
+    margin-top:8px;
+
+    color:#555;
+
+    font-size:9px;
+}
+
+.source-link{
+    padding:12px 17px;
+
+    color:#fff;
+
+    border:1px solid #302020;
+
+    text-decoration:none;
+
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    transition:.25s;
+}
+
+.source-link:hover{
+    color:#fff;
+
+    border-color:var(--red);
+
+    background:rgba(229,9,20,.08);
 }
 
 
@@ -805,7 +1169,7 @@ body{
 ========================================================= */
 
 footer{
-    padding:60px 7% 30px;
+    padding:60px 6% 30px;
 
     border-top:1px solid #1c1c1c;
 }
@@ -824,7 +1188,6 @@ footer{
     font-size:22px;
 
     font-weight:1000;
-
     letter-spacing:2px;
 }
 
@@ -840,7 +1203,6 @@ footer{
     color:#555;
 
     font-size:9px;
-
     line-height:1.8;
 }
 
@@ -855,7 +1217,6 @@ footer{
     color:#666;
 
     font-size:8px;
-
     letter-spacing:2px;
 
     text-transform:uppercase;
@@ -906,7 +1267,6 @@ footer{
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     padding:25px;
@@ -916,7 +1276,6 @@ footer{
     backdrop-filter:blur(10px);
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.3s;
@@ -924,12 +1283,11 @@ footer{
 
 .modal-background.show{
     opacity:1;
-
     visibility:visible;
 }
 
 .modal{
-    width:min(650px,100%);
+    width:min(700px,100%);
 
     max-height:85vh;
 
@@ -975,8 +1333,7 @@ footer{
 }
 
 .close:hover{
-    color:white;
-
+    color:#fff;
     border-color:var(--red);
 }
 
@@ -984,9 +1341,7 @@ footer{
     color:var(--red);
 
     font-size:8px;
-
     font-weight:900;
-
     letter-spacing:3px;
 }
 
@@ -994,7 +1349,6 @@ footer{
     margin-top:12px;
 
     font-size:48px;
-
     line-height:.85;
 
     letter-spacing:-3px;
@@ -1008,7 +1362,6 @@ footer{
     color:#777;
 
     font-size:11px;
-
     line-height:1.9;
 }
 
@@ -1036,9 +1389,7 @@ footer{
     color:#444;
 
     font-size:7px;
-
     font-weight:900;
-
     letter-spacing:1px;
 }
 
@@ -1054,7 +1405,7 @@ footer{
 
 
 /* =========================================================
-   ANIMATION
+   REVEAL
 ========================================================= */
 
 .reveal{
@@ -1069,7 +1420,6 @@ footer{
 
 .reveal.visible{
     opacity:1;
-
     transform:translateY(0);
 }
 
@@ -1078,7 +1428,33 @@ footer{
    MOBILE
 ========================================================= */
 
-@media(max-width:900px){
+@media(max-width:1000px){
+
+    .current-inner{
+        grid-template-columns:1fr;
+    }
+
+    .current-side{
+        border-left:0;
+        border-top:1px solid #291113;
+
+        flex-direction:row;
+        align-items:center;
+        gap:15px;
+    }
+
+    .arc-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .story-points{
+        grid-template-columns:repeat(6,150px);
+        overflow-x:auto;
+        padding-bottom:15px;
+    }
+}
+
+@media(max-width:800px){
 
     .navbar{
         height:auto;
@@ -1094,26 +1470,37 @@ footer{
         gap:15px;
 
         flex-wrap:wrap;
-
         justify-content:center;
     }
 
     .hero{
         padding:
-            170px 20px 80px;
+            175px 20px 100px;
     }
 
     .hero h1{
         letter-spacing:-4px;
     }
 
+    .current-story{
+        margin-top:-30px;
+        padding:0 20px;
+    }
+
+    .current-main{
+        padding:28px;
+    }
+
+    .current-side{
+        padding:25px 28px;
+    }
+
     .controls{
-        padding:25px 20px;
+        padding:50px 20px 25px;
     }
 
     .controls-inner{
         flex-direction:column;
-
         align-items:stretch;
     }
 
@@ -1122,30 +1509,19 @@ footer{
     }
 
     .archive{
-        padding:
-            80px 20px;
-    }
-
-    .arc-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+        padding:75px 20px;
     }
 
     .featured{
         padding:30px;
     }
 
-    .map-section{
+    .recent{
         padding:80px 20px;
     }
 
-    .story-points{
-        grid-template-columns:
-            repeat(5,140px);
-
-        overflow-x:auto;
-
-        padding-bottom:15px;
+    .map-section{
+        padding:80px 20px;
     }
 
     .stats{
@@ -1153,8 +1529,12 @@ footer{
     }
 
     .stats-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .source-inner{
+        flex-direction:column;
+        align-items:flex-start;
     }
 
     .footer-top{
@@ -1166,7 +1546,6 @@ footer{
     }
 }
 
-
 @media(max-width:600px){
 
     .arc-grid{
@@ -1174,11 +1553,20 @@ footer{
     }
 
     .arc-card{
-        min-height:330px;
+        min-height:350px;
     }
 
     .featured h3{
         letter-spacing:-2px;
+    }
+
+    .recent-item{
+        grid-template-columns:70px 1fr;
+        gap:12px;
+    }
+
+    .recent-date{
+        grid-column:2;
     }
 
     .stats-grid{
@@ -1197,46 +1585,27 @@ footer{
         grid-template-columns:1fr;
     }
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =========================================================
      NAVIGATION
 ========================================================= -->
 
-<header class="navbar">
+<header class="navbar" id="navbar">
 
     <div class="logo">
         LOOK<span>ISM</span> HUB
     </div>
 
     <nav class="nav-links">
-
-        <a href="home.html">
-            Home
-        </a>
-
-        <a href="characters.html">
-            Characters
-        </a>
-
-        <a href="index.html">
-            Fights
-        </a>
-
-        <a href="crews.html">
-            Crews
-        </a>
-
-        <a href="timeline.html" class="active">
-            Timeline
-        </a>
-
+        <a href="home.html">Home</a>
+        <a href="characters.html">Characters</a>
+        <a href="index.html">Fights</a>
+        <a href="crews.html">Crews</a>
+        <a href="timeline.html" class="active">Timeline</a>
     </nav>
 
 </header>
@@ -1251,7 +1620,7 @@ footer{
     <div class="hero-content reveal">
 
         <div class="small-label">
-            STORY ARCHIVE
+            STORY ARCHIVE // UPDATED 2026
         </div>
 
         <h1>
@@ -1261,11 +1630,30 @@ footer{
         </h1>
 
         <p>
-            Enter the LOOKISM story archive. Explore the
-            major storylines, generations, crews and
-            turning points that connect the characters
-            and conflicts of the series.
+            A continuously updated LOOKISM story archive covering
+            the early school era, crew conflicts, First Generation
+            history and the latest published storyline.
         </p>
+
+        <div class="hero-status">
+
+            <div class="status-chip current">
+                Currently Tracking
+            </div>
+
+            <div class="status-chip">
+                Episode 614
+            </div>
+
+            <div class="status-chip">
+                Weekly Release
+            </div>
+
+            <div class="status-chip">
+                Fan Database
+            </div>
+
+        </div>
 
     </div>
 
@@ -1273,7 +1661,73 @@ footer{
 
 
 <!-- =========================================================
-     FILTERS
+     CURRENT STORY
+========================================================= -->
+
+<section class="current-story">
+
+    <div class="current-inner reveal">
+
+        <div class="current-main">
+
+            <div class="current-label">
+                CURRENT STORYLINE
+            </div>
+
+            <h2>
+                GAPRYONG
+                <br>
+                KIM
+            </h2>
+
+            <p>
+                The latest English WEBTOON release is Episode 614,
+                following the conclusion of The Hunt for the Workers
+                storyline and the opening chapters of the Gapryong Kim
+                storyline.
+            </p>
+
+            <div class="current-meta">
+
+                <span class="live">
+                    Current
+                </span>
+
+                <span>
+                    Episode 614
+                </span>
+
+                <span>
+                    Historical Focus
+                </span>
+
+                <span>
+                    BGM
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="current-side">
+
+            <div class="current-number">
+                614
+            </div>
+
+            <small>
+                LATEST OFFICIAL ENGLISH EPISODE
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTROLS
 ========================================================= -->
 
 <section class="controls">
@@ -1298,8 +1752,12 @@ footer{
                 Generations
             </button>
 
-            <button class="filter" data-filter="major">
-                Major Conflicts
+            <button class="filter" data-filter="recent">
+                Recent
+            </button>
+
+            <button class="filter" data-filter="current">
+                Current
             </button>
 
         </div>
@@ -1308,16 +1766,23 @@ footer{
             type="text"
             id="searchInput"
             class="search"
-            placeholder="Search timeline..."
+            placeholder="Search arcs, characters, crews..."
         >
 
+    </div>
+
+    <div
+        class="result-count"
+        id="resultCount"
+    >
+        Showing all archive entries
     </div>
 
 </section>
 
 
 <!-- =========================================================
-     ARC ARCHIVE
+     ARCHIVE
 ========================================================= -->
 
 <section class="archive">
@@ -1334,18 +1799,25 @@ footer{
             ARCHIVE
         </h2>
 
+        <p>
+            Explore major storylines and historical periods.
+            Episode references are included where useful so the
+            archive can be maintained as new chapters release.
+        </p>
+
     </div>
 
 
     <div class="arc-grid" id="arcGrid">
 
 
-        <!-- CARD 1 -->
+        <!-- EARLY -->
 
         <article
             class="arc-card reveal"
             data-category="early"
             data-name="J High"
+            data-search="Daniel Park J High school early story"
             data-event="jhigh"
         >
 
@@ -1357,17 +1829,23 @@ footer{
                 01
             </div>
 
+            <div class="arc-status">
+                HISTORICAL
+            </div>
+
             <div class="arc-content">
 
-                <h3>
-                    J High
-                </h3>
+                <h3>J High</h3>
 
                 <p>
-                    Daniel Park begins his new life at
-                    J High and encounters several of the
-                    characters who become central to the story.
+                    Daniel Park begins his new life at J High and
+                    encounters characters who become central to
+                    the wider story.
                 </p>
+
+                <div class="arc-chapters">
+                    EARLY CHAPTERS
+                </div>
 
                 <div class="arc-meta">
 
@@ -1386,12 +1864,11 @@ footer{
         </article>
 
 
-        <!-- CARD 2 -->
-
         <article
             class="arc-card reveal"
-            data-category="early"
+            data-category="early crew"
             data-name="Hostel"
+            data-search="Hostel Eli Jang crew early story"
             data-event="hostel"
         >
 
@@ -1403,17 +1880,23 @@ footer{
                 02
             </div>
 
+            <div class="arc-status">
+                HISTORICAL
+            </div>
+
             <div class="arc-content">
 
-                <h3>
-                    Hostel
-                </h3>
+                <h3>Hostel</h3>
 
                 <p>
-                    Eli Jang and the members connected
-                    to Hostel become involved in a major
-                    conflict surrounding family and crews.
+                    Eli Jang and the people connected to Hostel
+                    become involved in conflicts surrounding family,
+                    identity and crews.
                 </p>
+
+                <div class="arc-chapters">
+                    EARLY / CREW STORY
+                </div>
 
                 <div class="arc-meta">
 
@@ -1432,12 +1915,11 @@ footer{
         </article>
 
 
-        <!-- CARD 3 -->
-
         <article
             class="arc-card reveal"
-            data-category="early"
+            data-category="early crew"
             data-name="God Dog"
+            data-search="God Dog Johan Seong crew"
             data-event="godDog"
         >
 
@@ -1449,17 +1931,22 @@ footer{
                 03
             </div>
 
+            <div class="arc-status">
+                HISTORICAL
+            </div>
+
             <div class="arc-content">
 
-                <h3>
-                    God Dog
-                </h3>
+                <h3>God Dog</h3>
 
                 <p>
-                    Johan Seong and God Dog enter the
-                    wider network of conflicts involving
-                    second-generation fighters.
+                    Johan Seong and God Dog connect to the expanding
+                    network of second-generation conflicts.
                 </p>
+
+                <div class="arc-chapters">
+                    SECOND GENERATION
+                </div>
 
                 <div class="arc-meta">
 
@@ -1478,12 +1965,13 @@ footer{
         </article>
 
 
-        <!-- CARD 4 -->
+        <!-- CREW ERA -->
 
         <article
             class="arc-card reveal"
             data-category="crew major"
             data-name="Big Deal"
+            data-search="Big Deal Jake Kim Sinu Hunt for Big Deal"
             data-event="bigDeal"
         >
 
@@ -1495,17 +1983,23 @@ footer{
                 04
             </div>
 
+            <div class="arc-status">
+                HISTORICAL
+            </div>
+
             <div class="arc-content">
 
-                <h3>
-                    Big Deal
-                </h3>
+                <h3>Big Deal</h3>
 
                 <p>
-                    Jake Kim and Big Deal become deeply
-                    connected to the growing conflict between
-                    powerful organizations.
+                    Jake Kim and Big Deal become deeply connected
+                    to the growing conflict between powerful
+                    organizations.
                 </p>
+
+                <div class="arc-chapters">
+                    INCLUDES HUNT FOR BIG DEAL
+                </div>
 
                 <div class="arc-meta">
 
@@ -1524,12 +2018,11 @@ footer{
         </article>
 
 
-        <!-- CARD 5 -->
-
         <article
             class="arc-card reveal"
-            data-category="crew"
+            data-category="crew major"
             data-name="Workers"
+            data-search="Workers Eugene Hunt for Workers affiliate"
             data-event="workers"
         >
 
@@ -1541,17 +2034,23 @@ footer{
                 05
             </div>
 
+            <div class="arc-status">
+                RECENT
+            </div>
+
             <div class="arc-content">
 
-                <h3>
-                    Workers
-                </h3>
+                <h3>Workers</h3>
 
                 <p>
-                    Workers becomes one of the major
-                    organizations connected to the larger
-                    conflict.
+                    Workers becomes one of the central organizations
+                    in the larger conflict connecting multiple
+                    characters and crews.
                 </p>
+
+                <div class="arc-chapters">
+                    HUNT FOR THE WORKERS
+                </div>
 
                 <div class="arc-meta">
 
@@ -1570,12 +2069,13 @@ footer{
         </article>
 
 
-        <!-- CARD 6 -->
+        <!-- GENERATIONS -->
 
         <article
             class="arc-card reveal"
             data-category="generation"
             data-name="First Generation"
+            data-search="First Generation Kings regional fighters"
             data-event="firstGeneration"
         >
 
@@ -1587,17 +2087,23 @@ footer{
                 06
             </div>
 
+            <div class="arc-status">
+                HISTORICAL
+            </div>
+
             <div class="arc-content">
 
-                <h3>
-                    First Generation
-                </h3>
+                <h3>First Generation</h3>
 
                 <p>
-                    The First Generation establishes the
-                    historical foundation for many of the
-                    power structures seen later.
+                    The First Generation provides historical context
+                    for many of the power structures and fighters
+                    encountered later.
                 </p>
+
+                <div class="arc-chapters">
+                    GENERATION HISTORY
+                </div>
 
                 <div class="arc-meta">
 
@@ -1616,12 +2122,11 @@ footer{
         </article>
 
 
-        <!-- CARD 7 -->
-
         <article
             class="arc-card reveal"
-            data-category="generation major"
+            data-category="generation"
             data-name="Kings"
+            data-search="Kings First Generation regional kings"
             data-event="kings"
         >
 
@@ -1633,17 +2138,23 @@ footer{
                 07
             </div>
 
+            <div class="arc-status">
+                HISTORICAL
+            </div>
+
             <div class="arc-content">
 
-                <h3>
-                    The Kings
-                </h3>
+                <h3>The Kings</h3>
 
                 <p>
-                    Regional fighters known as Kings
-                    establish territories and reputations
-                    that influence later generations.
+                    Regional fighters known as Kings establish
+                    territories and reputations that influence
+                    later generations.
                 </p>
+
+                <div class="arc-chapters">
+                    FIRST GENERATION HISTORY
+                </div>
 
                 <div class="arc-meta">
 
@@ -1662,39 +2173,46 @@ footer{
         </article>
 
 
-        <!-- CARD 8 -->
+        <!-- RECENT -->
 
         <article
             class="arc-card reveal"
-            data-category="major"
-            data-name="Four Major Crews"
-            data-event="fourCrews"
+            data-category="recent crew"
+            data-name="Cheonliang"
+            data-search="Cheonliang Vin Jin Seongji First Generation"
+            data-event="cheonliang"
         >
 
             <div class="arc-generation">
-                CREW ERA
+                RECENT ARC
             </div>
 
             <div class="arc-number">
                 08
             </div>
 
+            <div class="arc-status">
+                COMPLETED
+            </div>
+
             <div class="arc-content">
 
-                <h3>
-                    Four Major Crews
-                </h3>
+                <h3>Cheonliang</h3>
 
                 <p>
-                    Multiple organizations become connected
-                    through a wider network of conflicts
-                    involving the second generation.
+                    A major historical storyline exploring Vin Jin,
+                    Cheonliang and important First Generation
+                    history.
                 </p>
+
+                <div class="arc-chapters">
+                    EP. 491–495+
+                </div>
 
                 <div class="arc-meta">
 
                     <span>
-                        MAJOR CONFLICT
+                        HISTORY
                     </span>
 
                     <span class="open">
@@ -1708,40 +2226,383 @@ footer{
         </article>
 
 
+        <article
+            class="arc-card reveal"
+            data-category="recent major"
+            data-name="Cheonmyeong"
+            data-search="Cheonmyeong Workers Charles Choi"
+            data-event="cheonmyeong"
+        >
+
+            <div class="arc-generation">
+                RECENT ARC
+            </div>
+
+            <div class="arc-number">
+                09
+            </div>
+
+            <div class="arc-status">
+                COMPLETED
+            </div>
+
+            <div class="arc-content">
+
+                <h3>Cheonmyeong</h3>
+
+                <p>
+                    A later storyline that expands the broader
+                    conflict and connects major organizations and
+                    characters.
+                </p>
+
+                <div class="arc-chapters">
+                    ENDS AT EP. 556
+                </div>
+
+                <div class="arc-meta">
+
+                    <span>
+                        MAJOR ARC
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="arc-card reveal"
+            data-category="recent major"
+            data-name="War Begins"
+            data-search="War Begins Lookism crews conflict"
+            data-event="warBegins"
+        >
+
+            <div class="arc-generation">
+                RECENT ARC
+            </div>
+
+            <div class="arc-number">
+                10
+            </div>
+
+            <div class="arc-status">
+                COMPLETED
+            </div>
+
+            <div class="arc-content">
+
+                <h3>War Begins</h3>
+
+                <p>
+                    The story escalates into a large-scale conflict
+                    involving multiple characters and organizations.
+                </p>
+
+                <div class="arc-chapters">
+                    ENDS AT EP. 587
+                </div>
+
+                <div class="arc-meta">
+
+                    <span>
+                        CONFLICT
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="arc-card reveal"
+            data-category="recent crew"
+            data-name="Hunt for the Workers"
+            data-search="Hunt for the Workers Workers Eugene 588 609"
+            data-event="huntWorkers"
+        >
+
+            <div class="arc-generation">
+                RECENT ARC
+            </div>
+
+            <div class="arc-number">
+                11
+            </div>
+
+            <div class="arc-status">
+                COMPLETED
+            </div>
+
+            <div class="arc-content">
+
+                <h3>Hunt for Workers</h3>
+
+                <p>
+                    A major extended storyline focused on the
+                    Workers conflict and the characters surrounding
+                    the organization.
+                </p>
+
+                <div class="arc-chapters">
+                    EP. 588–609
+                </div>
+
+                <div class="arc-meta">
+
+                    <span>
+                        22+ EPISODES
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CURRENT -->
+
+        <article
+            class="arc-card reveal"
+            data-category="current recent"
+            data-name="Gapryong Kim"
+            data-search="Gapryong Kim 610 611 612 613 614 Generation 0"
+            data-event="gapryong"
+        >
+
+            <div class="arc-generation">
+                CURRENT STORY
+            </div>
+
+            <div class="arc-number">
+                12
+            </div>
+
+            <div class="arc-status current">
+                CURRENT
+            </div>
+
+            <div class="arc-content">
+
+                <h3>Gapryong Kim</h3>
+
+                <p>
+                    The current English release has shifted into
+                    the Gapryong Kim storyline, with Episodes
+                    610–614 currently listed by WEBTOON.
+                </p>
+
+                <div class="arc-chapters">
+                    EP. 610–614+
+                </div>
+
+                <div class="arc-meta">
+
+                    <span>
+                        CURRENT
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
     </div>
 
 
-    <!-- =====================================================
-         FEATURED
-    ====================================================== -->
+    <div
+        class="no-results"
+        id="noResults"
+    >
+        No archive entries match your search.
+    </div>
+
+
+    <!-- FEATURED -->
 
     <div class="featured reveal">
 
         <div class="featured-content">
 
             <div class="featured-label">
-                FEATURED ARCHIVE
+                LIVE ARCHIVE
             </div>
 
             <h3>
-                THE FOUR
+                THE
                 <br>
-                MAJOR CREWS
+                CURRENT ERA
             </h3>
 
             <p>
-                The crew era connects many of the major
-                characters and organizations in the story.
-                Explore how the different groups fit into
-                the larger structure of the LOOKISM universe.
+                The archive now extends beyond the original Crew Era
+                into recent and current storylines. Track major
+                developments from Cheonliang through the Workers
+                conflict and into the current Gapryong Kim storyline.
             </p>
 
             <button
                 class="featured-button"
                 id="featuredButton"
             >
-                Explore Event
+                View Current Story
             </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RECENT EPISODES
+========================================================= -->
+
+<section class="recent">
+
+    <div class="recent-container">
+
+        <div class="section-heading reveal">
+
+            <span>
+                LATEST RELEASES
+            </span>
+
+            <h2>
+                RECENT
+                <br>
+                EPISODES
+            </h2>
+
+        </div>
+
+
+        <div class="recent-list">
+
+            <div class="recent-item current reveal">
+
+                <div class="recent-ep">
+                    #614
+                </div>
+
+                <div class="recent-title">
+                    Gapryong Kim (5)
+                </div>
+
+                <div class="recent-date">
+                    SEP 19, 2026
+                </div>
+
+            </div>
+
+
+            <div class="recent-item reveal">
+
+                <div class="recent-ep">
+                    #613
+                </div>
+
+                <div class="recent-title">
+                    Gapryong Kim (4)
+                </div>
+
+                <div class="recent-date">
+                    SEP 12, 2026
+                </div>
+
+            </div>
+
+
+            <div class="recent-item reveal">
+
+                <div class="recent-ep">
+                    #612
+                </div>
+
+                <div class="recent-title">
+                    Gapryong Kim (3)
+                </div>
+
+                <div class="recent-date">
+                    SEP 05, 2026
+                </div>
+
+            </div>
+
+
+            <div class="recent-item reveal">
+
+                <div class="recent-ep">
+                    #611
+                </div>
+
+                <div class="recent-title">
+                    Gapryong Kim (2)
+                </div>
+
+                <div class="recent-date">
+                    AUG 29, 2026
+                </div>
+
+            </div>
+
+
+            <div class="recent-item reveal">
+
+                <div class="recent-ep">
+                    #610
+                </div>
+
+                <div class="recent-title">
+                    Gapryong Kim (1)
+                </div>
+
+                <div class="recent-date">
+                    AUG 22, 2026
+                </div>
+
+            </div>
+
+
+            <div class="recent-item reveal">
+
+                <div class="recent-ep">
+                    #609
+                </div>
+
+                <div class="recent-title">
+                    The Hunt for the Workers — Finale
+                </div>
+
+                <div class="recent-date">
+                    AUG 15, 2026
+                </div>
+
+            </div>
 
         </div>
 
@@ -1783,7 +2644,6 @@ footer{
         <div class="story-points">
 
             <div class="story-point active">
-
                 <div class="story-dot"></div>
 
                 <strong>
@@ -1793,12 +2653,10 @@ footer{
                 <span>
                     Kings and regional power
                 </span>
-
             </div>
 
 
             <div class="story-point active">
-
                 <div class="story-dot"></div>
 
                 <strong>
@@ -1808,12 +2666,10 @@ footer{
                 <span>
                     New fighters emerge
                 </span>
-
             </div>
 
 
             <div class="story-point active">
-
                 <div class="story-dot"></div>
 
                 <strong>
@@ -1823,27 +2679,36 @@ footer{
                 <span>
                     Major organizations collide
                 </span>
-
             </div>
 
 
             <div class="story-point active">
-
                 <div class="story-dot"></div>
 
                 <strong>
-                    Major Conflicts
+                    First Generation History
                 </strong>
 
                 <span>
-                    Alliances and rivalries expand
+                    Kings and past conflicts
                 </span>
-
             </div>
 
 
-            <div class="story-point">
+            <div class="story-point active">
+                <div class="story-dot"></div>
 
+                <strong>
+                    Workers Conflict
+                </strong>
+
+                <span>
+                    Large-scale organization conflict
+                </span>
+            </div>
+
+
+            <div class="story-point active current">
                 <div class="story-dot"></div>
 
                 <strong>
@@ -1851,9 +2716,8 @@ footer{
                 </strong>
 
                 <span>
-                    Story continues
+                    Gapryong Kim storyline
                 </span>
-
             </div>
 
         </div>
@@ -1874,11 +2738,11 @@ footer{
         <div class="stat reveal">
 
             <div class="stat-number">
-                04
+                614
             </div>
 
             <div class="stat-label">
-                Major Eras
+                Latest English Episode
             </div>
 
         </div>
@@ -1887,11 +2751,11 @@ footer{
         <div class="stat reveal">
 
             <div class="stat-number">
-                08+
+                12+
             </div>
 
             <div class="stat-label">
-                Archive Entries
+                Archive Storylines
             </div>
 
         </div>
@@ -1900,11 +2764,11 @@ footer{
         <div class="stat reveal">
 
             <div class="stat-number">
-                02
+                02+
             </div>
 
             <div class="stat-label">
-                Main Generations
+                Generational Eras
             </div>
 
         </div>
@@ -1913,14 +2777,49 @@ footer{
         <div class="stat reveal">
 
             <div class="stat-number">
-                ∞
+                LIVE
             </div>
 
             <div class="stat-label">
-                Story Developments
+                Archive Status
             </div>
 
         </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OFFICIAL SOURCE
+========================================================= -->
+
+<section class="source-section">
+
+    <div class="source-inner">
+
+        <div class="source-text">
+
+            <span>
+                OFFICIAL RELEASE SOURCE
+            </span>
+
+            <p>
+                Episode numbers and release dates are based on the
+                official English WEBTOON listing.
+            </p>
+
+        </div>
+
+        <a
+            class="source-link"
+            href="https://www.webtoons.com/en/drama/lookism/list?title_no=1049"
+            target="_blank"
+            rel="noopener"
+        >
+            Open WEBTOON →
+        </a>
 
     </div>
 
@@ -1942,9 +2841,9 @@ footer{
             </div>
 
             <p class="footer-description">
-                A fan-made database for exploring
-                LOOKISM characters, fights, crews
-                and story events.
+                A fan-made database for exploring LOOKISM
+                characters, fights, crews, generations and
+                story events.
             </p>
 
         </div>
@@ -2023,6 +2922,7 @@ footer{
         <button
             class="close"
             id="closeModal"
+            aria-label="Close"
         >
             ×
         </button>
@@ -2041,14 +2941,12 @@ footer{
         <p
             class="modal-description"
             id="modalDescription"
-        >
-        </p>
+        ></p>
 
         <div
             class="modal-data"
             id="modalData"
-        >
-        </div>
+        ></div>
 
     </div>
 
@@ -2067,7 +2965,7 @@ const timelineEvents = {
         label:"EARLY STORY",
         title:"J High",
         description:
-            "Daniel Park begins his life at J High and forms relationships with several characters who become important to his story.",
+            "Daniel Park begins his life at J High and forms relationships with characters who become important to the wider story.",
         data:[
             ["ERA","Early Story"],
             ["LOCATION","J High"],
@@ -2080,7 +2978,7 @@ const timelineEvents = {
         label:"EARLY STORY",
         title:"Hostel",
         description:
-            "The storyline surrounding Hostel explores Eli Jang, his relationships and the conflicts surrounding the organization.",
+            "The Hostel storyline explores Eli Jang, his relationships and conflicts surrounding the organization.",
         data:[
             ["ERA","Second Generation"],
             ["GROUP","Hostel"],
@@ -2119,7 +3017,7 @@ const timelineEvents = {
         label:"CREW ERA",
         title:"Workers",
         description:
-            "Workers becomes a major organization within the wider network of conflicts and affiliates.",
+            "Workers becomes one of the major organizations in the wider network of conflicts and affiliates.",
         data:[
             ["ERA","Crew Era"],
             ["GROUP","Workers"],
@@ -2132,12 +3030,12 @@ const timelineEvents = {
         label:"GENERATIONS",
         title:"First Generation",
         description:
-            "The First Generation establishes much of the historical background behind the regional power structure.",
+            "The First Generation establishes historical context behind many of the power structures seen later.",
         data:[
             ["ERA","First Generation"],
             ["TYPE","Historical"],
             ["GROUP","Regional Kings"],
-            ["STATUS","Completed"]
+            ["STATUS","Historical"]
         ]
     },
 
@@ -2145,7 +3043,7 @@ const timelineEvents = {
         label:"FIRST GENERATION",
         title:"The Kings",
         description:
-            "Regional fighters become known as Kings and establish territories that influence the generations that follow.",
+            "Regional fighters known as Kings establish territories and reputations that influence later generations.",
         data:[
             ["ERA","First Generation"],
             ["TYPE","Power Structure"],
@@ -2154,15 +3052,67 @@ const timelineEvents = {
         ]
     },
 
-    fourCrews:{
-        label:"MAJOR CONFLICT",
-        title:"Four Major Crews",
+    cheonliang:{
+        label:"RECENT ARC",
+        title:"Cheonliang",
         description:
-            "The major crews become interconnected through a wider series of conflicts involving many second-generation characters.",
+            "The Cheonliang storyline explores Vin Jin's history and important First Generation events. WEBTOON lists Episode 495 as Cheonliang (14).",
         data:[
-            ["ERA","Crew Era"],
+            ["ERA","Recent"],
+            ["EPISODE","495"],
+            ["FOCUS","Vin Jin / Cheonliang"],
+            ["STATUS","Completed"]
+        ]
+    },
+
+    cheonmyeong:{
+        label:"RECENT ARC",
+        title:"Cheonmyeong",
+        description:
+            "Cheonmyeong is a later storyline in the wider conflict. The official WEBTOON listing identifies Episode 556 as its finale.",
+        data:[
+            ["ERA","Recent"],
+            ["FINALE","Episode 556"],
+            ["TYPE","Major Arc"],
+            ["STATUS","Completed"]
+        ]
+    },
+
+    warBegins:{
+        label:"RECENT ARC",
+        title:"War Begins",
+        description:
+            "War Begins marks a major escalation before the later Workers storyline.",
+        data:[
+            ["ERA","Recent"],
+            ["FINALE","Episode 587"],
             ["TYPE","Major Conflict"],
-            ["GROUP","Major Crews"],
+            ["STATUS","Completed"]
+        ]
+    },
+
+    huntWorkers:{
+        label:"RECENT ARC",
+        title:"Hunt for the Workers",
+        description:
+            "The Hunt for the Workers storyline runs through Episodes 588–609, with Episode 609 listed by WEBTOON as its finale.",
+        data:[
+            ["ERA","Recent"],
+            ["START","Episode 588"],
+            ["FINALE","Episode 609"],
+            ["STATUS","Completed"]
+        ]
+    },
+
+    gapryong:{
+        label:"CURRENT STORY",
+        title:"Gapryong Kim",
+        description:
+            "The current English release has moved into the Gapryong Kim storyline. WEBTOON currently lists Episodes 610–614 under this storyline.",
+        data:[
+            ["ERA","Current"],
+            ["LATEST","Episode 614"],
+            ["LATEST TITLE","Gapryong Kim (5)"],
             ["STATUS","Ongoing"]
         ]
     }
@@ -2219,10 +3169,20 @@ function openEvent(id){
         box.className =
             "data-box";
 
-        box.innerHTML = `
-            <small>${item[0]}</small>
-            <strong>${item[1]}</strong>
-        `;
+        const small =
+            document.createElement("small");
+
+        small.textContent =
+            item[0];
+
+        const strong =
+            document.createElement("strong");
+
+        strong.textContent =
+            item[1];
+
+        box.appendChild(small);
+        box.appendChild(strong);
 
         modalData.appendChild(box);
 
@@ -2275,7 +3235,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   ARC CARD CLICK
+   CARD CLICK
 ========================================================= */
 
 document
@@ -2306,14 +3266,14 @@ document
         "click",
         () => {
 
-            openEvent("fourCrews");
+            openEvent("gapryong");
 
         }
     );
 
 
 /* =========================================================
-   FILTER SYSTEM
+   FILTER + SEARCH
 ========================================================= */
 
 const filters =
@@ -2321,6 +3281,76 @@ const filters =
 
 const cards =
     document.querySelectorAll(".arc-card");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const resultCount =
+    document.getElementById("resultCount");
+
+const noResults =
+    document.getElementById("noResults");
+
+let activeFilter = "all";
+
+
+function updateArchive(){
+
+    const query =
+        searchInput.value
+            .toLowerCase()
+            .trim();
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        const categories =
+            card.dataset.category
+                .toLowerCase();
+
+        const searchText =
+            (
+                card.dataset.name +
+                " " +
+                card.dataset.search +
+                " " +
+                card.innerText
+            )
+            .toLowerCase();
+
+        const matchesFilter =
+            activeFilter === "all" ||
+            categories.includes(activeFilter);
+
+        const matchesSearch =
+            !query ||
+            searchText.includes(query);
+
+        const show =
+            matchesFilter &&
+            matchesSearch;
+
+        card.style.display =
+            show ? "flex" : "none";
+
+        if(show){
+            visible++;
+        }
+
+    });
+
+    noResults.classList.toggle(
+        "show",
+        visible === 0
+    );
+
+    resultCount.textContent =
+        `Showing ${visible} archive ${
+            visible === 1 ? "entry" : "entries"
+        }`;
+
+}
 
 
 filters.forEach(filter => {
@@ -2335,28 +3365,10 @@ filters.forEach(filter => {
 
             filter.classList.add("active");
 
-            const category =
+            activeFilter =
                 filter.dataset.filter;
 
-            cards.forEach(card => {
-
-                if(
-                    category === "all" ||
-                    card.dataset.category
-                        .includes(category)
-                ){
-
-                    card.style.display =
-                        "flex";
-
-                }else{
-
-                    card.style.display =
-                        "none";
-
-                }
-
-            });
+            updateArchive();
 
         }
     );
@@ -2364,65 +3376,18 @@ filters.forEach(filter => {
 });
 
 
-/* =========================================================
-   SEARCH
-========================================================= */
-
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
-
-
 searchInput.addEventListener(
     "input",
-    () => {
-
-        const query =
-            searchInput.value
-                .toLowerCase()
-                .trim();
-
-        cards.forEach(card => {
-
-            const name =
-                card.dataset.name
-                    .toLowerCase();
-
-            const description =
-                card.innerText
-                    .toLowerCase();
-
-            if(
-                name.includes(query) ||
-                description.includes(query)
-            ){
-
-                card.style.display =
-                    "flex";
-
-            }else{
-
-                card.style.display =
-                    "none";
-
-            }
-
-        });
-
-    }
+    updateArchive
 );
 
 
 /* =========================================================
-   REVEAL ANIMATION
+   REVEAL
 ========================================================= */
 
 const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
+    document.querySelectorAll(".reveal");
 
 const observer =
     new IntersectionObserver(
@@ -2460,29 +3425,27 @@ revealElements.forEach(
 ========================================================= */
 
 const navbar =
-    document.querySelector(".navbar");
+    document.getElementById("navbar");
 
 
 window.addEventListener(
     "scroll",
     () => {
 
-        if(
+        navbar.classList.toggle(
+            "scrolled",
             window.scrollY > 60
-        ){
-
-            navbar.style.background =
-                "rgba(3,3,3,.98)";
-
-        }else{
-
-            navbar.style.background =
-                "rgba(5,5,5,.88)";
-
-        }
+        );
 
     }
 );
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+updateArchive();
 
 </script>
 
