@@ -1,2367 +1,3409 @@
-```html
+        ```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<title>LOOKISM HUB | Fight Comparison</title>
 
-    <title>LOOKISM HUB | Fight Comparison</title>
+<style>
 
-    <style>
+/* =========================================================
+   RESET
+========================================================= */
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-        /* =====================================================
-           BODY
-        ===================================================== */
+    color: #fff;
 
-        body {
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+    min-height: 100vh;
 
-            color: white;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            #571313 0%,
+            #210707 25%,
+            #090909 60%,
+            #030303 100%
+        );
+}
 
-            min-height: 100vh;
 
-            background:
-                radial-gradient(
-                    circle at 50% -20%,
-                    #501010 0%,
-                    #1a0707 30%,
-                    #080808 65%,
-                    #030303 100%
-                );
-        }
+/* =========================================================
+   SCROLLBAR
+========================================================= */
 
+::-webkit-scrollbar {
+    width: 9px;
+}
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+::-webkit-scrollbar-track {
+    background: #050505;
+}
 
-        header {
-            height: 75px;
+::-webkit-scrollbar-thumb {
+    background: #7b0b11;
+    border-radius: 10px;
+}
 
-            display: flex;
+::-webkit-scrollbar-thumb:hover {
+    background: #e50914;
+}
 
-            align-items: center;
 
-            justify-content: space-between;
+/* =========================================================
+   HEADER
+========================================================= */
 
-            padding: 0 7%;
+header {
+    min-height: 76px;
 
-            position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-            top: 0;
+    padding: 0 6%;
 
-            z-index: 1000;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 
-            background:
-                rgba(5, 5, 5, 0.94);
+    background: rgba(4, 4, 4, .94);
 
-            backdrop-filter:
-                blur(15px);
+    backdrop-filter: blur(18px);
 
-            border-bottom:
-                1px solid #321414;
-        }
+    border-bottom: 1px solid #321313;
+}
 
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
 
-        .logo {
-            font-size: 25px;
+.logo span {
+    color: #e50914;
+}
 
-            font-weight: 900;
+nav {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+}
 
-            letter-spacing: 2px;
+nav a {
+    color: #888;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
 
-            white-space: nowrap;
-        }
+    transition: .25s;
+}
 
+nav a:hover,
+nav a.active {
+    color: #e50914;
+}
 
-        .logo span {
-            color: #e50914;
-        }
 
+/* =========================================================
+   HERO
+========================================================= */
 
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
+.hero {
+    text-align: center;
 
-        nav {
-            display: flex;
+    padding: 75px 20px 45px;
+}
 
-            gap: 30px;
+.eyebrow {
+    color: #e50914;
 
-            align-items: center;
-        }
+    font-size: 11px;
+    font-weight: 800;
 
+    letter-spacing: 4px;
+    text-transform: uppercase;
 
-        nav a {
-            color: #999;
+    margin-bottom: 15px;
+}
 
-            text-decoration: none;
+.hero h1 {
+    font-size: clamp(43px, 7vw, 82px);
 
-            font-size: 14px;
+    line-height: .95;
 
-            font-weight: 600;
+    font-weight: 950;
 
-            transition:
-                color 0.3s,
-                transform 0.3s;
-        }
+    letter-spacing: 4px;
 
+    text-transform: uppercase;
 
-        nav a:hover {
-            color: #e50914;
+    text-shadow:
+        0 0 45px rgba(229, 9, 20, .3);
+}
 
-            transform:
-                translateY(-1px);
-        }
+.hero h1 span {
+    color: #e50914;
+}
 
+.hero p {
+    max-width: 700px;
 
-        nav a.active {
-            color: #e50914;
-        }
+    margin: 20px auto 0;
 
+    color: #888;
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+    font-size: 14px;
 
-        .hero {
-            text-align: center;
+    line-height: 1.7;
+}
 
-            padding:
-                80px 20px 55px;
-        }
 
+/* =========================================================
+   MAIN
+========================================================= */
 
-        .hero h1 {
-            font-size:
-                clamp(42px, 7vw, 80px);
+main {
+    width: min(1250px, 92%);
 
-            font-weight: 900;
+    margin: auto;
 
-            letter-spacing: 5px;
+    padding-bottom: 100px;
+}
 
-            text-transform: uppercase;
 
-            line-height: 1;
+/* =========================================================
+   NOTICE
+========================================================= */
 
-            text-shadow:
-                0 0 40px
-                rgba(229, 9, 20, 0.35);
-        }
+.notice {
+    padding: 15px 18px;
 
+    margin-bottom: 30px;
 
-        .hero h1 span {
-            color: #e50914;
-        }
+    border: 1px solid #402020;
 
+    border-radius: 12px;
 
-        .hero p {
-            margin-top: 18px;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(229, 9, 20, .08),
+            rgba(255,255,255,.02)
+        );
 
-            color: #888;
+    color: #888;
 
-            font-size: 15px;
-        }
+    font-size: 12px;
 
+    line-height: 1.6;
 
-        /* =====================================================
-           MAIN
-        ===================================================== */
+    text-align: center;
+}
 
-        main {
-            width:
-                min(1200px, 92%);
+.notice strong {
+    color: #ddd;
+}
 
-            margin: auto;
 
-            padding-bottom: 100px;
-        }
+/* =========================================================
+   FIGHTER GRID
+========================================================= */
 
+.fighters {
+    display: grid;
 
-        /* =====================================================
-           FIGHTER AREA
-        ===================================================== */
+    grid-template-columns:
+        minmax(0, 1fr)
+        100px
+        minmax(0, 1fr);
 
-        .fighters {
-            display: grid;
+    gap: 25px;
 
-            grid-template-columns:
-                minmax(0, 1fr)
-                120px
-                minmax(0, 1fr);
+    align-items: center;
+}
 
-            align-items: center;
 
-            gap: 25px;
-        }
+/* =========================================================
+   FIGHTER CARD
+========================================================= */
 
+.fighter-card {
+    overflow: hidden;
 
-        /* =====================================================
-           FIGHTER CARD
-        ===================================================== */
+    border-radius: 20px;
 
-        .fighter-card {
-            overflow: hidden;
+    border: 1px solid #351818;
 
-            border-radius: 20px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.015)
+        );
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.07),
-                    rgba(255,255,255,0.015)
-                );
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45);
 
-            border:
-                1px solid #3b1b1b;
+    transition:
+        transform .3s,
+        border-color .3s,
+        box-shadow .3s;
+}
 
-            box-shadow:
-                0 25px 70px
-                rgba(0,0,0,0.5);
+.fighter-card:hover {
+    transform: translateY(-6px);
 
-            transition:
-                transform 0.35s,
-                border-color 0.35s,
-                box-shadow 0.35s;
-        }
+    border-color: #a50d14;
 
+    box-shadow:
+        0 30px 90px rgba(229,9,20,.14);
+}
 
-        .fighter-card:hover {
-            transform:
-                translateY(-6px);
 
-            border-color:
-                #e50914;
+/* =========================================================
+   IMAGE
+========================================================= */
 
-            box-shadow:
-                0 30px 80px
-                rgba(229,9,20,0.18);
-        }
+.character-image {
+    height: 380px;
 
+    position: relative;
 
-        /* =====================================================
-           CHARACTER IMAGE
-        ===================================================== */
+    overflow: hidden;
 
-        .character-image {
-            height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            position: relative;
+    background:
+        radial-gradient(
+            circle,
+            #501414,
+            #130404 72%
+        );
+}
 
-            overflow: hidden;
+.character-photo {
+    width: 100%;
+    height: 100%;
 
-            background:
-                radial-gradient(
-                    circle,
-                    #481515,
-                    #100404 75%
-                );
-        }
+    object-fit: cover;
 
+    display: none;
 
-        .character-photo {
-            width: 100%;
+    transition: transform .5s;
+}
 
-            height: 100%;
+.fighter-card:hover .character-photo {
+    transform: scale(1.05);
+}
 
-            display: block;
+.character-image.has-image .character-photo {
+    display: block;
+}
 
-            object-fit: cover;
+.avatar-placeholder {
+    width: 145px;
+    height: 145px;
 
-            object-position: center;
+    border-radius: 50%;
 
-            transition:
-                transform 0.6s ease;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    color: white;
 
-        .fighter-card:hover
-        .character-photo {
-            transform:
-                scale(1.06);
-        }
+    font-size: 38px;
+    font-weight: 900;
 
+    border: 2px solid #7e151b;
 
-        .character-image::after {
-            content: "";
+    background:
+        linear-gradient(
+            135deg,
+            #c20b15,
+            #310306
+        );
 
-            position: absolute;
+    box-shadow:
+        0 0 55px rgba(229,9,20,.25);
+}
 
-            inset: 0;
+.character-image::after {
+    content: "";
 
-            pointer-events: none;
+    position: absolute;
 
-            background:
-                linear-gradient(
-                    to bottom,
-                    transparent 45%,
-                    rgba(0,0,0,0.85) 100%
-                );
-        }
+    inset: 0;
 
+    pointer-events: none;
 
-        /* =====================================================
-           FIGHTER INFO
-        ===================================================== */
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 35%,
+            rgba(0,0,0,.9) 100%
+        );
+}
 
-        .fighter-info {
-            padding: 25px;
-        }
 
+/* =========================================================
+   FIGHTER INFO
+========================================================= */
 
-        .fighter-info h2 {
-            font-size: 30px;
+.fighter-info {
+    padding: 24px;
+}
 
-            text-transform: uppercase;
+.fighter-name {
+    font-size: 28px;
 
-            letter-spacing: 1px;
-        }
+    font-weight: 900;
 
+    text-transform: uppercase;
+}
 
-        .role {
-            margin-top: 6px;
+.fighter-alias {
+    margin-top: 5px;
 
-            color: #888;
+    color: #e50914;
 
-            font-size: 13px;
-        }
+    font-size: 11px;
 
+    font-weight: 700;
 
-        /* =====================================================
-           SELECT
-        ===================================================== */
+    letter-spacing: 1.5px;
 
-        .select-wrapper {
-            margin-top: 20px;
-        }
+    text-transform: uppercase;
+}
 
+.fighter-version {
+    margin-top: 5px;
 
-        select {
-            width: 100%;
+    color: #777;
 
-            padding: 14px;
+    font-size: 12px;
+}
 
-            color: white;
 
-            background: #090909;
+/* =========================================================
+   SELECT
+========================================================= */
 
-            border:
-                1px solid #3b2222;
+.select-wrapper {
+    margin-top: 20px;
+}
 
-            border-radius: 9px;
+.select-wrapper label {
+    display: block;
 
-            outline: none;
+    margin-bottom: 8px;
 
-            cursor: pointer;
+    color: #555;
 
-            font-size: 14px;
-        }
+    font-size: 10px;
 
+    font-weight: bold;
 
-        select:focus {
-            border-color:
-                #e50914;
-        }
+    letter-spacing: 1.5px;
 
+    text-transform: uppercase;
+}
 
-        /* =====================================================
-           VS
-        ===================================================== */
+select {
+    width: 100%;
 
-        .vs-container {
-            text-align: center;
-        }
+    padding: 14px;
 
+    border-radius: 9px;
 
-        .vs {
-            width: 90px;
+    outline: none;
 
-            height: 90px;
+    color: #fff;
 
-            margin: auto;
+    background: #090909;
 
-            display: flex;
+    border: 1px solid #402020;
 
-            align-items: center;
+    cursor: pointer;
 
-            justify-content: center;
+    font-size: 13px;
+}
 
-            border-radius: 50%;
+select:focus {
+    border-color: #e50914;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #e50914,
-                    #720008
-                );
 
-            font-size: 27px;
+/* =========================================================
+   VS
+========================================================= */
 
-            font-weight: 900;
+.vs-container {
+    text-align: center;
+}
 
-            font-style: italic;
+.vs {
+    width: 85px;
+    height: 85px;
 
-            box-shadow:
-                0 0 50px
-                rgba(229,9,20,0.35);
-        }
+    margin: auto;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        /* =====================================================
-           SWAP BUTTON
-        ===================================================== */
+    border-radius: 50%;
 
-        .swap-btn {
-            margin-top: 18px;
+    background:
+        linear-gradient(
+            135deg,
+            #e50914,
+            #680006
+        );
 
-            padding:
-                9px 17px;
+    font-size: 25px;
 
-            background:
-                transparent;
+    font-weight: 950;
 
-            color: #aaa;
+    font-style: italic;
 
-            border:
-                1px solid #444;
+    box-shadow:
+        0 0 55px rgba(229,9,20,.3);
+}
 
-            border-radius: 7px;
+.swap-btn {
+    margin-top: 17px;
 
-            cursor: pointer;
+    padding: 9px 15px;
 
-            transition: 0.3s;
-        }
+    border-radius: 7px;
 
+    color: #aaa;
 
-        .swap-btn:hover {
-            color: white;
+    background: transparent;
 
-            border-color:
-                #e50914;
+    border: 1px solid #3d3d3d;
 
-            background:
-                rgba(229,9,20,0.08);
-        }
+    cursor: pointer;
 
+    transition: .25s;
+}
 
-        /* =====================================================
-           COMPARE BUTTON
-        ===================================================== */
+.swap-btn:hover {
+    color: white;
 
-        .compare-container {
-            text-align: center;
+    border-color: #e50914;
 
-            margin:
-                45px 0;
-        }
+    background: rgba(229,9,20,.08);
+}
 
 
-        .compare-btn {
-            border: none;
+/* =========================================================
+   COMPARE BUTTON
+========================================================= */
 
-            color: white;
+.compare-container {
+    text-align: center;
 
-            padding:
-                17px 45px;
+    margin: 42px 0;
+}
 
-            border-radius: 10px;
+.compare-btn {
+    border: none;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #e50914,
-                    #930007
-                );
+    color: white;
 
-            font-size: 14px;
+    padding: 17px 45px;
 
-            font-weight: bold;
+    border-radius: 10px;
 
-            letter-spacing: 2px;
+    background:
+        linear-gradient(
+            135deg,
+            #e50914,
+            #850007
+        );
 
-            text-transform: uppercase;
+    font-size: 13px;
 
-            cursor: pointer;
+    font-weight: 900;
 
-            box-shadow:
-                0 12px 35px
-                rgba(229,9,20,0.25);
+    letter-spacing: 2px;
 
-            transition: 0.3s;
-        }
+    text-transform: uppercase;
 
+    cursor: pointer;
 
-        .compare-btn:hover {
-            transform:
-                translateY(-3px);
+    box-shadow:
+        0 15px 40px rgba(229,9,20,.2);
 
-            box-shadow:
-                0 18px 45px
-                rgba(229,9,20,0.4);
-        }
+    transition: .3s;
+}
 
+.compare-btn:hover {
+    transform: translateY(-3px);
 
-        /* =====================================================
-           RESULTS
-        ===================================================== */
+    box-shadow:
+        0 20px 55px rgba(229,9,20,.35);
+}
 
-        #result {
-            display: none;
 
-            animation:
-                fadeIn 0.6s ease;
-        }
+/* =========================================================
+   RESULT
+========================================================= */
 
+#result {
+    display: none;
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+    animation:
+        fadeIn .6s ease;
+}
 
-                transform:
-                    translateY(20px);
-            }
+@keyframes fadeIn {
 
-            to {
-                opacity: 1;
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-                transform:
-                    translateY(0);
-            }
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
+}
 
-        .result-title {
-            text-align: center;
 
-            margin-bottom: 30px;
-        }
+/* =========================================================
+   RESULT TITLE
+========================================================= */
 
+.result-title {
+    text-align: center;
 
-        .result-title h2 {
-            font-size: 36px;
+    margin-bottom: 30px;
+}
 
-            text-transform: uppercase;
+.result-title h2 {
+    font-size: 35px;
 
-            letter-spacing: 2px;
-        }
+    text-transform: uppercase;
 
+    letter-spacing: 2px;
+}
 
-        .result-title p {
-            color: #777;
+.result-title p {
+    margin-top: 8px;
 
-            margin-top: 8px;
-        }
+    color: #777;
 
+    font-size: 12px;
+}
 
-        /* =====================================================
-           OVERALL
-        ===================================================== */
 
-        .overall {
-            display: grid;
+/* =========================================================
+   OVERALL
+========================================================= */
 
-            grid-template-columns:
-                1fr
-                180px
-                1fr;
+.overall {
+    display: grid;
 
-            align-items: center;
+    grid-template-columns:
+        1fr
+        180px
+        1fr;
 
-            gap: 20px;
+    gap: 20px;
 
-            padding: 35px;
+    align-items: center;
 
-            margin-bottom: 30px;
+    padding: 35px;
 
-            border-radius: 18px;
+    margin-bottom: 25px;
 
-            border:
-                1px solid #321818;
+    border-radius: 18px;
 
-            background:
-                rgba(255,255,255,0.025);
-        }
+    border: 1px solid #321818;
 
+    background:
+        rgba(255,255,255,.025);
+}
 
-        .overall-fighter {
-            text-align: center;
-        }
+.overall-fighter {
+    text-align: center;
+}
 
+.overall-fighter h3 {
+    font-size: 23px;
 
-        .overall-fighter h3 {
-            font-size: 25px;
+    text-transform: uppercase;
+}
 
-            text-transform: uppercase;
-        }
+.overall-score {
+    margin-top: 12px;
 
+    font-size: 25px;
 
-        .overall-score {
-            margin-top: 12px;
+    font-weight: 900;
 
-            font-size: 18px;
+    color: #ddd;
+}
 
-            color: #aaa;
-        }
+.score-label {
+    margin-top: 6px;
 
+    color: #555;
 
-        .score-difference {
-            text-align: center;
-        }
+    font-size: 9px;
 
+    text-transform: uppercase;
 
-        .difference-number {
-            color: #e50914;
+    letter-spacing: 2px;
+}
 
-            font-size: 55px;
+.score-difference {
+    text-align: center;
+}
 
-            font-weight: 900;
-        }
+.difference-number {
+    color: #e50914;
 
+    font-size: 52px;
 
-        .score-label {
-            margin-top: 5px;
+    font-weight: 950;
+}
 
-            color: #666;
 
-            font-size: 11px;
+/* =========================================================
+   RESULT BADGE
+========================================================= */
 
-            text-transform: uppercase;
+.matchup-summary {
+    text-align: center;
 
-            letter-spacing: 2px;
-        }
+    margin-bottom: 30px;
+}
 
+.matchup-badge {
+    display: inline-block;
 
-        /* =====================================================
-           STATS
-        ===================================================== */
+    padding: 9px 18px;
 
-        .stats-container {
-            padding: 35px;
+    border-radius: 50px;
 
-            border-radius: 18px;
+    background: #111;
 
-            border:
-                1px solid #321818;
+    border: 1px solid #3b2020;
 
-            background:
-                rgba(255,255,255,0.025);
-        }
+    color: #aaa;
 
+    font-size: 11px;
 
-        .stats-container h2 {
-            text-align: center;
+    text-transform: uppercase;
 
-            margin-bottom: 40px;
+    letter-spacing: 1.5px;
+}
 
-            font-size: 21px;
 
-            letter-spacing: 2px;
+/* =========================================================
+   STAT PANEL
+========================================================= */
 
-            text-transform: uppercase;
-        }
+.stats-container {
+    padding: 35px;
 
+    border-radius: 18px;
 
-        .stat-row {
-            margin-bottom: 30px;
-        }
+    border: 1px solid #321818;
 
+    background:
+        rgba(255,255,255,.025);
+}
 
-        .stat-header {
-            display: flex;
+.stats-container h2 {
+    text-align: center;
 
-            align-items: center;
+    margin-bottom: 40px;
 
-            justify-content: space-between;
+    font-size: 21px;
 
-            margin-bottom: 9px;
-        }
+    text-transform: uppercase;
 
+    letter-spacing: 2px;
+}
 
-        .stat-name {
-            color: #999;
 
-            font-size: 12px;
+/* =========================================================
+   STAT ROW
+========================================================= */
 
-            text-transform: uppercase;
+.stat-row {
+    margin-bottom: 28px;
+}
 
-            letter-spacing: 1.5px;
-        }
+.stat-header {
+    display: flex;
 
+    align-items: center;
 
-        .stat-values {
-            display: flex;
+    justify-content: space-between;
 
-            gap: 18px;
+    margin-bottom: 8px;
+}
 
-            font-weight: bold;
-        }
+.stat-name {
+    color: #999;
 
+    font-size: 11px;
 
-        .left-value {
-            color: #e50914;
-        }
+    text-transform: uppercase;
 
+    letter-spacing: 1.4px;
+}
 
-        .right-value {
-            color: #3498db;
-        }
+.stat-values {
+    display: flex;
 
+    gap: 15px;
 
-        /* =====================================================
-           STAT BARS
-        ===================================================== */
+    font-size: 13px;
 
-        .bar-container {
-            display: flex;
+    font-weight: 900;
+}
 
-            gap: 3px;
+.left-value {
+    color: #e50914;
+}
 
-            height: 13px;
+.right-value {
+    color: #3498db;
+}
 
-            background: #090909;
 
-            overflow: hidden;
+/* =========================================================
+   STAT BAR
+========================================================= */
 
-            border-radius: 20px;
-        }
+.bar-container {
+    display: flex;
 
+    height: 12px;
 
-        .bar-left {
-            width: 50%;
+    gap: 3px;
 
-            height: 100%;
+    overflow: hidden;
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #780008,
-                    #e50914
-                );
+    border-radius: 20px;
 
-            transition:
-                width 1s cubic-bezier(
-                    0.25,
-                    1,
-                    0.5,
-                    1
-                );
-        }
+    background: #070707;
+}
 
+.bar-left {
+    height: 100%;
 
-        .bar-right {
-            width: 50%;
+    width: 50%;
 
-            height: 100%;
+    background:
+        linear-gradient(
+            90deg,
+            #710008,
+            #e50914
+        );
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #3498db,
-                    #176092
-                );
+    transition:
+        width 1s cubic-bezier(.25,1,.5,1);
+}
 
-            transition:
-                width 1s cubic-bezier(
-                    0.25,
-                    1,
-                    0.5,
-                    1
-                );
-        }
+.bar-right {
+    height: 100%;
 
+    width: 50%;
 
-        /* =====================================================
-           CATEGORY RESULTS
-        ===================================================== */
+    background:
+        linear-gradient(
+            90deg,
+            #3498db,
+            #176092
+        );
 
-        .category-result {
-            display: grid;
+    transition:
+        width 1s cubic-bezier(.25,1,.5,1);
+}
 
-            grid-template-columns:
-                repeat(3, 1fr);
 
-            gap: 15px;
+/* =========================================================
+   CATEGORY RESULTS
+========================================================= */
 
-            margin-top: 25px;
-        }
+.category-result {
+    display: grid;
 
+    grid-template-columns:
+        repeat(3, 1fr);
 
-        .category-box {
-            padding: 20px;
+    gap: 15px;
 
-            text-align: center;
+    margin-top: 25px;
+}
 
-            border:
-                1px solid #272727;
+.category-box {
+    padding: 20px;
 
-            background:
-                #0b0b0b;
+    text-align: center;
 
-            border-radius: 12px;
+    border-radius: 12px;
 
-            transition: 0.3s;
-        }
+    border: 1px solid #272727;
 
+    background: #0a0a0a;
 
-        .category-box:hover {
-            border-color:
-                #4a2020;
+    transition: .25s;
+}
 
-            transform:
-                translateY(-3px);
-        }
+.category-box:hover {
+    transform: translateY(-3px);
 
+    border-color: #642020;
+}
 
-        .category {
-            color: #666;
+.category {
+    color: #555;
 
-            font-size: 11px;
+    font-size: 10px;
 
-            text-transform: uppercase;
+    text-transform: uppercase;
 
-            letter-spacing: 1px;
-        }
+    letter-spacing: 1.5px;
+}
 
+.winner {
+    margin-top: 9px;
 
-        .winner {
-            margin-top: 9px;
+    font-size: 14px;
 
-            font-size: 16px;
+    font-weight: 900;
+}
 
-            font-weight: bold;
-        }
+.score-small {
+    margin-top: 7px;
 
+    color: #555;
 
-        .score-small {
-            margin-top: 7px;
+    font-size: 11px;
+}
 
-            color: #555;
+.win {
+    color: #50d890;
+}
 
-            font-size: 12px;
-        }
+.tie {
+    color: #f5c542;
+}
 
 
-        .win {
-            color: #50d890;
-        }
+/* =========================================================
+   DATABASE SECTION
+========================================================= */
 
+.database {
+    margin-top: 50px;
 
-        .tie {
-            color: #f5c542;
-        }
+    padding: 30px;
 
+    border-radius: 18px;
 
-        /* =====================================================
-           FOOTER
-        ===================================================== */
+    border: 1px solid #321818;
 
-        footer {
-            padding: 30px;
+    background:
+        rgba(255,255,255,.02);
+}
 
-            text-align: center;
+.database h2 {
+    text-align: center;
 
-            color: #555;
+    font-size: 20px;
 
-            border-top:
-                1px solid #211010;
+    text-transform: uppercase;
 
-            font-size: 12px;
-        }
+    letter-spacing: 2px;
+}
 
+.database p {
+    max-width: 750px;
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+    margin: 10px auto 25px;
 
-        @media (max-width: 850px) {
+    text-align: center;
 
-            header {
-                padding: 0 5%;
-            }
+    color: #777;
 
+    font-size: 12px;
 
-            nav {
-                gap: 12px;
-            }
+    line-height: 1.7;
+}
 
+.database-grid {
+    display: grid;
 
-            nav a {
-                font-size: 11px;
-            }
+    grid-template-columns:
+        repeat(4, 1fr);
 
+    gap: 10px;
+}
 
-            .fighters {
-                grid-template-columns:
-                    1fr;
-            }
+.database-item {
+    padding: 13px;
 
+    text-align: center;
 
-            .vs-container {
-                padding: 5px;
-            }
+    border-radius: 8px;
 
+    background: #090909;
 
-            .vs {
-                width: 65px;
+    border: 1px solid #222;
 
-                height: 65px;
+    color: #888;
 
-                font-size: 20px;
-            }
+    font-size: 11px;
 
+    transition: .2s;
+}
 
-            .overall {
-                grid-template-columns:
-                    1fr;
-            }
+.database-item:hover {
+    color: #fff;
 
+    border-color: #652020;
+}
 
-            .category-result {
-                grid-template-columns:
-                    1fr 1fr;
-            }
 
-        }
+/* =========================================================
+   FOOTER
+========================================================= */
 
+footer {
+    padding: 30px;
 
-        @media (max-width: 550px) {
+    text-align: center;
 
-            header {
-                height: auto;
+    color: #4d4d4d;
 
-                min-height: 75px;
+    border-top: 1px solid #211010;
 
-                flex-direction: column;
+    font-size: 11px;
+}
 
-                justify-content: center;
 
-                gap: 12px;
+/* =========================================================
+   MOBILE
+========================================================= */
 
-                padding:
-                    15px 10px;
-            }
+@media(max-width: 900px) {
 
+    header {
+        padding: 15px 5%;
 
-            nav {
-                flex-wrap: wrap;
+        flex-direction: column;
 
-                justify-content: center;
+        gap: 13px;
+    }
 
-                gap: 15px;
-            }
+    nav {
+        flex-wrap: wrap;
 
+        justify-content: center;
 
-            .hero {
-                padding-top: 50px;
-            }
+        gap: 15px;
+    }
 
+    .fighters {
+        grid-template-columns: 1fr;
+    }
 
-            .hero h1 {
-                letter-spacing: 2px;
-            }
+    .vs-container {
+        padding: 5px;
+    }
 
+    .overall {
+        grid-template-columns: 1fr;
+    }
 
-            .character-image {
-                height: 320px;
-            }
+    .category-result {
+        grid-template-columns: 1fr 1fr;
+    }
 
+    .database-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
 
-            .stats-container {
-                padding: 20px;
-            }
 
+@media(max-width: 550px) {
 
-            .category-result {
-                grid-template-columns:
-                    1fr;
-            }
+    .hero {
+        padding-top: 50px;
+    }
 
+    .hero h1 {
+        letter-spacing: 1px;
+    }
 
-            .difference-number {
-                font-size: 45px;
-            }
+    .character-image {
+        height: 320px;
+    }
 
-        }
+    .stats-container {
+        padding: 20px;
+    }
 
-    </style>
+    .category-result {
+        grid-template-columns: 1fr;
+    }
 
+    .database-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .difference-number {
+        font-size: 43px;
+    }
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-    <header>
+<header>
 
-        <div class="logo">
-            LOOK<span>ISM</span> HUB
+    <div class="logo">
+        LOOK<span>ISM</span> HUB
+    </div>
+
+    <nav>
+
+        <a href="home.html">
+            Home
+        </a>
+
+        <a href="characters.html">
+            Characters
+        </a>
+
+        <a href="fight.html" class="active">
+            Fights
+        </a>
+
+        <a href="crews.html">
+            Crews
+        </a>
+
+        <a href="timeline.html">
+            Timeline
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="eyebrow">
+        LOOKISM COMBAT DATABASE
+    </div>
+
+    <h1>
+        FIGHT
+        <span>LAB</span>
+    </h1>
+
+    <p>
+        Compare major Lookism fighters across physical ability,
+        combat skill, experience, adaptability and other
+        fan-made combat attributes.
+    </p>
+
+</section>
+
+
+<main>
+
+
+<!-- =========================================================
+     DISCLAIMER
+========================================================= -->
+
+<div class="notice">
+
+    <strong>COMMUNITY ESTIMATES:</strong>
+    The numerical ratings on this page are a fan-made comparison
+    system. They are not official numerical statistics from
+    Lookism. Different readers may interpret feats, statements,
+    versions and scaling differently.
+
+</div>
+
+
+<!-- =========================================================
+     FIGHTERS
+========================================================= -->
+
+<section class="fighters">
+
+
+<!-- LEFT -->
+
+<div class="fighter-card">
+
+    <div class="character-image" id="leftImageContainer">
+
+        <img
+            id="leftImage"
+            class="character-photo"
+            src=""
+            alt=""
+        >
+
+        <div
+            id="leftAvatar"
+            class="avatar-placeholder"
+        >
+            GP
+        </div>
+
+    </div>
+
+
+    <div class="fighter-info">
+
+        <div
+            class="fighter-name"
+            id="leftName"
+        >
+            Gun Park
+        </div>
+
+        <div
+            class="fighter-alias"
+            id="leftAlias"
+        >
+            White Ghost
+        </div>
+
+        <div
+            class="fighter-version"
+            id="leftVersion"
+        >
+            Current
         </div>
 
 
-        <nav>
+        <div class="select-wrapper">
 
-            <a href="home.html">
-                Home
-            </a>
+            <label>
+                Select Fighter
+            </label>
 
-            <a href="characters.html">
-                Characters
-            </a>
+            <select id="leftSelect"></select>
 
-            <a
-                href="index.html"
-                class="active"
-            >
-                Fights
-            </a>
+        </div>
 
-            <a href="crews.html">
-                Crews
-            </a>
+    </div>
 
-            <a href="timeline.html">
-                Timeline
-            </a>
-
-        </nav>
-
-    </header>
+</div>
 
 
+<!-- VS -->
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
+<div class="vs-container">
 
-    <section class="hero">
+    <div class="vs">
+        VS
+    </div>
 
-        <h1>
-            FIGHT
-            <span>COMPARISON</span>
-        </h1>
+    <button
+        id="swapBtn"
+        class="swap-btn"
+        type="button"
+    >
+        ⇄ Swap
+    </button>
 
+</div>
+
+
+<!-- RIGHT -->
+
+<div class="fighter-card">
+
+    <div class="character-image" id="rightImageContainer">
+
+        <img
+            id="rightImage"
+            class="character-photo"
+            src=""
+            alt=""
+        >
+
+        <div
+            id="rightAvatar"
+            class="avatar-placeholder"
+        >
+            DP
+        </div>
+
+    </div>
+
+
+    <div class="fighter-info">
+
+        <div
+            class="fighter-name"
+            id="rightName"
+        >
+            Daniel Park
+        </div>
+
+        <div
+            class="fighter-alias"
+            id="rightAlias"
+        >
+            Main Character
+        </div>
+
+        <div
+            class="fighter-version"
+            id="rightVersion"
+        >
+            Current
+        </div>
+
+
+        <div class="select-wrapper">
+
+            <label>
+                Select Fighter
+            </label>
+
+            <select id="rightSelect"></select>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     COMPARE
+========================================================= -->
+
+<div class="compare-container">
+
+    <button
+        id="compareBtn"
+        class="compare-btn"
+        type="button"
+    >
+        ⚔ Compare Fighters
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     RESULTS
+========================================================= -->
+
+<section id="result">
+
+
+    <div class="result-title">
+
+        <h2>
+            Battle Analysis
+        </h2>
 
         <p>
-            Compare two fighters across multiple combat attributes.
+            Numerical comparison using the community-informed
+            fan database below.
         </p>
 
-    </section>
+    </div>
 
 
+    <div class="matchup-summary">
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
+        <span
+            class="matchup-badge"
+            id="matchupBadge"
+        >
+            Matchup
+        </span>
 
-    <main>
+    </div>
 
 
-        <!-- =================================================
-             FIGHTER SELECTION
-        ================================================== -->
+    <!-- OVERALL -->
 
-        <section class="fighters">
+    <div class="overall">
 
+        <div class="overall-fighter">
 
-            <!-- =============================================
-                 LEFT FIGHTER
-            ============================================== -->
+            <h3 id="resultLeftName">
+                Gun Park
+            </h3>
 
-            <div class="fighter-card">
-
-                <div class="character-image">
-
-                    <img
-                        id="leftImage"
-                        class="character-photo"
-                        src=""
-                        alt="Left fighter"
-                    >
-
-                </div>
-
-
-                <div class="fighter-info">
-
-                    <h2 id="leftName">
-                        Gun Park
-                    </h2>
-
-
-                    <div
-                        class="role"
-                        id="leftRole"
-                    >
-                        White Ghost
-                    </div>
-
-
-                    <div class="select-wrapper">
-
-                        <select id="leftSelect">
-
-                            <option
-                                value="gun"
-                                selected
-                            >
-                                Gun Park
-                            </option>
-
-
-                            <option value="daniel">
-                                Daniel Park
-                            </option>
-
-
-                            <option value="goo">
-                                Goo Kim
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 VS
-            ============================================== -->
-
-            <div class="vs-container">
-
-                <div class="vs">
-                    VS
-                </div>
-
-
-                <button
-                    class="swap-btn"
-                    id="swapBtn"
-                    type="button"
-                >
-                    ⇄ Swap
-                </button>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 RIGHT FIGHTER
-            ============================================== -->
-
-            <div class="fighter-card">
-
-                <div class="character-image">
-
-                    <img
-                        id="rightImage"
-                        class="character-photo"
-                        src=""
-                        alt="Right fighter"
-                    >
-
-                </div>
-
-
-                <div class="fighter-info">
-
-                    <h2 id="rightName">
-                        Daniel Park
-                    </h2>
-
-
-                    <div
-                        class="role"
-                        id="rightRole"
-                    >
-                        Main Character
-                    </div>
-
-
-                    <div class="select-wrapper">
-
-                        <select id="rightSelect">
-
-                            <option value="gun">
-                                Gun Park
-                            </option>
-
-
-                            <option
-                                value="daniel"
-                                selected
-                            >
-                                Daniel Park
-                            </option>
-
-
-                            <option value="goo">
-                                Goo Kim
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             COMPARE BUTTON
-        ================================================== -->
-
-        <div class="compare-container">
-
-            <button
-                class="compare-btn"
-                id="compareBtn"
-                type="button"
+            <div
+                class="overall-score"
+                id="leftOverall"
             >
-                ⚔ Compare Fighters
-            </button>
+                0
+            </div>
+
+            <div class="score-label">
+                Average Rating
+            </div>
 
         </div>
 
 
-
-        <!-- =================================================
-             RESULTS
-        ================================================== -->
-
-        <section id="result">
-
-
-            <div class="result-title">
-
-                <h2>
-                    Battle Analysis
-                </h2>
-
-
-                <p>
-                    Comparison based on the supplied stat values.
-                </p>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 OVERALL SCORES
-            ============================================== -->
-
-            <div class="overall">
-
-
-                <div class="overall-fighter">
-
-                    <h3 id="resultLeftName">
-                        Gun Park
-                    </h3>
-
-
-                    <div
-                        class="overall-score"
-                        id="leftOverall"
-                    >
-                        0
-                    </div>
-
-
-                    <div class="score-label">
-                        Overall Score
-                    </div>
-
-                </div>
-
-
-
-                <div class="score-difference">
-
-                    <div
-                        class="difference-number"
-                        id="scoreDifference"
-                    >
-                        0
-                    </div>
-
-
-                    <div class="score-label">
-                        Difference
-                    </div>
-
-                </div>
-
-
-
-                <div class="overall-fighter">
-
-                    <h3 id="resultRightName">
-                        Daniel Park
-                    </h3>
-
-
-                    <div
-                        class="overall-score"
-                        id="rightOverall"
-                    >
-                        0
-                    </div>
-
-
-                    <div class="score-label">
-                        Overall Score
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 STAT COMPARISON
-            ============================================== -->
-
-            <div class="stats-container">
-
-                <h2>
-                    Combat Attributes
-                </h2>
-
-
-                <!-- STRENGTH -->
-
-                <div class="stat-row">
-
-                    <div class="stat-header">
-
-                        <span class="stat-name">
-                            Strength
-                        </span>
-
-
-                        <div class="stat-values">
-
-                            <span
-                                class="left-value"
-                                id="strengthLeft"
-                            >
-                                0
-                            </span>
-
-
-                            <span
-                                class="right-value"
-                                id="strengthRight"
-                            >
-                                0
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="bar-container">
-
-                        <div
-                            class="bar-left"
-                            id="strengthBarLeft"
-                        ></div>
-
-
-                        <div
-                            class="bar-right"
-                            id="strengthBarRight"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- SPEED -->
-
-                <div class="stat-row">
-
-                    <div class="stat-header">
-
-                        <span class="stat-name">
-                            Speed
-                        </span>
-
-
-                        <div class="stat-values">
-
-                            <span
-                                class="left-value"
-                                id="speedLeft"
-                            >
-                                0
-                            </span>
-
-
-                            <span
-                                class="right-value"
-                                id="speedRight"
-                            >
-                                0
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="bar-container">
-
-                        <div
-                            class="bar-left"
-                            id="speedBarLeft"
-                        ></div>
-
-
-                        <div
-                            class="bar-right"
-                            id="speedBarRight"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- DURABILITY -->
-
-                <div class="stat-row">
-
-                    <div class="stat-header">
-
-                        <span class="stat-name">
-                            Durability
-                        </span>
-
-
-                        <div class="stat-values">
-
-                            <span
-                                class="left-value"
-                                id="durabilityLeft"
-                            >
-                                0
-                            </span>
-
-
-                            <span
-                                class="right-value"
-                                id="durabilityRight"
-                            >
-                                0
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="bar-container">
-
-                        <div
-                            class="bar-left"
-                            id="durabilityBarLeft"
-                        ></div>
-
-
-                        <div
-                            class="bar-right"
-                            id="durabilityBarRight"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- TECHNIQUE -->
-
-                <div class="stat-row">
-
-                    <div class="stat-header">
-
-                        <span class="stat-name">
-                            Technique
-                        </span>
-
-
-                        <div class="stat-values">
-
-                            <span
-                                class="left-value"
-                                id="techniqueLeft"
-                            >
-                                0
-                            </span>
-
-
-                            <span
-                                class="right-value"
-                                id="techniqueRight"
-                            >
-                                0
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="bar-container">
-
-                        <div
-                            class="bar-left"
-                            id="techniqueBarLeft"
-                        ></div>
-
-
-                        <div
-                            class="bar-right"
-                            id="techniqueBarRight"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- BATTLE IQ -->
-
-                <div class="stat-row">
-
-                    <div class="stat-header">
-
-                        <span class="stat-name">
-                            Battle IQ
-                        </span>
-
-
-                        <div class="stat-values">
-
-                            <span
-                                class="left-value"
-                                id="battleIqLeft"
-                            >
-                                0
-                            </span>
-
-
-                            <span
-                                class="right-value"
-                                id="battleIqRight"
-                            >
-                                0
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="bar-container">
-
-                        <div
-                            class="bar-left"
-                            id="battleIqBarLeft"
-                        ></div>
-
-
-                        <div
-                            class="bar-right"
-                            id="battleIqBarRight"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- EXPERIENCE -->
-
-                <div class="stat-row">
-
-                    <div class="stat-header">
-
-                        <span class="stat-name">
-                            Experience
-                        </span>
-
-
-                        <div class="stat-values">
-
-                            <span
-                                class="left-value"
-                                id="experienceLeft"
-                            >
-                                0
-                            </span>
-
-
-                            <span
-                                class="right-value"
-                                id="experienceRight"
-                            >
-                                0
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="bar-container">
-
-                        <div
-                            class="bar-left"
-                            id="experienceBarLeft"
-                        ></div>
-
-
-                        <div
-                            class="bar-right"
-                            id="experienceBarRight"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 CATEGORY RESULTS
-            ============================================== -->
+        <div class="score-difference">
 
             <div
-                class="category-result"
-                id="categoryResult"
-            ></div>
+                class="difference-number"
+                id="scoreDifference"
+            >
+                0
+            </div>
 
-        </section>
+            <div class="score-label">
+                Rating Gap
+            </div>
 
-    </main>
+        </div>
 
 
+        <div class="overall-fighter">
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+            <h3 id="resultRightName">
+                Daniel Park
+            </h3>
 
-    <footer>
+            <div
+                class="overall-score"
+                id="rightOverall"
+            >
+                0
+            </div>
 
-        LOOKISM HUB — Fan-made comparison interface.
+            <div class="score-label">
+                Average Rating
+            </div>
 
-    </footer>
+        </div>
 
+    </div>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    <!-- STATS -->
 
-    <script>
+    <div class="stats-container">
 
+        <h2>
+            Combat Attributes
+        </h2>
 
-        /* =================================================
-           FIGHTER DATABASE
-        ================================================= */
 
-        const fighters = {
+        <!-- STRENGTH -->
 
-            gun: {
+        <div class="stat-row">
 
-                name: "Gun Park",
+            <div class="stat-header">
 
-                role: "White Ghost",
+                <span class="stat-name">
+                    Strength
+                </span>
 
-                image:
-                    "https://th.bing.com/th/id/OIP.OotKeh3-ln2Kd9UVTwha9AHaJ4?w=203&h=271&c=7&r=0&o=7&pid=1.7&rm=3",
+                <div class="stat-values">
 
-                stats: {
+                    <span
+                        id="strengthLeft"
+                        class="left-value"
+                    >0</span>
 
-                    strength: 95,
+                    <span
+                        id="strengthRight"
+                        class="right-value"
+                    >0</span>
 
-                    speed: 90,
+                </div>
 
-                    durability: 96,
+            </div>
 
-                    technique: 98,
+            <div class="bar-container">
 
-                    battleIq: 98,
+                <div
+                    id="strengthBarLeft"
+                    class="bar-left"
+                ></div>
 
-                    experience: 100
+                <div
+                    id="strengthBarRight"
+                    class="bar-right"
+                ></div>
 
-                }
+            </div>
 
-            },
+        </div>
 
 
-            daniel: {
+        <!-- SPEED -->
 
-                name: "Daniel Park",
+        <div class="stat-row">
 
-                role: "Main Character",
+            <div class="stat-header">
 
-                image:
-                    "https://tse2.mm.bing.net/th/id/OIP.szeTzs6NqTAPjFBcEg2kGAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+                <span class="stat-name">
+                    Speed
+                </span>
 
-                stats: {
+                <div class="stat-values">
 
-                    strength: 90,
+                    <span
+                        id="speedLeft"
+                        class="left-value"
+                    >0</span>
 
-                    speed: 93,
+                    <span
+                        id="speedRight"
+                        class="right-value"
+                    >0</span>
 
-                    durability: 90,
+                </div>
 
-                    technique: 92,
+            </div>
 
-                    battleIq: 94,
+            <div class="bar-container">
 
-                    experience: 88
+                <div
+                    id="speedBarLeft"
+                    class="bar-left"
+                ></div>
 
-                }
+                <div
+                    id="speedBarRight"
+                    class="bar-right"
+                ></div>
 
-            },
+            </div>
 
+        </div>
 
-            goo: {
 
-                name: "Goo Kim",
+        <!-- DURABILITY -->
 
-                role: "Weapon Master",
+        <div class="stat-row">
 
-                image:
-                    "https://tse2.mm.bing.net/th/id/OIP.GHBuF7WGxfvPm8ls3uYb2AAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+            <div class="stat-header">
 
-                stats: {
+                <span class="stat-name">
+                    Durability
+                </span>
 
-                    strength: 0,
+                <div class="stat-values">
 
-                    speed: 0,
+                    <span
+                        id="durabilityLeft"
+                        class="left-value"
+                    >0</span>
 
-                    durability: 0,
+                    <span
+                        id="durabilityRight"
+                        class="right-value"
+                    >0</span>
 
-                    technique: 0,
+                </div>
 
-                    battleIq: 0,
+            </div>
 
-                    experience: 0
+            <div class="bar-container">
 
-                }
+                <div
+                    id="durabilityBarLeft"
+                    class="bar-left"
+                ></div>
 
-            }
+                <div
+                    id="durabilityBarRight"
+                    class="bar-right"
+                ></div>
 
-        };
+            </div>
 
+        </div>
 
 
-        /* =================================================
-           ELEMENTS
-        ================================================= */
+        <!-- TECHNIQUE -->
 
-        const leftSelect =
-            document.getElementById("leftSelect");
+        <div class="stat-row">
 
-        const rightSelect =
-            document.getElementById("rightSelect");
+            <div class="stat-header">
 
-        const compareBtn =
-            document.getElementById("compareBtn");
+                <span class="stat-name">
+                    Technique
+                </span>
 
-        const swapBtn =
-            document.getElementById("swapBtn");
+                <div class="stat-values">
 
-        const result =
-            document.getElementById("result");
+                    <span
+                        id="techniqueLeft"
+                        class="left-value"
+                    >0</span>
 
+                    <span
+                        id="techniqueRight"
+                        class="right-value"
+                    >0</span>
 
+                </div>
 
-        /* =================================================
-           UPDATE CHARACTER CARD
-        ================================================= */
+            </div>
 
-        function updateCharacterCard(side) {
+            <div class="bar-container">
 
-            const select =
-                side === "left"
-                    ? leftSelect
-                    : rightSelect;
+                <div
+                    id="techniqueBarLeft"
+                    class="bar-left"
+                ></div>
 
+                <div
+                    id="techniqueBarRight"
+                    class="bar-right"
+                ></div>
 
-            const fighter =
-                fighters[select.value];
+            </div>
 
+        </div>
 
-            if (!fighter) {
-                return;
-            }
 
+        <!-- BATTLE IQ -->
 
-            if (side === "left") {
+        <div class="stat-row">
 
-                document.getElementById(
-                    "leftName"
-                ).textContent =
-                    fighter.name;
+            <div class="stat-header">
 
+                <span class="stat-name">
+                    Battle IQ
+                </span>
 
-                document.getElementById(
-                    "leftRole"
-                ).textContent =
-                    fighter.role;
+                <div class="stat-values">
 
+                    <span
+                        id="battleIqLeft"
+                        class="left-value"
+                    >0</span>
 
-                document.getElementById(
-                    "leftImage"
-                ).src =
-                    fighter.image;
+                    <span
+                        id="battleIqRight"
+                        class="right-value"
+                    >0</span>
 
+                </div>
 
-                document.getElementById(
-                    "leftImage"
-                ).alt =
-                    fighter.name;
+            </div>
 
-            }
+            <div class="bar-container">
 
-            else {
+                <div
+                    id="battleIqBarLeft"
+                    class="bar-left"
+                ></div>
 
-                document.getElementById(
-                    "rightName"
-                ).textContent =
-                    fighter.name;
+                <div
+                    id="battleIqBarRight"
+                    class="bar-right"
+                ></div>
 
+            </div>
 
-                document.getElementById(
-                    "rightRole"
-                ).textContent =
-                    fighter.role;
+        </div>
 
 
-                document.getElementById(
-                    "rightImage"
-                ).src =
-                    fighter.image;
+        <!-- EXPERIENCE -->
 
+        <div class="stat-row">
 
-                document.getElementById(
-                    "rightImage"
-                ).alt =
-                    fighter.name;
+            <div class="stat-header">
 
-            }
+                <span class="stat-name">
+                    Experience
+                </span>
+
+                <div class="stat-values">
+
+                    <span
+                        id="experienceLeft"
+                        class="left-value"
+                    >0</span>
+
+                    <span
+                        id="experienceRight"
+                        class="right-value"
+                    >0</span>
+
+                </div>
+
+            </div>
+
+            <div class="bar-container">
+
+                <div
+                    id="experienceBarLeft"
+                    class="bar-left"
+                ></div>
+
+                <div
+                    id="experienceBarRight"
+                    class="bar-right"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ATTACK POWER -->
+
+        <div class="stat-row">
+
+            <div class="stat-header">
+
+                <span class="stat-name">
+                    Attack Power
+                </span>
+
+                <div class="stat-values">
+
+                    <span
+                        id="attackPowerLeft"
+                        class="left-value"
+                    >0</span>
+
+                    <span
+                        id="attackPowerRight"
+                        class="right-value"
+                    >0</span>
+
+                </div>
+
+            </div>
+
+            <div class="bar-container">
+
+                <div
+                    id="attackPowerBarLeft"
+                    class="bar-left"
+                ></div>
+
+                <div
+                    id="attackPowerBarRight"
+                    class="bar-right"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STAMINA -->
+
+        <div class="stat-row">
+
+            <div class="stat-header">
+
+                <span class="stat-name">
+                    Stamina
+                </span>
+
+                <div class="stat-values">
+
+                    <span
+                        id="staminaLeft"
+                        class="left-value"
+                    >0</span>
+
+                    <span
+                        id="staminaRight"
+                        class="right-value"
+                    >0</span>
+
+                </div>
+
+            </div>
+
+            <div class="bar-container">
+
+                <div
+                    id="staminaBarLeft"
+                    class="bar-left"
+                ></div>
+
+                <div
+                    id="staminaBarRight"
+                    class="bar-right"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- REFLEXES -->
+
+        <div class="stat-row">
+
+            <div class="stat-header">
+
+                <span class="stat-name">
+                    Reflexes
+                </span>
+
+                <div class="stat-values">
+
+                    <span
+                        id="reflexesLeft"
+                        class="left-value"
+                    >0</span>
+
+                    <span
+                        id="reflexesRight"
+                        class="right-value"
+                    >0</span>
+
+                </div>
+
+            </div>
+
+            <div class="bar-container">
+
+                <div
+                    id="reflexesBarLeft"
+                    class="bar-left"
+                ></div>
+
+                <div
+                    id="reflexesBarRight"
+                    class="bar-right"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADAPTABILITY -->
+
+        <div class="stat-row">
+
+            <div class="stat-header">
+
+                <span class="stat-name">
+                    Adaptability
+                </span>
+
+                <div class="stat-values">
+
+                    <span
+                        id="adaptabilityLeft"
+                        class="left-value"
+                    >0</span>
+
+                    <span
+                        id="adaptabilityRight"
+                        class="right-value"
+                    >0</span>
+
+                </div>
+
+            </div>
+
+            <div class="bar-container">
+
+                <div
+                    id="adaptabilityBarLeft"
+                    class="bar-left"
+                ></div>
+
+                <div
+                    id="adaptabilityBarRight"
+                    class="bar-right"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- WEAPON SKILL -->
+
+        <div class="stat-row">
+
+            <div class="stat-header">
+
+                <span class="stat-name">
+                    Weapon Skill
+                </span>
+
+                <div class="stat-values">
+
+                    <span
+                        id="weaponSkillLeft"
+                        class="left-value"
+                    >0</span>
+
+                    <span
+                        id="weaponSkillRight"
+                        class="right-value"
+                    >0</span>
+
+                </div>
+
+            </div>
+
+            <div class="bar-container">
+
+                <div
+                    id="weaponSkillBarLeft"
+                    class="bar-left"
+                ></div>
+
+                <div
+                    id="weaponSkillBarRight"
+                    class="bar-right"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ENDURANCE -->
+
+        <div class="stat-row">
+
+            <div class="stat-header">
+
+                <span class="stat-name">
+                    Endurance
+                </span>
+
+                <div class="stat-values">
+
+                    <span
+                        id="enduranceLeft"
+                        class="left-value"
+                    >0</span>
+
+                    <span
+                        id="enduranceRight"
+                        class="right-value"
+                    >0</span>
+
+                </div>
+
+            </div>
+
+            <div class="bar-container">
+
+                <div
+                    id="enduranceBarLeft"
+                    class="bar-left"
+                ></div>
+
+                <div
+                    id="enduranceBarRight"
+                    class="bar-right"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CATEGORY CARDS -->
+
+        <div
+            id="categoryResult"
+            class="category-result"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DATABASE
+========================================================= -->
+
+<section class="database">
+
+    <h2>
+        Fighter Database
+    </h2>
+
+    <p>
+        Characters currently available in the Lookism Hub
+        comparison system.
+    </p>
+
+    <div
+        id="databaseGrid"
+        class="database-grid"
+    ></div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    LOOKISM HUB — Fan-made comparison interface.
+
+    <br><br>
+
+    Ratings are community-informed estimates and are not
+    official Lookism statistics.
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   FIGHTER DATABASE
+=========================================================
+
+   IMPORTANT:
+
+   The values below are NOT official canon statistics.
+
+   They are deliberately presented as a fan comparison
+   framework based on feats, portrayal and broad community
+   discussion.
+
+========================================================= */
+
+const fighters = {
+
+    gun: {
+
+        name: "Gun Park",
+
+        alias: "White Ghost",
+
+        version: "Current / Fan Estimate",
+
+        initials: "GP",
+
+        image:
+        "https://th.bing.com/th/id/OIP.OotKeh3-ln2Kd9UVTwha9AHaJ4?w=203&h=271&c=7&r=0&o=7&pid=1.7&rm=3",
+
+        stats: {
+
+            strength: 95,
+            speed: 90,
+            durability: 96,
+            technique: 98,
+            battleIq: 98,
+            experience: 100,
+            attackPower: 97,
+            stamina: 99,
+            reflexes: 96,
+            adaptability: 97,
+            weaponSkill: 91,
+            endurance: 100
 
         }
 
+    },
 
 
-        /* =================================================
-           CALCULATE OVERALL
-        ================================================= */
+    daniel: {
 
-        function calculateOverall(stats) {
+        name: "Daniel Park",
 
-            const values =
-                Object.values(stats);
+        alias: "The Main Character",
+
+        version: "Current / Fan Estimate",
+
+        initials: "DP",
+
+        image:
+        "https://tse2.mm.bing.net/th/id/OIP.szeTzs6NqTAPjFBcEg2kGAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+        stats: {
+
+            strength: 90,
+            speed: 93,
+            durability: 90,
+            technique: 92,
+            battleIq: 94,
+            experience: 88,
+            attackPower: 94,
+            stamina: 90,
+            reflexes: 97,
+            adaptability: 96,
+            weaponSkill: 76,
+            endurance: 91
+
+        }
+
+    },
 
 
-            const total =
-                values.reduce(
-                    (sum, value) =>
-                        sum + value,
-                    0
-                );
+    goo: {
+
+        name: "Goo Kim",
+
+        alias: "Weapon Genius",
+
+        version: "Current / Fan Estimate",
+
+        initials: "GK",
+
+        image:
+        "https://tse2.mm.bing.net/th/id/OIP.GHBuF7WGxfvPm8ls3uYb2AAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+        stats: {
+
+            strength: 94,
+            speed: 95,
+            durability: 93,
+            technique: 99,
+            battleIq: 96,
+            experience: 99,
+            attackPower: 98,
+            stamina: 95,
+            reflexes: 97,
+            adaptability: 98,
+            weaponSkill: 100,
+            endurance: 96
+
+        }
+
+    },
 
 
-            return (
-                total /
-                values.length
+    james: {
+
+        name: "James Lee",
+
+        alias: "DG / Legend of the First Generation",
+
+        version: "Current / Fan Estimate",
+
+        initials: "JL",
+
+        image: "",
+
+        stats: {
+
+            strength: 96,
+            speed: 100,
+            durability: 93,
+            technique: 100,
+            battleIq: 98,
+            experience: 97,
+            attackPower: 98,
+            stamina: 95,
+            reflexes: 100,
+            adaptability: 98,
+            weaponSkill: 65,
+            endurance: 95
+
+        }
+
+    },
+
+
+    kitae: {
+
+        name: "Kitae Kim",
+
+        alias: "King of Seoul",
+
+        version: "Current / Fan Estimate",
+
+        initials: "KK",
+
+        image: "",
+
+        stats: {
+
+            strength: 99,
+            speed: 94,
+            durability: 98,
+            technique: 94,
+            battleIq: 92,
+            experience: 96,
+            attackPower: 100,
+            stamina: 98,
+            reflexes: 91,
+            adaptability: 91,
+            weaponSkill: 75,
+            endurance: 99
+
+        }
+
+    },
+
+
+    jinyoung: {
+
+        name: "Jinyoung Park",
+
+        alias: "Medical Genius",
+
+        version: "Current / Fan Estimate",
+
+        initials: "JP",
+
+        image: "",
+
+        stats: {
+
+            strength: 92,
+            speed: 91,
+            durability: 90,
+            technique: 98,
+            battleIq: 99,
+            experience: 100,
+            attackPower: 94,
+            stamina: 90,
+            reflexes: 94,
+            adaptability: 99,
+            weaponSkill: 70,
+            endurance: 91
+
+        }
+
+    },
+
+
+    tom: {
+
+        name: "Tom Lee",
+
+        alias: "Fighting Genius",
+
+        version: "Current / Fan Estimate",
+
+        initials: "TL",
+
+        image: "",
+
+        stats: {
+
+            strength: 100,
+            speed: 91,
+            durability: 99,
+            technique: 97,
+            battleIq: 96,
+            experience: 100,
+            attackPower: 100,
+            stamina: 98,
+            reflexes: 91,
+            adaptability: 94,
+            weaponSkill: 82,
+            endurance: 100
+
+        }
+
+    },
+
+
+    johan: {
+
+        name: "Johan Seong",
+
+        alias: "Copy Genius",
+
+        version: "Current / Fan Estimate",
+
+        initials: "JS",
+
+        image: "",
+
+        stats: {
+
+            strength: 91,
+            speed: 98,
+            durability: 87,
+            technique: 98,
+            battleIq: 94,
+            experience: 84,
+            attackPower: 96,
+            stamina: 84,
+            reflexes: 99,
+            adaptability: 99,
+            weaponSkill: 61,
+            endurance: 86
+
+        }
+
+    },
+
+
+    jake: {
+
+        name: "Jake Kim",
+
+        alias: "Big Deal Leader",
+
+        version: "Current / Fan Estimate",
+
+        initials: "JK",
+
+        image: "",
+
+        stats: {
+
+            strength: 96,
+            speed: 87,
+            durability: 95,
+            technique: 91,
+            battleIq: 95,
+            experience: 91,
+            attackPower: 97,
+            stamina: 94,
+            reflexes: 89,
+            adaptability: 93,
+            weaponSkill: 64,
+            endurance: 96
+
+        }
+
+    },
+
+
+    eli: {
+
+        name: "Eli Jang",
+
+        alias: "Hostel's Dad",
+
+        version: "Current / Fan Estimate",
+
+        initials: "EJ",
+
+        image: "",
+
+        stats: {
+
+            strength: 91,
+            speed: 92,
+            durability: 93,
+            technique: 94,
+            battleIq: 94,
+            experience: 88,
+            attackPower: 94,
+            stamina: 94,
+            reflexes: 94,
+            adaptability: 97,
+            weaponSkill: 96,
+            endurance: 95
+
+        }
+
+    },
+
+
+    samuel: {
+
+        name: "Samuel Seo",
+
+        alias: "Crew Head",
+
+        version: "Current / Fan Estimate",
+
+        initials: "SS",
+
+        image: "",
+
+        stats: {
+
+            strength: 94,
+            speed: 88,
+            durability: 97,
+            technique: 87,
+            battleIq: 89,
+            experience: 84,
+            attackPower: 95,
+            stamina: 96,
+            reflexes: 86,
+            adaptability: 87,
+            weaponSkill: 68,
+            endurance: 98
+
+        }
+
+    },
+
+
+    vasco: {
+
+        name: "Vasco",
+
+        alias: "Hero of Burn Knuckles",
+
+        version: "Current / Fan Estimate",
+
+        initials: "V",
+
+        image: "",
+
+        stats: {
+
+            strength: 97,
+            speed: 85,
+            durability: 97,
+            technique: 86,
+            battleIq: 82,
+            experience: 80,
+            attackPower: 98,
+            stamina: 95,
+            reflexes: 82,
+            adaptability: 84,
+            weaponSkill: 52,
+            endurance: 97
+
+        }
+
+    },
+
+
+    zack: {
+
+        name: "Zack Lee",
+
+        alias: "Boxing Prodigy",
+
+        version: "Current / Fan Estimate",
+
+        initials: "ZL",
+
+        image: "",
+
+        stats: {
+
+            strength: 89,
+            speed: 94,
+            durability: 91,
+            technique: 95,
+            battleIq: 91,
+            experience: 83,
+            attackPower: 94,
+            stamina: 92,
+            reflexes: 97,
+            adaptability: 89,
+            weaponSkill: 40,
+            endurance: 94
+
+        }
+
+    },
+
+
+    sinu: {
+
+        name: "Sinu Han",
+
+        alias: "God of Combat",
+
+        version: "Current / Fan Estimate",
+
+        initials: "SH",
+
+        image: "",
+
+        stats: {
+
+            strength: 92,
+            speed: 97,
+            durability: 89,
+            technique: 98,
+            battleIq: 95,
+            experience: 98,
+            attackPower: 94,
+            stamina: 92,
+            reflexes: 99,
+            adaptability: 94,
+            weaponSkill: 50,
+            endurance: 93
+
+        }
+
+    },
+
+
+    mandeok: {
+
+        name: "Mandeok Bang",
+
+        alias: "Workers' Heavy Hitter",
+
+        version: "Current / Fan Estimate",
+
+        initials: "MB",
+
+        image: "",
+
+        stats: {
+
+            strength: 98,
+            speed: 86,
+            durability: 98,
+            technique: 87,
+            battleIq: 82,
+            experience: 82,
+            attackPower: 98,
+            stamina: 97,
+            reflexes: 80,
+            adaptability: 79,
+            weaponSkill: 45,
+            endurance: 98
+
+        }
+
+    },
+
+
+    warren: {
+
+        name: "Warren Chae",
+
+        alias: "Hostel's Vice Leader",
+
+        version: "Current / Fan Estimate",
+
+        initials: "WC",
+
+        image: "",
+
+        stats: {
+
+            strength: 88,
+            speed: 93,
+            durability: 89,
+            technique: 96,
+            battleIq: 93,
+            experience: 85,
+            attackPower: 91,
+            stamina: 91,
+            reflexes: 96,
+            adaptability: 95,
+            weaponSkill: 45,
+            endurance: 91
+
+        }
+
+    },
+
+
+    jerry: {
+
+        name: "Jerry Kwon",
+
+        alias: "Big Deal's Protector",
+
+        version: "Current / Fan Estimate",
+
+        initials: "JK",
+
+        image: "",
+
+        stats: {
+
+            strength: 97,
+            speed: 83,
+            durability: 98,
+            technique: 82,
+            battleIq: 78,
+            experience: 80,
+            attackPower: 96,
+            stamina: 96,
+            reflexes: 78,
+            adaptability: 76,
+            weaponSkill: 45,
+            endurance: 98
+
+        }
+
+    },
+
+
+    vin: {
+
+        name: "Vin Jin",
+
+        alias: "Cheonliang Legend",
+
+        version: "Current / Fan Estimate",
+
+        initials: "VJ",
+
+        image: "",
+
+        stats: {
+
+            strength: 92,
+            speed: 88,
+            durability: 93,
+            technique: 94,
+            battleIq: 90,
+            experience: 83,
+            attackPower: 95,
+            stamina: 90,
+            reflexes: 89,
+            adaptability: 88,
+            weaponSkill: 72,
+            endurance: 92
+
+        }
+
+    },
+
+
+    taesoo: {
+
+        name: "Taesoo Ma",
+
+        alias: "King of Ansan",
+
+        version: "Current / Fan Estimate",
+
+        initials: "TM",
+
+        image: "",
+
+        stats: {
+
+            strength: 98,
+            speed: 82,
+            durability: 96,
+            technique: 81,
+            battleIq: 77,
+            experience: 91,
+            attackPower: 99,
+            stamina: 94,
+            reflexes: 75,
+            adaptability: 72,
+            weaponSkill: 35,
+            endurance: 97
+
+        }
+
+    },
+
+
+    jichang: {
+
+        name: "Jichang Kwak",
+
+        alias: "King of Seoul / Former King",
+
+        version: "Current / Fan Estimate",
+
+        initials: "JK",
+
+        image: "",
+
+        stats: {
+
+            strength: 94,
+            speed: 93,
+            durability: 93,
+            technique: 95,
+            battleIq: 96,
+            experience: 95,
+            attackPower: 95,
+            stamina: 93,
+            reflexes: 96,
+            adaptability: 94,
+            weaponSkill: 55,
+            endurance: 94
+
+        }
+
+    }
+
+};
+
+
+/* =========================================================
+   STAT CONFIGURATION
+========================================================= */
+
+const statNames = {
+
+    strength: "Strength",
+    speed: "Speed",
+    durability: "Durability",
+    technique: "Technique",
+    battleIq: "Battle IQ",
+    experience: "Experience",
+    attackPower: "Attack Power",
+    stamina: "Stamina",
+    reflexes: "Reflexes",
+    adaptability: "Adaptability",
+    weaponSkill: "Weapon Skill",
+    endurance: "Endurance"
+
+};
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const leftSelect =
+    document.getElementById("leftSelect");
+
+const rightSelect =
+    document.getElementById("rightSelect");
+
+const result =
+    document.getElementById("result");
+
+const compareBtn =
+    document.getElementById("compareBtn");
+
+const swapBtn =
+    document.getElementById("swapBtn");
+
+
+/* =========================================================
+   CREATE SELECT OPTIONS
+========================================================= */
+
+function populateSelects() {
+
+    for (const id in fighters) {
+
+        const fighter =
+            fighters[id];
+
+        const leftOption =
+            document.createElement("option");
+
+        leftOption.value = id;
+
+        leftOption.textContent =
+            fighter.name;
+
+        leftSelect.appendChild(
+            leftOption
+        );
+
+
+        const rightOption =
+            document.createElement("option");
+
+        rightOption.value = id;
+
+        rightOption.textContent =
+            fighter.name;
+
+        rightSelect.appendChild(
+            rightOption
+        );
+
+    }
+
+    leftSelect.value = "gun";
+    rightSelect.value = "daniel";
+}
+
+
+/* =========================================================
+   DATABASE LIST
+========================================================= */
+
+function buildDatabase() {
+
+    const grid =
+        document.getElementById(
+            "databaseGrid"
+        );
+
+    grid.innerHTML = "";
+
+    for (const id in fighters) {
+
+        const fighter =
+            fighters[id];
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "database-item";
+
+        item.textContent =
+            fighter.name;
+
+        grid.appendChild(item);
+    }
+}
+
+
+/* =========================================================
+   INITIALS
+========================================================= */
+
+function getInitials(name) {
+
+    return name
+        .split(" ")
+        .map(word => word[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase();
+
+}
+
+
+/* =========================================================
+   UPDATE IMAGE
+========================================================= */
+
+function updateImage(
+    side,
+    fighter
+) {
+
+    const image =
+        document.getElementById(
+            side + "Image"
+        );
+
+    const avatar =
+        document.getElementById(
+            side + "Avatar"
+        );
+
+    const container =
+        document.getElementById(
+            side + "ImageContainer"
+        );
+
+
+    image.onerror = function() {
+
+        image.style.display =
+            "none";
+
+        avatar.style.display =
+            "flex";
+
+        container.classList.remove(
+            "has-image"
+        );
+
+    };
+
+
+    if (
+        fighter.image &&
+        fighter.image.trim() !== ""
+    ) {
+
+        image.src =
+            fighter.image;
+
+        image.alt =
+            fighter.name;
+
+        image.style.display =
+            "block";
+
+        avatar.style.display =
+            "none";
+
+        container.classList.add(
+            "has-image"
+        );
+
+    }
+
+    else {
+
+        image.src = "";
+
+        image.style.display =
+            "none";
+
+        avatar.style.display =
+            "flex";
+
+        avatar.textContent =
+            fighter.initials ||
+            getInitials(
+                fighter.name
             );
 
-        }
+        container.classList.remove(
+            "has-image"
+        );
+
+    }
+
+}
 
 
+/* =========================================================
+   UPDATE CHARACTER CARD
+========================================================= */
 
-        /* =================================================
-           UPDATE STAT
-        ================================================= */
+function updateCharacterCard(side) {
 
-        function updateStat(
-            statName,
-            leftValue,
-            rightValue
+    const select =
+        side === "left"
+            ? leftSelect
+            : rightSelect;
+
+    const fighter =
+        fighters[select.value];
+
+    if (!fighter) {
+        return;
+    }
+
+
+    document.getElementById(
+        side + "Name"
+    ).textContent =
+        fighter.name;
+
+
+    document.getElementById(
+        side + "Alias"
+    ).textContent =
+        fighter.alias;
+
+
+    document.getElementById(
+        side + "Version"
+    ).textContent =
+        fighter.version;
+
+
+    updateImage(
+        side,
+        fighter
+    );
+
+}
+
+
+/* =========================================================
+   CALCULATE AVERAGE
+========================================================= */
+
+function calculateOverall(stats) {
+
+    const values =
+        Object.values(stats);
+
+    const total =
+        values.reduce(
+            (sum, value) =>
+                sum + value,
+            0
+        );
+
+    return (
+        total /
+        values.length
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE STAT
+========================================================= */
+
+function updateStat(
+    stat,
+    leftValue,
+    rightValue
+) {
+
+    const leftText =
+        document.getElementById(
+            stat + "Left"
+        );
+
+    const rightText =
+        document.getElementById(
+            stat + "Right"
+        );
+
+    const leftBar =
+        document.getElementById(
+            stat + "BarLeft"
+        );
+
+    const rightBar =
+        document.getElementById(
+            stat + "BarRight"
+        );
+
+
+    leftText.textContent =
+        leftValue;
+
+    rightText.textContent =
+        rightValue;
+
+
+    const total =
+        leftValue +
+        rightValue;
+
+
+    if (total === 0) {
+
+        leftBar.style.width =
+            "50%";
+
+        rightBar.style.width =
+            "50%";
+
+        return;
+    }
+
+
+    const leftPercentage =
+        (leftValue / total) *
+        100;
+
+    const rightPercentage =
+        (rightValue / total) *
+        100;
+
+
+    leftBar.style.width =
+        leftPercentage + "%";
+
+    rightBar.style.width =
+        rightPercentage + "%";
+
+}
+
+
+/* =========================================================
+   CATEGORY RESULTS
+========================================================= */
+
+function createCategoryResults(
+    left,
+    right
+) {
+
+    const container =
+        document.getElementById(
+            "categoryResult"
+        );
+
+    container.innerHTML = "";
+
+
+    for (
+        const key in statNames
+    ) {
+
+        const leftScore =
+            left.stats[key];
+
+        const rightScore =
+            right.stats[key];
+
+
+        let winner =
+            "DRAW";
+
+        let className =
+            "tie";
+
+
+        if (
+            leftScore >
+            rightScore
         ) {
 
-            document.getElementById(
-                statName + "Left"
-            ).textContent =
-                leftValue;
-
-
-            document.getElementById(
-                statName + "Right"
-            ).textContent =
-                rightValue;
-
-
-            const total =
-                leftValue +
-                rightValue;
-
-
-            let leftPercentage = 50;
-
-            let rightPercentage = 50;
-
-
-            if (total > 0) {
-
-                leftPercentage =
-                    (leftValue / total) *
-                    100;
-
-
-                rightPercentage =
-                    (rightValue / total) *
-                    100;
-
-            }
-
-
-            document.getElementById(
-                statName + "BarLeft"
-            ).style.width =
-                leftPercentage + "%";
-
-
-            document.getElementById(
-                statName + "BarRight"
-            ).style.width =
-                rightPercentage + "%";
-
-        }
-
-
-
-        /* =================================================
-           CATEGORY RESULTS
-        ================================================= */
-
-        function createCategoryResult(
-            left,
-            right
-        ) {
-
-            const container =
-                document.getElementById(
-                    "categoryResult"
-                );
-
-
-            container.innerHTML = "";
-
-
-            const categories = {
-
-                strength:
-                    "Strength",
-
-                speed:
-                    "Speed",
-
-                durability:
-                    "Durability",
-
-                technique:
-                    "Technique",
-
-                battleIq:
-                    "Battle IQ",
-
-                experience:
-                    "Experience"
-
-            };
-
-
-            for (
-                const key in categories
-            ) {
-
-                const leftScore =
-                    left.stats[key];
-
-
-                const rightScore =
-                    right.stats[key];
-
-
-                let winner;
-
-                let className;
-
-
-                if (
-                    leftScore >
-                    rightScore
-                ) {
-
-                    winner =
-                        left.name;
-
-                    className =
-                        "win";
-
-                }
-
-                else if (
-                    rightScore >
-                    leftScore
-                ) {
-
-                    winner =
-                        right.name;
-
-                    className =
-                        "win";
-
-                }
-
-                else {
-
-                    winner =
-                        "DRAW";
-
-                    className =
-                        "tie";
-
-                }
-
-
-                const box =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                box.className =
-                    "category-box";
-
-
-                box.innerHTML = `
-
-                    <div class="category">
-                        ${categories[key]}
-                    </div>
-
-                    <div class="winner ${className}">
-                        ${winner}
-                    </div>
-
-                    <div class="score-small">
-                        ${leftScore} vs ${rightScore}
-                    </div>
-
-                `;
-
-
-                container.appendChild(
-                    box
-                );
-
-            }
-
-        }
-
-
-
-        /* =================================================
-           COMPARE
-        ================================================= */
-
-        function compareFighters() {
-
-            const left =
-                fighters[
-                    leftSelect.value
-                ];
-
-
-            const right =
-                fighters[
-                    rightSelect.value
-                ];
-
-
-            if (!left || !right) {
-                return;
-            }
-
-
-            result.style.display =
-                "block";
-
-
-            document.getElementById(
-                "resultLeftName"
-            ).textContent =
+            winner =
                 left.name;
 
+            className =
+                "win";
 
-            document.getElementById(
-                "resultRightName"
-            ).textContent =
+        }
+
+        else if (
+            rightScore >
+            leftScore
+        ) {
+
+            winner =
                 right.name;
 
-
-            const leftOverall =
-                calculateOverall(
-                    left.stats
-                );
-
-
-            const rightOverall =
-                calculateOverall(
-                    right.stats
-                );
-
-
-            const difference =
-                Math.abs(
-                    leftOverall -
-                    rightOverall
-                );
-
-
-            document.getElementById(
-                "leftOverall"
-            ).textContent =
-                leftOverall.toFixed(2);
-
-
-            document.getElementById(
-                "rightOverall"
-            ).textContent =
-                rightOverall.toFixed(2);
-
-
-            document.getElementById(
-                "scoreDifference"
-            ).textContent =
-                difference.toFixed(2);
-
-
-            updateStat(
-                "strength",
-                left.stats.strength,
-                right.stats.strength
-            );
-
-
-            updateStat(
-                "speed",
-                left.stats.speed,
-                right.stats.speed
-            );
-
-
-            updateStat(
-                "durability",
-                left.stats.durability,
-                right.stats.durability
-            );
-
-
-            updateStat(
-                "technique",
-                left.stats.technique,
-                right.stats.technique
-            );
-
-
-            updateStat(
-                "battleIq",
-                left.stats.battleIq,
-                right.stats.battleIq
-            );
-
-
-            updateStat(
-                "experience",
-                left.stats.experience,
-                right.stats.experience
-            );
-
-
-            createCategoryResult(
-                left,
-                right
-            );
+            className =
+                "win";
 
         }
 
 
+        const box =
+            document.createElement(
+                "div"
+            );
 
-        /* =================================================
-           SWAP
-        ================================================= */
-
-        swapBtn.addEventListener(
-            "click",
-            function() {
-
-                const temporary =
-                    leftSelect.value;
+        box.className =
+            "category-box";
 
 
-                leftSelect.value =
-                    rightSelect.value;
+        box.innerHTML = `
+
+            <div class="category">
+                ${statNames[key]}
+            </div>
+
+            <div class="winner ${className}">
+                ${winner}
+            </div>
+
+            <div class="score-small">
+                ${leftScore} vs ${rightScore}
+            </div>
+
+        `;
 
 
-                rightSelect.value =
-                    temporary;
+        container.appendChild(box);
+
+    }
+
+}
 
 
-                updateCharacterCard(
-                    "left"
-                );
+/* =========================================================
+   COMPARE
+========================================================= */
+
+function compareFighters() {
+
+    const left =
+        fighters[
+            leftSelect.value
+        ];
+
+    const right =
+        fighters[
+            rightSelect.value
+        ];
 
 
-                updateCharacterCard(
-                    "right"
-                );
+    if (!left || !right) {
+        return;
+    }
 
 
-                compareFighters();
+    result.style.display =
+        "block";
 
-            }
+
+    document.getElementById(
+        "resultLeftName"
+    ).textContent =
+        left.name;
+
+
+    document.getElementById(
+        "resultRightName"
+    ).textContent =
+        right.name;
+
+
+    /* -----------------------------------------------------
+       OVERALL
+    ----------------------------------------------------- */
+
+    const leftOverall =
+        calculateOverall(
+            left.stats
+        );
+
+    const rightOverall =
+        calculateOverall(
+            right.stats
         );
 
 
-
-        /* =================================================
-           LEFT SELECT
-        ================================================= */
-
-        leftSelect.addEventListener(
-            "change",
-            function() {
-
-                updateCharacterCard(
-                    "left"
-                );
-
-
-                compareFighters();
-
-            }
+    const difference =
+        Math.abs(
+            leftOverall -
+            rightOverall
         );
 
 
-
-        /* =================================================
-           RIGHT SELECT
-        ================================================= */
-
-        rightSelect.addEventListener(
-            "change",
-            function() {
-
-                updateCharacterCard(
-                    "right"
-                );
+    document.getElementById(
+        "leftOverall"
+    ).textContent =
+        leftOverall.toFixed(2);
 
 
-                compareFighters();
+    document.getElementById(
+        "rightOverall"
+    ).textContent =
+        rightOverall.toFixed(2);
 
-            }
+
+    document.getElementById(
+        "scoreDifference"
+    ).textContent =
+        difference.toFixed(2);
+
+
+    /* -----------------------------------------------------
+       MATCHUP LABEL
+    ----------------------------------------------------- */
+
+    const badge =
+        document.getElementById(
+            "matchupBadge"
         );
 
 
+    if (difference < 1) {
 
-        /* =================================================
-           COMPARE BUTTON
-        ================================================= */
+        badge.textContent =
+            "Extremely close statistical matchup";
 
-        compareBtn.addEventListener(
-            "click",
-            function() {
+    }
 
-                compareFighters();
+    else if (difference < 3) {
+
+        badge.textContent =
+            "Close statistical matchup";
+
+    }
+
+    else if (difference < 6) {
+
+        badge.textContent =
+            "Noticeable statistical difference";
+
+    }
+
+    else {
+
+        badge.textContent =
+            "Large statistical difference";
+
+    }
 
 
-                result.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+    /* -----------------------------------------------------
+       STATS
+    ----------------------------------------------------- */
 
-            }
+    for (
+        const key in statNames
+    ) {
+
+        updateStat(
+            key,
+            left.stats[key],
+            right.stats[key]
         );
 
+    }
 
 
-        /* =================================================
-           INITIALIZE
-        ================================================= */
+    /* -----------------------------------------------------
+       CATEGORY CARDS
+    ----------------------------------------------------- */
 
-        updateCharacterCard("left");
+    createCategoryResults(
+        left,
+        right
+    );
 
-        updateCharacterCard("right");
+}
+
+
+/* =========================================================
+   SWAP
+========================================================= */
+
+swapBtn.addEventListener(
+    "click",
+    function() {
+
+        const temp =
+            leftSelect.value;
+
+        leftSelect.value =
+            rightSelect.value;
+
+        rightSelect.value =
+            temp;
+
+
+        updateCharacterCard(
+            "left"
+        );
+
+        updateCharacterCard(
+            "right"
+        );
 
         compareFighters();
 
-    </script>
+    }
+);
+
+
+/* =========================================================
+   LEFT SELECT
+========================================================= */
+
+leftSelect.addEventListener(
+    "change",
+    function() {
+
+        updateCharacterCard(
+            "left"
+        );
+
+        compareFighters();
+
+    }
+);
+
+
+/* =========================================================
+   RIGHT SELECT
+========================================================= */
+
+rightSelect.addEventListener(
+    "change",
+    function() {
+
+        updateCharacterCard(
+            "right"
+        );
+
+        compareFighters();
+
+    }
+);
+
+
+/* =========================================================
+   COMPARE BUTTON
+========================================================= */
+
+compareBtn.addEventListener(
+    "click",
+    function() {
+
+        compareFighters();
+
+        result.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD SHORTCUT
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter" &&
+            document.activeElement.tagName !== "SELECT"
+        ) {
+
+            compareFighters();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+populateSelects();
+
+buildDatabase();
+
+updateCharacterCard("left");
+
+updateCharacterCard("right");
+
+compareFighters();
+
+</script>
 
 </body>
-
 </html>
 ```
