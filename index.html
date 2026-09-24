@@ -1,8 +1,9 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -25,13 +26,8 @@ html {
 }
 
 body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     color: #fff;
-
     min-height: 100vh;
 
     background:
@@ -112,7 +108,6 @@ nav a {
     text-decoration: none;
     font-size: 13px;
     font-weight: 700;
-
     transition: .25s;
 }
 
@@ -128,7 +123,6 @@ nav a.active {
 
 .hero {
     text-align: center;
-
     padding: 75px 20px 45px;
 }
 
@@ -182,9 +176,7 @@ nav a.active {
 
 main {
     width: min(1250px, 92%);
-
     margin: auto;
-
     padding-bottom: 100px;
 }
 
@@ -376,9 +368,7 @@ main {
 
 .fighter-name {
     font-size: 28px;
-
     font-weight: 900;
-
     text-transform: uppercase;
 }
 
@@ -590,7 +580,6 @@ select:focus {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 
@@ -922,7 +911,7 @@ select:focus {
 
 
 /* =========================================================
-   DATABASE SECTION
+   DATABASE
 ========================================================= */
 
 .database {
@@ -986,6 +975,8 @@ select:focus {
 
     font-size: 11px;
 
+    cursor: pointer;
+
     transition: .2s;
 }
 
@@ -993,6 +984,8 @@ select:focus {
     color: #fff;
 
     border-color: #652020;
+
+    transform: translateY(-2px);
 }
 
 
@@ -1166,10 +1159,11 @@ footer {
 <div class="notice">
 
     <strong>COMMUNITY ESTIMATES:</strong>
-    The numerical ratings on this page are a fan-made comparison
-    system. They are not official numerical statistics from
-    Lookism. Different readers may interpret feats, statements,
-    versions and scaling differently.
+
+    The numerical ratings on this page are a fan-made
+    comparison system. They are not official numerical
+    statistics from Lookism. Different readers may interpret
+    feats, statements, versions and scaling differently.
 
 </div>
 
@@ -1185,7 +1179,10 @@ footer {
 
 <div class="fighter-card">
 
-    <div class="character-image" id="leftImageContainer">
+    <div
+        class="character-image"
+        id="leftImageContainer"
+    >
 
         <img
             id="leftImage"
@@ -1266,7 +1263,10 @@ footer {
 
 <div class="fighter-card">
 
-    <div class="character-image" id="rightImageContainer">
+    <div
+        class="character-image"
+        id="rightImageContainer"
+    >
 
         <img
             id="rightImage"
@@ -1298,7 +1298,7 @@ footer {
             class="fighter-alias"
             id="rightAlias"
         >
-            Main Character
+            Copy User
         </div>
 
         <div
@@ -1963,7 +1963,7 @@ footer {
         </div>
 
 
-        <!-- CATEGORY CARDS -->
+        <!-- CATEGORY RESULTS -->
 
         <div
             id="categoryResult"
@@ -1987,7 +1987,8 @@ footer {
 
     <p>
         Characters currently available in the Lookism Hub
-        comparison system.
+        comparison system. Click a character to load them
+        onto the left side.
     </p>
 
     <div
@@ -2017,667 +2018,534 @@ footer {
 
 /* =========================================================
    FIGHTER DATABASE
-=========================================================
-
-   IMPORTANT:
-
-   The values below are NOT official canon statistics.
-
-   They are deliberately presented as a fan comparison
-   framework based on feats, portrayal and broad community
-   discussion.
-
 ========================================================= */
 
 const fighters = {
 
     gun: {
-
         name: "Gun Park",
-
         alias: "White Ghost",
-
-        version: "Current / Fan Estimate",
-
+        version: "Current",
         initials: "GP",
-
-        image:
-        "https://th.bing.com/th/id/OIP.OotKeh3-ln2Kd9UVTwha9AHaJ4?w=203&h=271&c=7&r=0&o=7&pid=1.7&rm=3",
-
+        image: "",
         stats: {
-
-            strength: 95,
-            speed: 90,
-            durability: 96,
-            technique: 98,
-            battleIq: 98,
+            strength: 96,
+            speed: 94,
+            durability: 99,
+            technique: 99,
+            battleIq: 99,
             experience: 100,
             attackPower: 97,
             stamina: 99,
-            reflexes: 96,
-            adaptability: 97,
-            weaponSkill: 91,
-            endurance: 100
-
-        }
-
-    },
-
-
-    daniel: {
-
-        name: "Daniel Park",
-
-        alias: "The Main Character",
-
-        version: "Current / Fan Estimate",
-
-        initials: "DP",
-
-        image:
-        "https://tse2.mm.bing.net/th/id/OIP.szeTzs6NqTAPjFBcEg2kGAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-
-        stats: {
-
-            strength: 90,
-            speed: 93,
-            durability: 90,
-            technique: 92,
-            battleIq: 94,
-            experience: 88,
-            attackPower: 94,
-            stamina: 90,
             reflexes: 97,
-            adaptability: 96,
-            weaponSkill: 76,
-            endurance: 91
-
+            adaptability: 98,
+            weaponSkill: 94,
+            endurance: 100
         }
-
     },
 
 
     goo: {
-
         name: "Goo Kim",
-
         alias: "Weapon Genius",
-
-        version: "Current / Fan Estimate",
-
+        version: "Current",
         initials: "GK",
-
-        image:
-        "https://tse2.mm.bing.net/th/id/OIP.GHBuF7WGxfvPm8ls3uYb2AAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-
+        image: "",
         stats: {
-
             strength: 94,
             speed: 95,
             durability: 93,
             technique: 99,
-            battleIq: 96,
+            battleIq: 97,
             experience: 99,
             attackPower: 98,
             stamina: 95,
             reflexes: 97,
-            adaptability: 98,
+            adaptability: 99,
             weaponSkill: 100,
             endurance: 96
-
         }
-
     },
 
 
     james: {
-
         name: "James Lee",
-
         alias: "DG / Legend of the First Generation",
-
-        version: "Current / Fan Estimate",
-
+        version: "Current",
         initials: "JL",
-
         image: "",
-
         stats: {
-
-            strength: 96,
+            strength: 94,
             speed: 100,
-            durability: 93,
+            durability: 91,
             technique: 100,
-            battleIq: 98,
-            experience: 97,
-            attackPower: 98,
+            battleIq: 99,
+            experience: 98,
+            attackPower: 97,
             stamina: 95,
             reflexes: 100,
-            adaptability: 98,
+            adaptability: 99,
             weaponSkill: 65,
             endurance: 95
-
         }
+    },
 
+
+    daniel: {
+        name: "Daniel Park",
+        alias: "Copy User",
+        version: "Current",
+        initials: "DP",
+        image: "",
+        stats: {
+            strength: 94,
+            speed: 97,
+            durability: 91,
+            technique: 98,
+            battleIq: 95,
+            experience: 86,
+            attackPower: 96,
+            stamina: 91,
+            reflexes: 99,
+            adaptability: 99,
+            weaponSkill: 70,
+            endurance: 92
+        }
     },
 
 
     kitae: {
-
         name: "Kitae Kim",
-
         alias: "King of Seoul",
-
-        version: "Current / Fan Estimate",
-
+        version: "Current",
         initials: "KK",
-
         image: "",
-
         stats: {
-
             strength: 99,
-            speed: 94,
+            speed: 93,
             durability: 98,
-            technique: 94,
-            battleIq: 92,
-            experience: 96,
+            technique: 93,
+            battleIq: 94,
+            experience: 97,
             attackPower: 100,
             stamina: 98,
             reflexes: 91,
-            adaptability: 91,
+            adaptability: 92,
             weaponSkill: 75,
             endurance: 99
-
         }
-
-    },
-
-
-    jinyoung: {
-
-        name: "Jinyoung Park",
-
-        alias: "Medical Genius",
-
-        version: "Current / Fan Estimate",
-
-        initials: "JP",
-
-        image: "",
-
-        stats: {
-
-            strength: 92,
-            speed: 91,
-            durability: 90,
-            technique: 98,
-            battleIq: 99,
-            experience: 100,
-            attackPower: 94,
-            stamina: 90,
-            reflexes: 94,
-            adaptability: 99,
-            weaponSkill: 70,
-            endurance: 91
-
-        }
-
     },
 
 
     tom: {
-
         name: "Tom Lee",
-
         alias: "Fighting Genius",
-
-        version: "Current / Fan Estimate",
-
+        version: "Current",
         initials: "TL",
-
         image: "",
-
         stats: {
-
             strength: 100,
             speed: 91,
             durability: 99,
-            technique: 97,
-            battleIq: 96,
+            technique: 98,
+            battleIq: 97,
             experience: 100,
             attackPower: 100,
             stamina: 98,
             reflexes: 91,
-            adaptability: 94,
+            adaptability: 95,
             weaponSkill: 82,
             endurance: 100
-
         }
+    },
 
+
+    jinyoung: {
+        name: "Jinyoung Park",
+        alias: "Medical Genius",
+        version: "Current",
+        initials: "JP",
+        image: "",
+        stats: {
+            strength: 91,
+            speed: 91,
+            durability: 89,
+            technique: 99,
+            battleIq: 99,
+            experience: 100,
+            attackPower: 94,
+            stamina: 89,
+            reflexes: 94,
+            adaptability: 99,
+            weaponSkill: 68,
+            endurance: 90
+        }
     },
 
 
     johan: {
-
         name: "Johan Seong",
-
         alias: "Copy Genius",
-
-        version: "Current / Fan Estimate",
-
+        version: "Current",
         initials: "JS",
-
         image: "",
-
         stats: {
-
             strength: 91,
             speed: 98,
             durability: 87,
-            technique: 98,
+            technique: 99,
             battleIq: 94,
-            experience: 84,
-            attackPower: 96,
-            stamina: 84,
+            experience: 85,
+            attackPower: 97,
+            stamina: 86,
             reflexes: 99,
             adaptability: 99,
-            weaponSkill: 61,
-            endurance: 86
-
+            weaponSkill: 60,
+            endurance: 87
         }
-
-    },
-
-
-    jake: {
-
-        name: "Jake Kim",
-
-        alias: "Big Deal Leader",
-
-        version: "Current / Fan Estimate",
-
-        initials: "JK",
-
-        image: "",
-
-        stats: {
-
-            strength: 96,
-            speed: 87,
-            durability: 95,
-            technique: 91,
-            battleIq: 95,
-            experience: 91,
-            attackPower: 97,
-            stamina: 94,
-            reflexes: 89,
-            adaptability: 93,
-            weaponSkill: 64,
-            endurance: 96
-
-        }
-
-    },
-
-
-    eli: {
-
-        name: "Eli Jang",
-
-        alias: "Hostel's Dad",
-
-        version: "Current / Fan Estimate",
-
-        initials: "EJ",
-
-        image: "",
-
-        stats: {
-
-            strength: 91,
-            speed: 92,
-            durability: 93,
-            technique: 94,
-            battleIq: 94,
-            experience: 88,
-            attackPower: 94,
-            stamina: 94,
-            reflexes: 94,
-            adaptability: 97,
-            weaponSkill: 96,
-            endurance: 95
-
-        }
-
-    },
-
-
-    samuel: {
-
-        name: "Samuel Seo",
-
-        alias: "Crew Head",
-
-        version: "Current / Fan Estimate",
-
-        initials: "SS",
-
-        image: "",
-
-        stats: {
-
-            strength: 94,
-            speed: 88,
-            durability: 97,
-            technique: 87,
-            battleIq: 89,
-            experience: 84,
-            attackPower: 95,
-            stamina: 96,
-            reflexes: 86,
-            adaptability: 87,
-            weaponSkill: 68,
-            endurance: 98
-
-        }
-
-    },
-
-
-    vasco: {
-
-        name: "Vasco",
-
-        alias: "Hero of Burn Knuckles",
-
-        version: "Current / Fan Estimate",
-
-        initials: "V",
-
-        image: "",
-
-        stats: {
-
-            strength: 97,
-            speed: 85,
-            durability: 97,
-            technique: 86,
-            battleIq: 82,
-            experience: 80,
-            attackPower: 98,
-            stamina: 95,
-            reflexes: 82,
-            adaptability: 84,
-            weaponSkill: 52,
-            endurance: 97
-
-        }
-
-    },
-
-
-    zack: {
-
-        name: "Zack Lee",
-
-        alias: "Boxing Prodigy",
-
-        version: "Current / Fan Estimate",
-
-        initials: "ZL",
-
-        image: "",
-
-        stats: {
-
-            strength: 89,
-            speed: 94,
-            durability: 91,
-            technique: 95,
-            battleIq: 91,
-            experience: 83,
-            attackPower: 94,
-            stamina: 92,
-            reflexes: 97,
-            adaptability: 89,
-            weaponSkill: 40,
-            endurance: 94
-
-        }
-
     },
 
 
     sinu: {
-
         name: "Sinu Han",
-
         alias: "God of Combat",
-
-        version: "Current / Fan Estimate",
-
+        version: "Current",
         initials: "SH",
-
         image: "",
-
         stats: {
-
-            strength: 92,
-            speed: 97,
+            strength: 91,
+            speed: 98,
             durability: 89,
-            technique: 98,
-            battleIq: 95,
-            experience: 98,
-            attackPower: 94,
-            stamina: 92,
-            reflexes: 99,
-            adaptability: 94,
-            weaponSkill: 50,
-            endurance: 93
-
-        }
-
-    },
-
-
-    mandeok: {
-
-        name: "Mandeok Bang",
-
-        alias: "Workers' Heavy Hitter",
-
-        version: "Current / Fan Estimate",
-
-        initials: "MB",
-
-        image: "",
-
-        stats: {
-
-            strength: 98,
-            speed: 86,
-            durability: 98,
-            technique: 87,
-            battleIq: 82,
-            experience: 82,
-            attackPower: 98,
-            stamina: 97,
-            reflexes: 80,
-            adaptability: 79,
-            weaponSkill: 45,
-            endurance: 98
-
-        }
-
-    },
-
-
-    warren: {
-
-        name: "Warren Chae",
-
-        alias: "Hostel's Vice Leader",
-
-        version: "Current / Fan Estimate",
-
-        initials: "WC",
-
-        image: "",
-
-        stats: {
-
-            strength: 88,
-            speed: 93,
-            durability: 89,
-            technique: 96,
-            battleIq: 93,
-            experience: 85,
-            attackPower: 91,
-            stamina: 91,
-            reflexes: 96,
-            adaptability: 95,
-            weaponSkill: 45,
-            endurance: 91
-
-        }
-
-    },
-
-
-    jerry: {
-
-        name: "Jerry Kwon",
-
-        alias: "Big Deal's Protector",
-
-        version: "Current / Fan Estimate",
-
-        initials: "JK",
-
-        image: "",
-
-        stats: {
-
-            strength: 97,
-            speed: 83,
-            durability: 98,
-            technique: 82,
-            battleIq: 78,
-            experience: 80,
-            attackPower: 96,
-            stamina: 96,
-            reflexes: 78,
-            adaptability: 76,
-            weaponSkill: 45,
-            endurance: 98
-
-        }
-
-    },
-
-
-    vin: {
-
-        name: "Vin Jin",
-
-        alias: "Cheonliang Legend",
-
-        version: "Current / Fan Estimate",
-
-        initials: "VJ",
-
-        image: "",
-
-        stats: {
-
-            strength: 92,
-            speed: 88,
-            durability: 93,
-            technique: 94,
-            battleIq: 90,
-            experience: 83,
+            technique: 99,
+            battleIq: 96,
+            experience: 99,
             attackPower: 95,
-            stamina: 90,
-            reflexes: 89,
-            adaptability: 88,
-            weaponSkill: 72,
-            endurance: 92
-
+            stamina: 93,
+            reflexes: 100,
+            adaptability: 96,
+            weaponSkill: 50,
+            endurance: 94
         }
-
-    },
-
-
-    taesoo: {
-
-        name: "Taesoo Ma",
-
-        alias: "King of Ansan",
-
-        version: "Current / Fan Estimate",
-
-        initials: "TM",
-
-        image: "",
-
-        stats: {
-
-            strength: 98,
-            speed: 82,
-            durability: 96,
-            technique: 81,
-            battleIq: 77,
-            experience: 91,
-            attackPower: 99,
-            stamina: 94,
-            reflexes: 75,
-            adaptability: 72,
-            weaponSkill: 35,
-            endurance: 97
-
-        }
-
     },
 
 
     jichang: {
-
         name: "Jichang Kwak",
-
-        alias: "King of Seoul / Former King",
-
-        version: "Current / Fan Estimate",
-
+        alias: "King of Chungcheong",
+        version: "Prime",
         initials: "JK",
-
         image: "",
-
         stats: {
-
             strength: 94,
-            speed: 93,
+            speed: 94,
             durability: 93,
-            technique: 95,
-            battleIq: 96,
-            experience: 95,
-            attackPower: 95,
+            technique: 96,
+            battleIq: 97,
+            experience: 96,
+            attackPower: 96,
             stamina: 93,
-            reflexes: 96,
-            adaptability: 94,
+            reflexes: 97,
+            adaptability: 95,
             weaponSkill: 55,
             endurance: 94
-
         }
+    },
 
+
+    jake: {
+        name: "Jake Kim",
+        alias: "Big Deal Leader",
+        version: "Current",
+        initials: "JK",
+        image: "",
+        stats: {
+            strength: 96,
+            speed: 89,
+            durability: 96,
+            technique: 93,
+            battleIq: 96,
+            experience: 91,
+            attackPower: 98,
+            stamina: 95,
+            reflexes: 90,
+            adaptability: 94,
+            weaponSkill: 60,
+            endurance: 97
+        }
+    },
+
+
+    eli: {
+        name: "Eli Jang",
+        alias: "Hostel's Dad",
+        version: "Current",
+        initials: "EJ",
+        image: "",
+        stats: {
+            strength: 92,
+            speed: 93,
+            durability: 93,
+            technique: 96,
+            battleIq: 95,
+            experience: 90,
+            attackPower: 95,
+            stamina: 95,
+            reflexes: 95,
+            adaptability: 98,
+            weaponSkill: 96,
+            endurance: 96
+        }
+    },
+
+
+    samuel: {
+        name: "Samuel Seo",
+        alias: "Crew Head",
+        version: "Current",
+        initials: "SS",
+        image: "",
+        stats: {
+            strength: 95,
+            speed: 89,
+            durability: 98,
+            technique: 88,
+            battleIq: 90,
+            experience: 85,
+            attackPower: 96,
+            stamina: 97,
+            reflexes: 87,
+            adaptability: 89,
+            weaponSkill: 65,
+            endurance: 99
+        }
+    },
+
+
+    vasco: {
+        name: "Vasco",
+        alias: "Hero of Burn Knuckles",
+        version: "Current",
+        initials: "V",
+        image: "",
+        stats: {
+            strength: 98,
+            speed: 87,
+            durability: 98,
+            technique: 89,
+            battleIq: 85,
+            experience: 82,
+            attackPower: 99,
+            stamina: 96,
+            reflexes: 84,
+            adaptability: 86,
+            weaponSkill: 50,
+            endurance: 98
+        }
+    },
+
+
+    zack: {
+        name: "Zack Lee",
+        alias: "Boxing Prodigy",
+        version: "Current",
+        initials: "ZL",
+        image: "",
+        stats: {
+            strength: 90,
+            speed: 96,
+            durability: 92,
+            technique: 97,
+            battleIq: 93,
+            experience: 84,
+            attackPower: 95,
+            stamina: 93,
+            reflexes: 98,
+            adaptability: 91,
+            weaponSkill: 40,
+            endurance: 95
+        }
+    },
+
+
+    warren: {
+        name: "Warren Chae",
+        alias: "Hostel's Vice Leader",
+        version: "Current",
+        initials: "WC",
+        image: "",
+        stats: {
+            strength: 89,
+            speed: 94,
+            durability: 90,
+            technique: 97,
+            battleIq: 94,
+            experience: 86,
+            attackPower: 93,
+            stamina: 92,
+            reflexes: 97,
+            adaptability: 96,
+            weaponSkill: 45,
+            endurance: 92
+        }
+    },
+
+
+    mandeok: {
+        name: "Mandeok Bang",
+        alias: "Workers' Heavy Hitter",
+        version: "Current",
+        initials: "MB",
+        image: "",
+        stats: {
+            strength: 98,
+            speed: 87,
+            durability: 98,
+            technique: 89,
+            battleIq: 84,
+            experience: 84,
+            attackPower: 99,
+            stamina: 97,
+            reflexes: 82,
+            adaptability: 81,
+            weaponSkill: 45,
+            endurance: 99
+        }
+    },
+
+
+    jerry: {
+        name: "Jerry Kwon",
+        alias: "Big Deal's Protector",
+        version: "Current",
+        initials: "JK",
+        image: "",
+        stats: {
+            strength: 98,
+            speed: 84,
+            durability: 99,
+            technique: 84,
+            battleIq: 80,
+            experience: 81,
+            attackPower: 97,
+            stamina: 97,
+            reflexes: 80,
+            adaptability: 78,
+            weaponSkill: 45,
+            endurance: 99
+        }
+    },
+
+
+    vin: {
+        name: "Vin Jin",
+        alias: "Cheonliang Fighter",
+        version: "Current",
+        initials: "VJ",
+        image: "",
+        stats: {
+            strength: 93,
+            speed: 89,
+            durability: 94,
+            technique: 95,
+            battleIq: 91,
+            experience: 84,
+            attackPower: 96,
+            stamina: 91,
+            reflexes: 90,
+            adaptability: 89,
+            weaponSkill: 72,
+            endurance: 93
+        }
+    },
+
+
+    taesoo: {
+        name: "Taesoo Ma",
+        alias: "King of Ansan",
+        version: "Current",
+        initials: "TM",
+        image: "",
+        stats: {
+            strength: 99,
+            speed: 83,
+            durability: 97,
+            technique: 83,
+            battleIq: 79,
+            experience: 92,
+            attackPower: 100,
+            stamina: 95,
+            reflexes: 77,
+            adaptability: 74,
+            weaponSkill: 35,
+            endurance: 98
+        }
+    },
+
+
+    /* =====================================================
+       SAMDAK
+       User-requested: ALL STATS = 100
+    ===================================================== */
+
+    samdak: {
+        name: "Samdak",
+        alias: "Legendary Fighter",
+        version: "Prime / Fan Estimate",
+        initials: "SD",
+        image: "",
+        stats: {
+            strength: 100,
+            speed: 100,
+            durability: 100,
+            technique: 100,
+            battleIq: 100,
+            experience: 100,
+            attackPower: 100,
+            stamina: 100,
+            reflexes: 100,
+            adaptability: 100,
+            weaponSkill: 100,
+            endurance: 100
+        }
+    },
+
+
+    /* =====================================================
+       DOOM
+       User-requested:
+       Strength = 98
+       Speed = 97
+       Endurance = 98
+       Other stats = 90–95
+    ===================================================== */
+
+    doom: {
+        name: "Doom",
+        alias: "Doom",
+        version: "Current / Fan Estimate",
+        initials: "DO",
+        image: "",
+        stats: {
+            strength: 98,
+            speed: 97,
+            durability: 94,
+            technique: 92,
+            battleIq: 91,
+            experience: 93,
+            attackPower: 95,
+            stamina: 94,
+            reflexes: 92,
+            adaptability: 90,
+            weaponSkill: 90,
+            endurance: 98
+        }
     }
 
 };
 
 
 /* =========================================================
-   STAT CONFIGURATION
+   STAT NAMES
 ========================================================= */
 
 const statNames = {
@@ -2719,15 +2587,18 @@ const swapBtn =
 
 
 /* =========================================================
-   CREATE SELECT OPTIONS
+   POPULATE SELECTS
 ========================================================= */
 
 function populateSelects() {
 
+    leftSelect.innerHTML = "";
+    rightSelect.innerHTML = "";
+
     for (const id in fighters) {
 
-        const fighter =
-            fighters[id];
+        const fighter = fighters[id];
+
 
         const leftOption =
             document.createElement("option");
@@ -2753,16 +2624,17 @@ function populateSelects() {
         rightSelect.appendChild(
             rightOption
         );
-
     }
 
+
     leftSelect.value = "gun";
+
     rightSelect.value = "daniel";
 }
 
 
 /* =========================================================
-   DATABASE LIST
+   DATABASE
 ========================================================= */
 
 function buildDatabase() {
@@ -2774,13 +2646,17 @@ function buildDatabase() {
 
     grid.innerHTML = "";
 
+
     for (const id in fighters) {
 
         const fighter =
             fighters[id];
 
+
         const item =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         item.className =
             "database-item";
@@ -2788,13 +2664,35 @@ function buildDatabase() {
         item.textContent =
             fighter.name;
 
+
+        item.addEventListener(
+            "click",
+            function() {
+
+                leftSelect.value = id;
+
+                updateCharacterCard(
+                    "left"
+                );
+
+                compareFighters();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
         grid.appendChild(item);
     }
 }
 
 
 /* =========================================================
-   INITIALS
+   GET INITIALS
 ========================================================= */
 
 function getInitials(name) {
@@ -2834,19 +2732,25 @@ function updateImage(
         );
 
 
-    image.onerror = function() {
+    image.onerror =
+        function() {
 
-        image.style.display =
-            "none";
+            image.style.display =
+                "none";
 
-        avatar.style.display =
-            "flex";
+            avatar.style.display =
+                "flex";
 
-        container.classList.remove(
-            "has-image"
-        );
+            avatar.textContent =
+                fighter.initials ||
+                getInitials(
+                    fighter.name
+                );
 
-    };
+            container.classList.remove(
+                "has-image"
+            );
+        };
 
 
     if (
@@ -2874,7 +2778,9 @@ function updateImage(
 
     else {
 
-        image.src = "";
+        image.removeAttribute(
+            "src"
+        );
 
         image.style.display =
             "none";
@@ -2891,9 +2797,7 @@ function updateImage(
         container.classList.remove(
             "has-image"
         );
-
     }
-
 }
 
 
@@ -2908,12 +2812,14 @@ function updateCharacterCard(side) {
             ? leftSelect
             : rightSelect;
 
-    const fighter =
-        fighters[select.value];
 
-    if (!fighter) {
-        return;
-    }
+    const fighter =
+        fighters[
+            select.value
+        ];
+
+
+    if (!fighter) return;
 
 
     document.getElementById(
@@ -2938,12 +2844,11 @@ function updateCharacterCard(side) {
         side,
         fighter
     );
-
 }
 
 
 /* =========================================================
-   CALCULATE AVERAGE
+   CALCULATE OVERALL
 ========================================================= */
 
 function calculateOverall(stats) {
@@ -2951,23 +2856,23 @@ function calculateOverall(stats) {
     const values =
         Object.values(stats);
 
+
     const total =
         values.reduce(
-            (sum, value) =>
-                sum + value,
+            function(sum, value) {
+                return sum + value;
+            },
             0
         );
 
-    return (
-        total /
-        values.length
-    );
 
+    return total /
+        values.length;
 }
 
 
 /* =========================================================
-   UPDATE STAT
+   UPDATE STAT BAR
 ========================================================= */
 
 function updateStat(
@@ -2997,6 +2902,16 @@ function updateStat(
         );
 
 
+    if (
+        !leftText ||
+        !rightText ||
+        !leftBar ||
+        !rightBar
+    ) {
+        return;
+    }
+
+
     leftText.textContent =
         leftValue;
 
@@ -3009,7 +2924,7 @@ function updateStat(
         rightValue;
 
 
-    if (total === 0) {
+    if (total <= 0) {
 
         leftBar.style.width =
             "50%";
@@ -3021,21 +2936,14 @@ function updateStat(
     }
 
 
-    const leftPercentage =
-        (leftValue / total) *
-        100;
-
-    const rightPercentage =
-        (rightValue / total) *
-        100;
-
-
     leftBar.style.width =
-        leftPercentage + "%";
+        (leftValue / total) *
+        100 + "%";
+
 
     rightBar.style.width =
-        rightPercentage + "%";
-
+        (rightValue / total) *
+        100 + "%";
 }
 
 
@@ -3052,6 +2960,7 @@ function createCategoryResults(
         document.getElementById(
             "categoryResult"
         );
+
 
     container.innerHTML = "";
 
@@ -3097,7 +3006,6 @@ function createCategoryResults(
 
             className =
                 "win";
-
         }
 
 
@@ -3105,6 +3013,7 @@ function createCategoryResults(
             document.createElement(
                 "div"
             );
+
 
         box.className =
             "category-box";
@@ -3127,15 +3036,51 @@ function createCategoryResults(
         `;
 
 
-        container.appendChild(box);
-
+        container.appendChild(
+            box
+        );
     }
-
 }
 
 
 /* =========================================================
-   COMPARE
+   MATCHUP DESCRIPTION
+========================================================= */
+
+function getMatchupDescription(
+    difference
+) {
+
+    if (difference < 1) {
+
+        return "Extremely close statistical matchup";
+    }
+
+
+    if (difference < 2.5) {
+
+        return "Very close statistical matchup";
+    }
+
+
+    if (difference < 5) {
+
+        return "Moderate statistical difference";
+    }
+
+
+    if (difference < 8) {
+
+        return "Noticeable statistical difference";
+    }
+
+
+    return "Large statistical difference";
+}
+
+
+/* =========================================================
+   COMPARE FIGHTERS
 ========================================================= */
 
 function compareFighters() {
@@ -3181,6 +3126,7 @@ function compareFighters() {
             left.stats
         );
 
+
     const rightOverall =
         calculateOverall(
             right.stats
@@ -3216,43 +3162,16 @@ function compareFighters() {
        MATCHUP LABEL
     ----------------------------------------------------- */
 
-    const badge =
-        document.getElementById(
-            "matchupBadge"
+    document.getElementById(
+        "matchupBadge"
+    ).textContent =
+        getMatchupDescription(
+            difference
         );
 
 
-    if (difference < 1) {
-
-        badge.textContent =
-            "Extremely close statistical matchup";
-
-    }
-
-    else if (difference < 3) {
-
-        badge.textContent =
-            "Close statistical matchup";
-
-    }
-
-    else if (difference < 6) {
-
-        badge.textContent =
-            "Noticeable statistical difference";
-
-    }
-
-    else {
-
-        badge.textContent =
-            "Large statistical difference";
-
-    }
-
-
     /* -----------------------------------------------------
-       STATS
+       STAT BARS
     ----------------------------------------------------- */
 
     for (
@@ -3264,19 +3183,17 @@ function compareFighters() {
             left.stats[key],
             right.stats[key]
         );
-
     }
 
 
     /* -----------------------------------------------------
-       CATEGORY CARDS
+       CATEGORY RESULTS
     ----------------------------------------------------- */
 
     createCategoryResults(
         left,
         right
     );
-
 }
 
 
@@ -3291,8 +3208,10 @@ swapBtn.addEventListener(
         const temp =
             leftSelect.value;
 
+
         leftSelect.value =
             rightSelect.value;
+
 
         rightSelect.value =
             temp;
@@ -3307,7 +3226,6 @@ swapBtn.addEventListener(
         );
 
         compareFighters();
-
     }
 );
 
@@ -3325,7 +3243,6 @@ leftSelect.addEventListener(
         );
 
         compareFighters();
-
     }
 );
 
@@ -3343,7 +3260,6 @@ rightSelect.addEventListener(
         );
 
         compareFighters();
-
     }
 );
 
@@ -3358,6 +3274,7 @@ compareBtn.addEventListener(
 
         compareFighters();
 
+
         result.scrollIntoView({
             behavior: "smooth",
             block: "start"
@@ -3368,7 +3285,7 @@ compareBtn.addEventListener(
 
 
 /* =========================================================
-   KEYBOARD SHORTCUT
+   KEYBOARD
 ========================================================= */
 
 document.addEventListener(
@@ -3381,9 +3298,7 @@ document.addEventListener(
         ) {
 
             compareFighters();
-
         }
-
     }
 );
 
@@ -3406,4 +3321,4 @@ compareFighters();
 
 </body>
 </html>
-```
+
