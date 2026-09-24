@@ -1,0 +1,2491 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LOOKISM HUB — Timeline</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#f5f5f5;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root{
+    --red:#e50914;
+    --dark-red:#7d070d;
+    --bg:#050505;
+    --panel:#0d0d0d;
+    --line:#222;
+    --muted:#777;
+}
+
+::selection{
+    background:var(--red);
+    color:white;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.logo{
+    font-size:21px;
+    font-weight:1000;
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:var(--red);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    color:#666;
+    text-decoration:none;
+
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    transition:.25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:white;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:650px;
+
+    padding:150px 7% 90px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+
+    border-bottom:1px solid #191919;
+}
+
+.hero::before{
+    content:"TIMELINE";
+
+    position:absolute;
+
+    right:-60px;
+    bottom:-50px;
+
+    font-size:clamp(100px,17vw,250px);
+
+    font-weight:1000;
+
+    color:rgba(255,255,255,.018);
+
+    letter-spacing:-10px;
+
+    pointer-events:none;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    right:8%;
+    top:10%;
+
+    background:rgba(229,9,20,.07);
+
+    filter:blur(120px);
+
+    border-radius:50%;
+}
+
+.hero-content{
+    max-width:900px;
+
+    position:relative;
+    z-index:2;
+}
+
+.small-label{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:var(--red);
+
+    font-size:9px;
+    font-weight:900;
+
+    letter-spacing:4px;
+}
+
+.small-label::before{
+    content:"";
+
+    width:40px;
+    height:2px;
+
+    background:var(--red);
+}
+
+.hero h1{
+    margin-top:25px;
+
+    font-size:clamp(65px,11vw,145px);
+
+    line-height:.78;
+
+    letter-spacing:-7px;
+
+    text-transform:uppercase;
+}
+
+.hero h1 span{
+    color:var(--red);
+}
+
+.hero p{
+    max-width:620px;
+
+    margin-top:35px;
+
+    color:#666;
+
+    font-size:12px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   ARCHIVE CONTROL
+========================================================= */
+
+.controls{
+    padding:35px 7%;
+
+    background:#080808;
+
+    border-bottom:1px solid #191919;
+}
+
+.controls-inner{
+    max-width:1250px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:25px;
+}
+
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.filter{
+    padding:10px 15px;
+
+    color:#666;
+
+    background:#0b0b0b;
+
+    border:1px solid #242424;
+
+    border-radius:3px;
+
+    cursor:pointer;
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    transition:.25s;
+}
+
+.filter:hover,
+.filter.active{
+    color:white;
+
+    border-color:var(--red);
+
+    background:rgba(229,9,20,.08);
+}
+
+.search{
+    width:230px;
+
+    padding:11px 15px;
+
+    color:white;
+
+    background:#0a0a0a;
+
+    border:1px solid #242424;
+
+    outline:none;
+
+    border-radius:3px;
+
+    font-size:10px;
+}
+
+.search:focus{
+    border-color:#641016;
+}
+
+.search::placeholder{
+    color:#444;
+}
+
+
+/* =========================================================
+   ARCHIVE
+========================================================= */
+
+.archive{
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:110px 7%;
+}
+
+.archive-header{
+    margin-bottom:55px;
+}
+
+.archive-header span{
+    color:var(--red);
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+.archive-header h2{
+    margin-top:12px;
+
+    font-size:clamp(45px,6vw,80px);
+
+    line-height:.85;
+
+    letter-spacing:-4px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   ARC GRID
+========================================================= */
+
+.arc-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
+}
+
+
+/* =========================================================
+   ARC CARD
+========================================================= */
+
+.arc-card{
+    min-height:370px;
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    padding:28px;
+
+    overflow:hidden;
+
+    border:1px solid #242424;
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #070707
+        );
+
+    cursor:pointer;
+
+    transition:
+        transform .3s,
+        border-color .3s;
+}
+
+.arc-card:hover{
+    transform:translateY(-7px);
+
+    border-color:#68151a;
+}
+
+.arc-card::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(229,9,20,.12),
+            transparent 35%
+        );
+}
+
+.arc-number{
+    position:absolute;
+
+    top:20px;
+    right:22px;
+
+    color:#292929;
+
+    font-size:45px;
+    font-weight:1000;
+}
+
+.arc-generation{
+    position:absolute;
+
+    top:25px;
+    left:25px;
+
+    color:var(--red);
+
+    font-size:7px;
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+.arc-content{
+    position:relative;
+    z-index:2;
+}
+
+.arc-content h3{
+    font-size:27px;
+
+    line-height:.95;
+
+    text-transform:uppercase;
+
+    letter-spacing:-1px;
+}
+
+.arc-content p{
+    margin-top:12px;
+
+    color:#666;
+
+    font-size:9px;
+
+    line-height:1.7;
+}
+
+.arc-meta{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:20px;
+
+    padding-top:15px;
+
+    border-top:1px solid #202020;
+}
+
+.arc-meta span{
+    color:#444;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.open{
+    color:var(--red)!important;
+}
+
+
+/* =========================================================
+   FEATURED ARC
+========================================================= */
+
+.featured{
+    margin-top:14px;
+
+    min-height:450px;
+
+    position:relative;
+
+    padding:45px;
+
+    overflow:hidden;
+
+    border:1px solid #351012;
+
+    background:
+        linear-gradient(
+            110deg,
+            #120506,
+            #090909 60%
+        );
+}
+
+.featured::after{
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    right:-100px;
+    top:-100px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(229,9,20,.16),
+            transparent 65%
+        );
+}
+
+.featured-content{
+    position:relative;
+
+    z-index:2;
+
+    max-width:700px;
+}
+
+.featured-label{
+    color:var(--red);
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+.featured h3{
+    margin-top:18px;
+
+    font-size:clamp(45px,6vw,85px);
+
+    line-height:.82;
+
+    letter-spacing:-4px;
+
+    text-transform:uppercase;
+}
+
+.featured p{
+    max-width:600px;
+
+    margin-top:25px;
+
+    color:#777;
+
+    font-size:11px;
+
+    line-height:1.9;
+}
+
+.featured-button{
+    margin-top:30px;
+
+    padding:14px 20px;
+
+    color:white;
+
+    background:var(--red);
+
+    border:0;
+
+    cursor:pointer;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    transition:.25s;
+}
+
+.featured-button:hover{
+    background:#ff1824;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   STORY MAP
+========================================================= */
+
+.map-section{
+    padding:100px 7%;
+
+    background:#080808;
+
+    border-top:1px solid #191919;
+    border-bottom:1px solid #191919;
+}
+
+.map-container{
+    max-width:1100px;
+
+    margin:auto;
+}
+
+.map-title{
+    margin-bottom:50px;
+}
+
+.map-title span{
+    color:var(--red);
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+.map-title h2{
+    margin-top:12px;
+
+    font-size:55px;
+
+    line-height:.85;
+
+    letter-spacing:-3px;
+
+    text-transform:uppercase;
+}
+
+.story-line{
+    position:relative;
+
+    height:8px;
+
+    margin:80px 20px 50px;
+
+    background:#1d1d1d;
+
+    border-radius:20px;
+}
+
+.story-progress{
+    width:75%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6b060b,
+            var(--red)
+        );
+
+    border-radius:20px;
+}
+
+.story-points{
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:10px;
+}
+
+.story-point{
+    position:relative;
+}
+
+.story-dot{
+    position:absolute;
+
+    top:-59px;
+    left:0;
+
+    width:18px;
+    height:18px;
+
+    background:#111;
+
+    border:2px solid #555;
+
+    border-radius:50%;
+}
+
+.story-point.active .story-dot{
+    background:var(--red);
+
+    border-color:var(--red);
+
+    box-shadow:
+        0 0 20px rgba(229,9,20,.45);
+}
+
+.story-point strong{
+    display:block;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+}
+
+.story-point span{
+    display:block;
+
+    margin-top:7px;
+
+    color:#555;
+
+    font-size:8px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   ERA STATISTICS
+========================================================= */
+
+.stats{
+    padding:100px 7%;
+}
+
+.stats-grid{
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+}
+
+.stat{
+    padding:30px;
+
+    border:1px solid #222;
+
+    background:#090909;
+}
+
+.stat-number{
+    color:var(--red);
+
+    font-size:40px;
+
+    font-weight:1000;
+}
+
+.stat-label{
+    margin-top:8px;
+
+    color:#555;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:60px 7% 30px;
+
+    border-top:1px solid #1c1c1c;
+}
+
+.footer-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:40px;
+
+    padding-bottom:40px;
+}
+
+.footer-logo{
+    font-size:22px;
+
+    font-weight:1000;
+
+    letter-spacing:2px;
+}
+
+.footer-logo span{
+    color:var(--red);
+}
+
+.footer-description{
+    max-width:370px;
+
+    margin-top:12px;
+
+    color:#555;
+
+    font-size:9px;
+
+    line-height:1.8;
+}
+
+.footer-links{
+    display:flex;
+    gap:50px;
+}
+
+.footer-column h4{
+    margin-bottom:15px;
+
+    color:#666;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+.footer-column a{
+    display:block;
+
+    margin-bottom:9px;
+
+    color:#444;
+
+    text-decoration:none;
+
+    font-size:9px;
+
+    transition:.2s;
+}
+
+.footer-column a:hover{
+    color:var(--red);
+}
+
+.copyright{
+    padding-top:25px;
+
+    border-top:1px solid #171717;
+
+    color:#383838;
+
+    font-size:8px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-background{
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+    background:rgba(0,0,0,.86);
+
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+}
+
+.modal-background.show{
+    opacity:1;
+
+    visibility:visible;
+}
+
+.modal{
+    width:min(650px,100%);
+
+    max-height:85vh;
+
+    overflow:auto;
+
+    position:relative;
+
+    padding:40px;
+
+    background:#0c0c0c;
+
+    border:1px solid #421317;
+
+    border-radius:7px;
+
+    transform:translateY(25px);
+
+    transition:.3s;
+}
+
+.modal-background.show .modal{
+    transform:translateY(0);
+}
+
+.close{
+    position:absolute;
+
+    right:18px;
+    top:18px;
+
+    width:32px;
+    height:32px;
+
+    color:#777;
+
+    background:#111;
+
+    border:1px solid #292929;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+.close:hover{
+    color:white;
+
+    border-color:var(--red);
+}
+
+.modal-label{
+    color:var(--red);
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+.modal h2{
+    margin-top:12px;
+
+    font-size:48px;
+
+    line-height:.85;
+
+    letter-spacing:-3px;
+
+    text-transform:uppercase;
+}
+
+.modal-description{
+    margin-top:25px;
+
+    color:#777;
+
+    font-size:11px;
+
+    line-height:1.9;
+}
+
+.modal-data{
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+}
+
+.data-box{
+    padding:15px;
+
+    background:#090909;
+
+    border:1px solid #222;
+}
+
+.data-box small{
+    display:block;
+
+    color:#444;
+
+    font-size:7px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.data-box strong{
+    display:block;
+
+    margin-top:6px;
+
+    color:#bbb;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    .navbar{
+        height:auto;
+
+        padding:15px 20px;
+
+        flex-direction:column;
+
+        gap:15px;
+    }
+
+    .nav-links{
+        gap:15px;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+    }
+
+    .hero{
+        padding:
+            170px 20px 80px;
+    }
+
+    .hero h1{
+        letter-spacing:-4px;
+    }
+
+    .controls{
+        padding:25px 20px;
+    }
+
+    .controls-inner{
+        flex-direction:column;
+
+        align-items:stretch;
+    }
+
+    .search{
+        width:100%;
+    }
+
+    .archive{
+        padding:
+            80px 20px;
+    }
+
+    .arc-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .featured{
+        padding:30px;
+    }
+
+    .map-section{
+        padding:80px 20px;
+    }
+
+    .story-points{
+        grid-template-columns:
+            repeat(5,140px);
+
+        overflow-x:auto;
+
+        padding-bottom:15px;
+    }
+
+    .stats{
+        padding:80px 20px;
+    }
+
+    .stats-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .footer-top{
+        flex-direction:column;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+    }
+}
+
+
+@media(max-width:600px){
+
+    .arc-grid{
+        grid-template-columns:1fr;
+    }
+
+    .arc-card{
+        min-height:330px;
+    }
+
+    .featured h3{
+        letter-spacing:-2px;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .modal{
+        padding:30px 22px;
+    }
+
+    .modal h2{
+        font-size:38px;
+    }
+
+    .modal-data{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        LOOK<span>ISM</span> HUB
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="home.html">
+            Home
+        </a>
+
+        <a href="characters.html">
+            Characters
+        </a>
+
+        <a href="index.html">
+            Fights
+        </a>
+
+        <a href="crews.html">
+            Crews
+        </a>
+
+        <a href="timeline.html" class="active">
+            Timeline
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+        <div class="small-label">
+            STORY ARCHIVE
+        </div>
+
+        <h1>
+            EVERY
+            <br>
+            <span>ARC.</span>
+        </h1>
+
+        <p>
+            Enter the LOOKISM story archive. Explore the
+            major storylines, generations, crews and
+            turning points that connect the characters
+            and conflicts of the series.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FILTERS
+========================================================= -->
+
+<section class="controls">
+
+    <div class="controls-inner">
+
+        <div class="filters">
+
+            <button class="filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter" data-filter="early">
+                Early Story
+            </button>
+
+            <button class="filter" data-filter="crew">
+                Crew Era
+            </button>
+
+            <button class="filter" data-filter="generation">
+                Generations
+            </button>
+
+            <button class="filter" data-filter="major">
+                Major Conflicts
+            </button>
+
+        </div>
+
+        <input
+            type="text"
+            id="searchInput"
+            class="search"
+            placeholder="Search timeline..."
+        >
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ARC ARCHIVE
+========================================================= -->
+
+<section class="archive">
+
+    <div class="archive-header reveal">
+
+        <span>
+            CHRONOLOGY // ARCHIVE
+        </span>
+
+        <h2>
+            STORY
+            <br>
+            ARCHIVE
+        </h2>
+
+    </div>
+
+
+    <div class="arc-grid" id="arcGrid">
+
+
+        <!-- CARD 1 -->
+
+        <article
+            class="arc-card reveal"
+            data-category="early"
+            data-name="J High"
+            data-event="jhigh"
+        >
+
+            <div class="arc-generation">
+                EARLY STORY
+            </div>
+
+            <div class="arc-number">
+                01
+            </div>
+
+            <div class="arc-content">
+
+                <h3>
+                    J High
+                </h3>
+
+                <p>
+                    Daniel Park begins his new life at
+                    J High and encounters several of the
+                    characters who become central to the story.
+                </p>
+
+                <div class="arc-meta">
+
+                    <span>
+                        BEGINNING
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 2 -->
+
+        <article
+            class="arc-card reveal"
+            data-category="early"
+            data-name="Hostel"
+            data-event="hostel"
+        >
+
+            <div class="arc-generation">
+                EARLY STORY
+            </div>
+
+            <div class="arc-number">
+                02
+            </div>
+
+            <div class="arc-content">
+
+                <h3>
+                    Hostel
+                </h3>
+
+                <p>
+                    Eli Jang and the members connected
+                    to Hostel become involved in a major
+                    conflict surrounding family and crews.
+                </p>
+
+                <div class="arc-meta">
+
+                    <span>
+                        CREW
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 3 -->
+
+        <article
+            class="arc-card reveal"
+            data-category="early"
+            data-name="God Dog"
+            data-event="godDog"
+        >
+
+            <div class="arc-generation">
+                SECOND GENERATION
+            </div>
+
+            <div class="arc-number">
+                03
+            </div>
+
+            <div class="arc-content">
+
+                <h3>
+                    God Dog
+                </h3>
+
+                <p>
+                    Johan Seong and God Dog enter the
+                    wider network of conflicts involving
+                    second-generation fighters.
+                </p>
+
+                <div class="arc-meta">
+
+                    <span>
+                        CREW
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 4 -->
+
+        <article
+            class="arc-card reveal"
+            data-category="crew major"
+            data-name="Big Deal"
+            data-event="bigDeal"
+        >
+
+            <div class="arc-generation">
+                CREW ERA
+            </div>
+
+            <div class="arc-number">
+                04
+            </div>
+
+            <div class="arc-content">
+
+                <h3>
+                    Big Deal
+                </h3>
+
+                <p>
+                    Jake Kim and Big Deal become deeply
+                    connected to the growing conflict between
+                    powerful organizations.
+                </p>
+
+                <div class="arc-meta">
+
+                    <span>
+                        MAJOR CREW
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 5 -->
+
+        <article
+            class="arc-card reveal"
+            data-category="crew"
+            data-name="Workers"
+            data-event="workers"
+        >
+
+            <div class="arc-generation">
+                CREW ERA
+            </div>
+
+            <div class="arc-number">
+                05
+            </div>
+
+            <div class="arc-content">
+
+                <h3>
+                    Workers
+                </h3>
+
+                <p>
+                    Workers becomes one of the major
+                    organizations connected to the larger
+                    conflict.
+                </p>
+
+                <div class="arc-meta">
+
+                    <span>
+                        ORGANIZATION
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 6 -->
+
+        <article
+            class="arc-card reveal"
+            data-category="generation"
+            data-name="First Generation"
+            data-event="firstGeneration"
+        >
+
+            <div class="arc-generation">
+                GENERATIONS
+            </div>
+
+            <div class="arc-number">
+                06
+            </div>
+
+            <div class="arc-content">
+
+                <h3>
+                    First Generation
+                </h3>
+
+                <p>
+                    The First Generation establishes the
+                    historical foundation for many of the
+                    power structures seen later.
+                </p>
+
+                <div class="arc-meta">
+
+                    <span>
+                        HISTORY
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 7 -->
+
+        <article
+            class="arc-card reveal"
+            data-category="generation major"
+            data-name="Kings"
+            data-event="kings"
+        >
+
+            <div class="arc-generation">
+                FIRST GENERATION
+            </div>
+
+            <div class="arc-number">
+                07
+            </div>
+
+            <div class="arc-content">
+
+                <h3>
+                    The Kings
+                </h3>
+
+                <p>
+                    Regional fighters known as Kings
+                    establish territories and reputations
+                    that influence later generations.
+                </p>
+
+                <div class="arc-meta">
+
+                    <span>
+                        POWER
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 8 -->
+
+        <article
+            class="arc-card reveal"
+            data-category="major"
+            data-name="Four Major Crews"
+            data-event="fourCrews"
+        >
+
+            <div class="arc-generation">
+                CREW ERA
+            </div>
+
+            <div class="arc-number">
+                08
+            </div>
+
+            <div class="arc-content">
+
+                <h3>
+                    Four Major Crews
+                </h3>
+
+                <p>
+                    Multiple organizations become connected
+                    through a wider network of conflicts
+                    involving the second generation.
+                </p>
+
+                <div class="arc-meta">
+
+                    <span>
+                        MAJOR CONFLICT
+                    </span>
+
+                    <span class="open">
+                        OPEN →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         FEATURED
+    ====================================================== -->
+
+    <div class="featured reveal">
+
+        <div class="featured-content">
+
+            <div class="featured-label">
+                FEATURED ARCHIVE
+            </div>
+
+            <h3>
+                THE FOUR
+                <br>
+                MAJOR CREWS
+            </h3>
+
+            <p>
+                The crew era connects many of the major
+                characters and organizations in the story.
+                Explore how the different groups fit into
+                the larger structure of the LOOKISM universe.
+            </p>
+
+            <button
+                class="featured-button"
+                id="featuredButton"
+            >
+                Explore Event
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STORY MAP
+========================================================= -->
+
+<section class="map-section">
+
+    <div class="map-container">
+
+        <div class="map-title reveal">
+
+            <span>
+                STORY PROGRESSION
+            </span>
+
+            <h2>
+                FROM
+                <br>
+                PAST TO NOW
+            </h2>
+
+        </div>
+
+
+        <div class="story-line">
+
+            <div class="story-progress"></div>
+
+        </div>
+
+
+        <div class="story-points">
+
+            <div class="story-point active">
+
+                <div class="story-dot"></div>
+
+                <strong>
+                    First Generation
+                </strong>
+
+                <span>
+                    Kings and regional power
+                </span>
+
+            </div>
+
+
+            <div class="story-point active">
+
+                <div class="story-dot"></div>
+
+                <strong>
+                    Second Generation
+                </strong>
+
+                <span>
+                    New fighters emerge
+                </span>
+
+            </div>
+
+
+            <div class="story-point active">
+
+                <div class="story-dot"></div>
+
+                <strong>
+                    Crew Era
+                </strong>
+
+                <span>
+                    Major organizations collide
+                </span>
+
+            </div>
+
+
+            <div class="story-point active">
+
+                <div class="story-dot"></div>
+
+                <strong>
+                    Major Conflicts
+                </strong>
+
+                <span>
+                    Alliances and rivalries expand
+                </span>
+
+            </div>
+
+
+            <div class="story-point">
+
+                <div class="story-dot"></div>
+
+                <strong>
+                    Current
+                </strong>
+
+                <span>
+                    Story continues
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STATS
+========================================================= -->
+
+<section class="stats">
+
+    <div class="stats-grid">
+
+        <div class="stat reveal">
+
+            <div class="stat-number">
+                04
+            </div>
+
+            <div class="stat-label">
+                Major Eras
+            </div>
+
+        </div>
+
+
+        <div class="stat reveal">
+
+            <div class="stat-number">
+                08+
+            </div>
+
+            <div class="stat-label">
+                Archive Entries
+            </div>
+
+        </div>
+
+
+        <div class="stat reveal">
+
+            <div class="stat-number">
+                02
+            </div>
+
+            <div class="stat-label">
+                Main Generations
+            </div>
+
+        </div>
+
+
+        <div class="stat reveal">
+
+            <div class="stat-number">
+                ∞
+            </div>
+
+            <div class="stat-label">
+                Story Developments
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-top">
+
+        <div>
+
+            <div class="footer-logo">
+                LOOK<span>ISM</span> HUB
+            </div>
+
+            <p class="footer-description">
+                A fan-made database for exploring
+                LOOKISM characters, fights, crews
+                and story events.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div class="footer-column">
+
+                <h4>
+                    Navigate
+                </h4>
+
+                <a href="home.html">
+                    Home
+                </a>
+
+                <a href="characters.html">
+                    Characters
+                </a>
+
+                <a href="index.html">
+                    Fights
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Universe
+                </h4>
+
+                <a href="crews.html">
+                    Crews
+                </a>
+
+                <a href="timeline.html">
+                    Timeline
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        LOOKISM HUB is a fan-made project.
+
+        <br>
+
+        LOOKISM is created by Taejun Pak.
+        This project is not affiliated with
+        WEBTOON or the original creators.
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    class="modal-background"
+    id="modalBackground"
+>
+
+    <div class="modal">
+
+        <button
+            class="close"
+            id="closeModal"
+        >
+            ×
+        </button>
+
+        <div
+            class="modal-label"
+            id="modalLabel"
+        >
+            ARCHIVE
+        </div>
+
+        <h2 id="modalTitle">
+            Event
+        </h2>
+
+        <p
+            class="modal-description"
+            id="modalDescription"
+        >
+        </p>
+
+        <div
+            class="modal-data"
+            id="modalData"
+        >
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   EVENT DATABASE
+========================================================= */
+
+const timelineEvents = {
+
+    jhigh:{
+        label:"EARLY STORY",
+        title:"J High",
+        description:
+            "Daniel Park begins his life at J High and forms relationships with several characters who become important to his story.",
+        data:[
+            ["ERA","Early Story"],
+            ["LOCATION","J High"],
+            ["TYPE","Beginning"],
+            ["STATUS","Historical"]
+        ]
+    },
+
+    hostel:{
+        label:"EARLY STORY",
+        title:"Hostel",
+        description:
+            "The storyline surrounding Hostel explores Eli Jang, his relationships and the conflicts surrounding the organization.",
+        data:[
+            ["ERA","Second Generation"],
+            ["GROUP","Hostel"],
+            ["KEY FIGURE","Eli Jang"],
+            ["TYPE","Crew Conflict"]
+        ]
+    },
+
+    godDog:{
+        label:"SECOND GENERATION",
+        title:"God Dog",
+        description:
+            "Johan Seong and God Dog become connected to the growing network of second-generation conflicts.",
+        data:[
+            ["ERA","Second Generation"],
+            ["GROUP","God Dog"],
+            ["KEY FIGURE","Johan Seong"],
+            ["TYPE","Crew"]
+        ]
+    },
+
+    bigDeal:{
+        label:"CREW ERA",
+        title:"Big Deal",
+        description:
+            "Big Deal and Jake Kim become central to conflicts involving crews and the history connecting different generations.",
+        data:[
+            ["ERA","Crew Era"],
+            ["GROUP","Big Deal"],
+            ["KEY FIGURE","Jake Kim"],
+            ["TYPE","Major Crew"]
+        ]
+    },
+
+    workers:{
+        label:"CREW ERA",
+        title:"Workers",
+        description:
+            "Workers becomes a major organization within the wider network of conflicts and affiliates.",
+        data:[
+            ["ERA","Crew Era"],
+            ["GROUP","Workers"],
+            ["TYPE","Organization"],
+            ["STATUS","Major"]
+        ]
+    },
+
+    firstGeneration:{
+        label:"GENERATIONS",
+        title:"First Generation",
+        description:
+            "The First Generation establishes much of the historical background behind the regional power structure.",
+        data:[
+            ["ERA","First Generation"],
+            ["TYPE","Historical"],
+            ["GROUP","Regional Kings"],
+            ["STATUS","Completed"]
+        ]
+    },
+
+    kings:{
+        label:"FIRST GENERATION",
+        title:"The Kings",
+        description:
+            "Regional fighters become known as Kings and establish territories that influence the generations that follow.",
+        data:[
+            ["ERA","First Generation"],
+            ["TYPE","Power Structure"],
+            ["GROUP","Kings"],
+            ["STATUS","Historical"]
+        ]
+    },
+
+    fourCrews:{
+        label:"MAJOR CONFLICT",
+        title:"Four Major Crews",
+        description:
+            "The major crews become interconnected through a wider series of conflicts involving many second-generation characters.",
+        data:[
+            ["ERA","Crew Era"],
+            ["TYPE","Major Conflict"],
+            ["GROUP","Major Crews"],
+            ["STATUS","Ongoing"]
+        ]
+    }
+
+};
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+const modal =
+    document.getElementById("modalBackground");
+
+const modalLabel =
+    document.getElementById("modalLabel");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalDescription =
+    document.getElementById("modalDescription");
+
+const modalData =
+    document.getElementById("modalData");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+
+function openEvent(id){
+
+    const event =
+        timelineEvents[id];
+
+    if(!event) return;
+
+    modalLabel.textContent =
+        event.label;
+
+    modalTitle.textContent =
+        event.title;
+
+    modalDescription.textContent =
+        event.description;
+
+    modalData.innerHTML = "";
+
+    event.data.forEach(item => {
+
+        const box =
+            document.createElement("div");
+
+        box.className =
+            "data-box";
+
+        box.innerHTML = `
+            <small>${item[0]}</small>
+            <strong>${item[1]}</strong>
+        `;
+
+        modalData.appendChild(box);
+
+    });
+
+    modal.classList.add("show");
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+function closeEvent(){
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow =
+        "";
+}
+
+
+closeModal.addEventListener(
+    "click",
+    closeEvent
+);
+
+
+modal.addEventListener(
+    "click",
+    e => {
+
+        if(e.target === modal){
+            closeEvent();
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    e => {
+
+        if(e.key === "Escape"){
+            closeEvent();
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ARC CARD CLICK
+========================================================= */
+
+document
+    .querySelectorAll(".arc-card")
+    .forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                openEvent(
+                    card.dataset.event
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   FEATURED BUTTON
+========================================================= */
+
+document
+    .getElementById("featuredButton")
+    .addEventListener(
+        "click",
+        () => {
+
+            openEvent("fourCrews");
+
+        }
+    );
+
+
+/* =========================================================
+   FILTER SYSTEM
+========================================================= */
+
+const filters =
+    document.querySelectorAll(".filter");
+
+const cards =
+    document.querySelectorAll(".arc-card");
+
+
+filters.forEach(filter => {
+
+    filter.addEventListener(
+        "click",
+        () => {
+
+            filters.forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+            filter.classList.add("active");
+
+            const category =
+                filter.dataset.filter;
+
+            cards.forEach(card => {
+
+                if(
+                    category === "all" ||
+                    card.dataset.category
+                        .includes(category)
+                ){
+
+                    card.style.display =
+                        "flex";
+
+                }else{
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+searchInput.addEventListener(
+    "input",
+    () => {
+
+        const query =
+            searchInput.value
+                .toLowerCase()
+                .trim();
+
+        cards.forEach(card => {
+
+            const name =
+                card.dataset.name
+                    .toLowerCase();
+
+            const description =
+                card.innerText
+                    .toLowerCase();
+
+            if(
+                name.includes(query) ||
+                description.includes(query)
+            ){
+
+                card.style.display =
+                    "flex";
+
+            }else{
+
+                card.style.display =
+                    "none";
+
+            }
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.1
+        }
+    );
+
+
+revealElements.forEach(
+    element =>
+        observer.observe(element)
+);
+
+
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+
+const navbar =
+    document.querySelector(".navbar");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(
+            window.scrollY > 60
+        ){
+
+            navbar.style.background =
+                "rgba(3,3,3,.98)";
+
+        }else{
+
+            navbar.style.background =
+                "rgba(5,5,5,.88)";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+```
