@@ -1,1893 +1,3632 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+<meta charset="UTF-8">
 
-    <title>LOOKISM HUB | Characters</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <style>
+<meta
+    name="description"
+    content="LOOKISM HUB character database — characters, crews, fighting styles, relationships and fan-made combat ratings."
+>
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+<title>LOOKISM HUB | Characters</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
+<style>
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        color: #fff;
+
+        min-height: 100vh;
+
+        background:
+            radial-gradient(
+                circle at 50% -10%,
+                #5b1010 0%,
+                #220707 24%,
+                #090909 62%,
+                #020202 100%
+            );
+    }
+
+
+    body.modal-open {
+        overflow: hidden;
+    }
+
+
+    button,
+    input,
+    select {
+        font: inherit;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    header {
+        position: sticky;
+
+        top: 0;
+
+        z-index: 1000;
+
+        min-height: 75px;
+
+        padding:
+            0 6%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 30px;
+
+        background:
+            rgba(3, 3, 3, 0.94);
+
+        backdrop-filter:
+            blur(18px);
+
+        border-bottom:
+            1px solid #321414;
+    }
+
+
+    .logo {
+        color: white;
+
+        font-size: 24px;
+
+        font-weight: 900;
+
+        letter-spacing: 2px;
+
+        white-space: nowrap;
+    }
+
+
+    .logo span {
+        color: #e50914;
+    }
+
+
+    nav {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 25px;
+    }
+
+
+    nav a {
+        color: #888;
+
+        text-decoration: none;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        transition:
+            color .25s,
+            transform .25s;
+    }
+
+
+    nav a:hover {
+        color: #fff;
+
+        transform:
+            translateY(-1px);
+    }
+
+
+    nav a.active {
+        color: #e50914;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+        width:
+            min(1200px, 92%);
+
+        margin:
+            auto;
+
+        padding:
+            95px 0 65px;
+
+        text-align: center;
+    }
+
+
+    .eyebrow {
+        display: inline-block;
+
+        padding:
+            7px 14px;
+
+        margin-bottom:
+            20px;
+
+        border:
+            1px solid #5a2020;
+
+        border-radius:
+            999px;
+
+        color:
+            #e50914;
+
+        background:
+            rgba(229,9,20,.07);
+
+        font-size:
+            10px;
+
+        font-weight:
+            800;
+
+        letter-spacing:
+            2px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .hero h1 {
+        font-size:
+            clamp(45px, 8vw, 90px);
+
+        line-height:
+            .95;
+
+        letter-spacing:
+            4px;
+
+        text-transform:
+            uppercase;
+
+        font-weight:
+            950;
+
+        text-shadow:
+            0 0 50px
+            rgba(229,9,20,.25);
+    }
+
+
+    .hero h1 span {
+        color:
+            #e50914;
+    }
+
+
+    .hero p {
+        max-width:
+            760px;
+
+        margin:
+            25px auto 0;
+
+        color:
+            #888;
+
+        line-height:
+            1.8;
+
+        font-size:
+            15px;
+    }
+
+
+    /* =====================================================
+       MAIN
+    ===================================================== */
+
+    main {
+        width:
+            min(1250px, 92%);
+
+        margin:
+            auto;
+
+        padding-bottom:
+            100px;
+    }
+
+
+    /* =====================================================
+       CONTROL PANEL
+    ===================================================== */
+
+    .controls {
+        position:
+            sticky;
+
+        top:
+            90px;
+
+        z-index:
+            50;
+
+        padding:
+            18px;
+
+        margin-bottom:
+            35px;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            1.5fr
+            1fr
+            auto;
+
+        gap:
+            12px;
+
+        background:
+            rgba(8,8,8,.92);
+
+        border:
+            1px solid #321818;
+
+        border-radius:
+            15px;
+
+        backdrop-filter:
+            blur(18px);
+
+        box-shadow:
+            0 20px 60px
+            rgba(0,0,0,.35);
+    }
+
+
+    .search-box {
+        position:
+            relative;
+    }
+
+
+    .search-box input,
+    .filter-select {
+        width:
+            100%;
+
+        height:
+            48px;
+
+        padding:
+            0 16px;
+
+        color:
+            #fff;
+
+        background:
+            #0d0d0d;
+
+        border:
+            1px solid #362020;
+
+        border-radius:
+            9px;
+
+        outline:
+            none;
+
+        transition:
+            border-color .25s,
+            box-shadow .25s;
+    }
+
+
+    .search-box input:focus,
+    .filter-select:focus {
+        border-color:
+            #e50914;
+
+        box-shadow:
+            0 0 25px
+            rgba(229,9,20,.1);
+    }
+
+
+    .clear-button {
+        height:
+            48px;
+
+        padding:
+            0 18px;
+
+        border:
+            1px solid #3b2525;
+
+        border-radius:
+            9px;
+
+        color:
+            #aaa;
+
+        background:
+            #101010;
+
+        cursor:
+            pointer;
+
+        transition:
+            .25s;
+    }
+
+
+    .clear-button:hover {
+        color:
+            white;
+
+        border-color:
+            #e50914;
+    }
+
+
+    /* =====================================================
+       DATABASE BAR
+    ===================================================== */
+
+    .database-bar {
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            space-between;
+
+        gap:
+            20px;
+
+        margin-bottom:
+            22px;
+    }
+
+
+    .database-title {
+        color:
+            #aaa;
+
+        font-size:
+            12px;
+
+        letter-spacing:
+            1.5px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .database-count {
+        color:
+            #e50914;
+
+        font-weight:
+            900;
+    }
+
+
+    .legend {
+        color:
+            #555;
+
+        font-size:
+            11px;
+    }
+
+
+    /* =====================================================
+       CHARACTER GRID
+    ===================================================== */
+
+    .character-grid {
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap:
+            25px;
+    }
+
+
+    /* =====================================================
+       CARD
+    ===================================================== */
+
+    .character-card {
+        position:
+            relative;
+
+        overflow:
+            hidden;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        min-width:
+            0;
+
+        border:
+            1px solid #321919;
+
+        border-radius:
+            18px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.065),
+                rgba(255,255,255,.012)
+            );
+
+        box-shadow:
+            0 25px 65px
+            rgba(0,0,0,.42);
+
+        transition:
+            transform .35s,
+            border-color .35s,
+            box-shadow .35s;
+    }
+
+
+    .character-card:hover {
+        transform:
+            translateY(-7px);
+
+        border-color:
+            #8b1118;
+
+        box-shadow:
+            0 35px 80px
+            rgba(229,9,20,.13);
+    }
+
+
+    .character-card.hidden {
+        display:
+            none;
+    }
+
+
+    /* =====================================================
+       CARD IMAGE
+    ===================================================== */
+
+    .character-image {
+        height:
+            380px;
+
+        position:
+            relative;
+
+        overflow:
+            hidden;
+
+        background:
+            radial-gradient(
+                circle,
+                #4b1515,
+                #0d0303 75%
+            );
+    }
+
+
+    .character-image img {
+        width:
+            100%;
+
+        height:
+            100%;
+
+        display:
+            block;
+
+        object-fit:
+            cover;
+
+        object-position:
+            center;
+
+        transition:
+            transform .6s;
+    }
+
+
+    .character-card:hover
+    .character-image img {
+        transform:
+            scale(1.06);
+    }
+
+
+    .character-image::after {
+        content:
+            "";
+
+        position:
+            absolute;
+
+        inset:
+            0;
+
+        pointer-events:
+            none;
+
+        background:
+            linear-gradient(
+                to bottom,
+                transparent 40%,
+                rgba(0,0,0,.94) 100%
+            );
+    }
+
+
+    /* =====================================================
+       BADGES
+    ===================================================== */
+
+    .badge {
+        position:
+            absolute;
+
+        z-index:
+            4;
+
+        top:
+            15px;
+
+        left:
+            15px;
+
+        padding:
+            7px 11px;
+
+        color:
+            white;
+
+        background:
+            rgba(229,9,20,.9);
+
+        border-radius:
+            999px;
+
+        font-size:
+            9px;
+
+        font-weight:
+            900;
+
+        letter-spacing:
+            1.3px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .favorite {
+        position:
+            absolute;
+
+        z-index:
+            5;
+
+        top:
+            13px;
+
+        right:
+            13px;
+
+        width:
+            38px;
+
+        height:
+            38px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.15);
+
+        border-radius:
+            50%;
+
+        color:
+            #777;
+
+        background:
+            rgba(0,0,0,.65);
+
+        cursor:
+            pointer;
+
+        transition:
+            .25s;
+    }
+
+
+    .favorite:hover,
+    .favorite.active {
+        color:
+            #ff3340;
+
+        border-color:
+            #e50914;
+
+        background:
+            rgba(229,9,20,.12);
+    }
+
+
+    /* =====================================================
+       CARD CONTENT
+    ===================================================== */
+
+    .character-content {
+        padding:
+            24px;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        flex:
+            1;
+    }
+
+
+    .character-content h2 {
+        font-size:
+            27px;
+
+        line-height:
+            1.1;
+
+        text-transform:
+            uppercase;
+
+        letter-spacing:
+            1px;
+    }
+
+
+    .character-title {
+        margin-top:
+            7px;
+
+        color:
+            #e50914;
+
+        font-size:
+            10px;
+
+        font-weight:
+            900;
+
+        letter-spacing:
+            1.5px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .description {
+        margin-top:
+            17px;
+
+        color:
+            #969696;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.7;
+    }
+
+
+    /* =====================================================
+       TAGS
+    ===================================================== */
+
+    .tags {
+        display:
+            flex;
+
+        flex-wrap:
+            wrap;
+
+        gap:
+            7px;
+
+        margin-top:
+            18px;
+    }
+
+
+    .tag {
+        padding:
+            6px 9px;
+
+        border:
+            1px solid #302020;
+
+        border-radius:
+            6px;
+
+        color:
+            #888;
+
+        background:
+            #0b0b0b;
+
+        font-size:
+            9px;
+
+        text-transform:
+            uppercase;
+
+        letter-spacing:
+            .8px;
+    }
+
+
+    /* =====================================================
+       INFO LIST
+    ===================================================== */
+
+    .info-list {
+        margin-top:
+            20px;
+
+        border-top:
+            1px solid #281717;
+    }
+
+
+    .info-row {
+        display:
+            flex;
+
+        justify-content:
+            space-between;
+
+        gap:
+            15px;
+
+        padding:
+            10px 0;
+
+        border-bottom:
+            1px solid #1e1212;
+
+        font-size:
+            11px;
+    }
+
+
+    .info-label {
+        color:
+            #5f5f5f;
+
+        text-transform:
+            uppercase;
+
+        letter-spacing:
+            1px;
+    }
+
+
+    .info-value {
+        color:
+            #d2d2d2;
+
+        text-align:
+            right;
+    }
+
+
+    /* =====================================================
+       FAN RATINGS
+    ===================================================== */
+
+    .rating-section {
+        margin-top:
+            22px;
+    }
+
+
+    .rating-heading {
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            space-between;
+
+        margin-bottom:
+            13px;
+
+        color:
+            #777;
+
+        font-size:
+            10px;
+
+        font-weight:
+            900;
+
+        letter-spacing:
+            1.4px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .fan-label {
+        color:
+            #555;
+
+        font-size:
+            8px;
+
+        letter-spacing:
+            .8px;
+    }
+
+
+    .rating {
+        margin-bottom:
+            10px;
+    }
+
+
+    .rating-top {
+        display:
+            flex;
+
+        justify-content:
+            space-between;
+
+        margin-bottom:
+            5px;
+
+        color:
+            #888;
+
+        font-size:
+            10px;
+    }
+
+
+    .rating-number {
+        color:
+            #eee;
+
+        font-weight:
+            900;
+    }
+
+
+    .rating-track {
+        width:
+            100%;
+
+        height:
+            5px;
+
+        overflow:
+            hidden;
+
+        border-radius:
+            999px;
+
+        background:
+            #151515;
+    }
+
+
+    .rating-fill {
+        height:
+            100%;
+
+        border-radius:
+            inherit;
+
+        background:
+            linear-gradient(
+                90deg,
+                #720008,
+                #e50914
+            );
+    }
+
+
+    /* =====================================================
+       CARD BUTTONS
+    ===================================================== */
+
+    .card-buttons {
+        display:
+            grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:
+            9px;
+
+        margin-top:
+            auto;
+
+        padding-top:
+            22px;
+    }
+
+
+    .card-button {
+        min-height:
+            42px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        border-radius:
+            8px;
+
+        text-decoration:
+            none;
+
+        font-size:
+            10px;
+
+        font-weight:
+            900;
+
+        letter-spacing:
+            1px;
+
+        cursor:
+            pointer;
+
+        transition:
+            .25s;
+    }
+
+
+    .compare-button {
+        color:
+            white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #e50914,
+                #850008
+            );
+    }
+
+
+    .compare-button:hover {
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 10px 25px
+            rgba(229,9,20,.2);
+    }
+
+
+    .details-button {
+        color:
+            #aaa;
+
+        background:
+            #0c0c0c;
+
+        border:
+            1px solid #352323;
+    }
+
+
+    .details-button:hover {
+        color:
+            white;
+
+        border-color:
+            #e50914;
+    }
+
+
+    /* =====================================================
+       EMPTY
+    ===================================================== */
+
+    .no-results {
+        display:
+            none;
+
+        padding:
+            70px 20px;
+
+        text-align:
+            center;
+
+        color:
+            #666;
+    }
+
+
+    .no-results strong {
+        display:
+            block;
+
+        margin-bottom:
+            8px;
+
+        color:
+            #aaa;
+
+        font-size:
+            20px;
+    }
+
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    .modal {
+        position:
+            fixed;
+
+        inset:
+            0;
+
+        z-index:
+            3000;
+
+        display:
+            none;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        padding:
+            25px;
+
+        background:
+            rgba(0,0,0,.82);
+
+        backdrop-filter:
+            blur(10px);
+    }
+
+
+    .modal.open {
+        display:
+            flex;
+    }
+
+
+    .modal-box {
+        width:
+            min(900px, 100%);
+
+        max-height:
+            90vh;
+
+        overflow:
+            auto;
+
+        position:
+            relative;
+
+        border:
+            1px solid #542020;
+
+        border-radius:
+            20px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #171010,
+                #080808
+            );
+
+        box-shadow:
+            0 40px 120px
+            rgba(0,0,0,.75);
+
+        animation:
+            modalIn .25s ease;
+    }
+
+
+    @keyframes modalIn {
+
+        from {
+            opacity:
+                0;
+
+            transform:
+                translateY(20px)
+                scale(.97);
         }
 
+        to {
+            opacity:
+                1;
 
-        /* =====================================================
-           BODY
-        ===================================================== */
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-
-            color: white;
-
-            min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at 50% -15%,
-                    #501010 0%,
-                    #1a0707 30%,
-                    #080808 65%,
-                    #030303 100%
-                );
+            transform:
+                translateY(0)
+                scale(1);
         }
 
+    }
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+
+    .modal-close {
+        position:
+            absolute;
+
+        z-index:
+            10;
+
+        top:
+            15px;
+
+        right:
+            15px;
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        border:
+            1px solid #492323;
+
+        border-radius:
+            50%;
+
+        color:
+            #aaa;
+
+        background:
+            rgba(0,0,0,.65);
+
+        cursor:
+            pointer;
+
+        font-size:
+            20px;
+    }
+
+
+    .modal-close:hover {
+        color:
+            white;
+
+        border-color:
+            #e50914;
+    }
+
+
+    .modal-top {
+        display:
+            grid;
+
+        grid-template-columns:
+            270px 1fr;
+
+        gap:
+            30px;
+
+        padding:
+            30px;
+    }
+
+
+    .modal-image {
+        width:
+            100%;
+
+        height:
+            350px;
+
+        overflow:
+            hidden;
+
+        border-radius:
+            14px;
+
+        background:
+            #120505;
+    }
+
+
+    .modal-image img {
+        width:
+            100%;
+
+        height:
+            100%;
+
+        object-fit:
+            cover;
+    }
+
+
+    .modal-title {
+        padding-top:
+            15px;
+    }
+
+
+    .modal-title small {
+        color:
+            #e50914;
+
+        font-size:
+            10px;
+
+        font-weight:
+            900;
+
+        letter-spacing:
+            2px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .modal-title h2 {
+        margin-top:
+            8px;
+
+        font-size:
+            clamp(32px, 5vw, 55px);
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .modal-title p {
+        margin-top:
+            15px;
+
+        color:
+            #999;
+
+        line-height:
+            1.8;
+
+        font-size:
+            14px;
+    }
+
+
+    .modal-content {
+        padding:
+            0 30px 30px;
+    }
+
+
+    .modal-section {
+        padding:
+            25px 0;
+
+        border-top:
+            1px solid #291818;
+    }
+
+
+    .modal-section h3 {
+        margin-bottom:
+            15px;
+
+        color:
+            #ddd;
+
+        font-size:
+            13px;
+
+        letter-spacing:
+            1.5px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .modal-section p {
+        color:
+            #929292;
+
+        line-height:
+            1.8;
+
+        font-size:
+            13px;
+    }
+
+
+    .modal-facts {
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            10px;
+    }
+
+
+    .modal-fact {
+        padding:
+            15px;
+
+        border:
+            1px solid #291919;
+
+        border-radius:
+            10px;
+
+        background:
+            #0b0b0b;
+    }
+
+
+    .modal-fact span {
+        display:
+            block;
+
+        color:
+            #555;
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1px;
+
+        text-transform:
+            uppercase;
+    }
+
+
+    .modal-fact strong {
+        display:
+            block;
+
+        margin-top:
+            6px;
+
+        color:
+            #ddd;
+
+        font-size:
+            13px;
+    }
+
+
+    .spoiler-warning {
+        padding:
+            15px;
+
+        margin-bottom:
+            15px;
+
+        border:
+            1px solid #5b2929;
+
+        border-radius:
+            9px;
+
+        color:
+            #aaa;
+
+        background:
+            rgba(229,9,20,.05);
+
+        font-size:
+            11px;
+
+        line-height:
+            1.6;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+        padding:
+            35px 20px;
+
+        border-top:
+            1px solid #211010;
+
+        color:
+            #555;
+
+        text-align:
+            center;
+
+        font-size:
+            11px;
+
+        line-height:
+            1.8;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1050px) {
+
+        .character-grid {
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+    }
+
+
+    @media (max-width: 760px) {
 
         header {
-            height: 75px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 7%;
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-
-            background:
-                rgba(5, 5, 5, 0.95);
-
-            backdrop-filter: blur(15px);
-
-            border-bottom:
-                1px solid #321414;
-        }
-
-
-        .logo {
-            font-size: 25px;
-
-            font-weight: 900;
-
-            letter-spacing: 2px;
-
-            white-space: nowrap;
-        }
-
-
-        .logo span {
-            color: #e50914;
-        }
-
-
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
-
-        nav {
-            display: flex;
-
-            align-items: center;
-
-            gap: 30px;
-        }
-
-
-        nav a {
-            color: #999;
-
-            text-decoration: none;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            transition: 0.3s;
-        }
-
-
-        nav a:hover {
-            color: #e50914;
-        }
-
-
-        nav a.active {
-            color: #e50914;
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-            text-align: center;
+            flex-direction:
+                column;
 
             padding:
-                85px 20px 60px;
+                15px 10px;
+
+            gap:
+                12px;
+        }
+
+
+        nav {
+            gap:
+                15px;
+        }
+
+
+        .controls {
+            position:
+                static;
+
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .modal-top {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .modal-image {
+            height:
+                330px;
+
+            max-width:
+                300px;
+
+            margin:
+                auto;
+        }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+        .hero {
+            padding:
+                65px 0 45px;
         }
 
 
         .hero h1 {
-            font-size:
-                clamp(42px, 7vw, 78px);
-
-            font-weight: 900;
-
-            letter-spacing: 5px;
-
-            text-transform: uppercase;
-
-            line-height: 1;
+            letter-spacing:
+                2px;
         }
 
-
-        .hero h1 span {
-            color: #e50914;
-        }
-
-
-        .hero p {
-            max-width: 700px;
-
-            margin: 20px auto 0;
-
-            color: #888;
-
-            font-size: 15px;
-
-            line-height: 1.7;
-        }
-
-
-        /* =====================================================
-           MAIN
-        ===================================================== */
-
-        main {
-            width:
-                min(1250px, 92%);
-
-            margin: auto;
-
-            padding-bottom: 100px;
-        }
-
-
-        /* =====================================================
-           SEARCH
-        ===================================================== */
-
-        .search-container {
-            max-width: 600px;
-
-            margin:
-                0 auto 50px;
-
-            position: relative;
-        }
-
-
-        #searchInput {
-            width: 100%;
-
-            padding: 17px 20px;
-
-            border-radius: 10px;
-
-            border:
-                1px solid #382020;
-
-            outline: none;
-
-            color: white;
-
-            background:
-                rgba(255,255,255,0.04);
-
-            font-size: 14px;
-
-            transition: 0.3s;
-        }
-
-
-        #searchInput:focus {
-            border-color: #e50914;
-
-            box-shadow:
-                0 0 25px
-                rgba(229,9,20,0.12);
-        }
-
-
-        /* =====================================================
-           CHARACTER GRID
-        ===================================================== */
 
         .character-grid {
-            display: grid;
-
             grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 30px;
+                1fr;
         }
 
-
-        /* =====================================================
-           CHARACTER CARD
-        ===================================================== */
-
-        .character-card {
-            overflow: hidden;
-
-            border-radius: 18px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.07),
-                    rgba(255,255,255,0.015)
-                );
-
-            border:
-                1px solid #351919;
-
-            box-shadow:
-                0 25px 60px
-                rgba(0,0,0,0.45);
-
-            transition:
-                transform 0.35s,
-                border-color 0.35s,
-                box-shadow 0.35s;
-        }
-
-
-        .character-card:hover {
-            transform:
-                translateY(-8px);
-
-            border-color:
-                #e50914;
-
-            box-shadow:
-                0 30px 75px
-                rgba(229,9,20,0.18);
-        }
-
-
-        /* =====================================================
-           IMAGE
-        ===================================================== */
 
         .character-image {
-            height: 430px;
-
-            position: relative;
-
-            overflow: hidden;
-
-            background:
-                radial-gradient(
-                    circle,
-                    #481515,
-                    #100404 75%
-                );
+            height:
+                390px;
         }
 
 
-        .character-image img {
-            width: 100%;
+        .database-bar {
+            flex-direction:
+                column;
 
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
-
-            object-position: center;
-
-            transition:
-                transform 0.6s ease;
+            align-items:
+                flex-start;
         }
 
 
-        .character-card:hover
-        .character-image img {
-            transform:
-                scale(1.06);
-        }
-
-
-        .character-image::after {
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            pointer-events: none;
-
-            background:
-                linear-gradient(
-                    to bottom,
-                    transparent 45%,
-                    rgba(0,0,0,0.9) 100%
-                );
-        }
-
-
-        /* =====================================================
-           CHARACTER BADGE
-        ===================================================== */
-
-        .character-badge {
-            position: absolute;
-
-            top: 18px;
-
-            left: 18px;
-
-            z-index: 2;
-
+        .modal {
             padding:
-                7px 12px;
-
-            border-radius: 20px;
-
-            background:
-                rgba(229,9,20,0.9);
-
-            color: white;
-
-            font-size: 10px;
-
-            font-weight: bold;
-
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
+                10px;
         }
 
 
-        /* =====================================================
-           CARD CONTENT
-        ===================================================== */
+        .modal-top,
+        .modal-content {
+            padding-left:
+                20px;
 
-        .character-content {
-            padding: 25px;
+            padding-right:
+                20px;
         }
 
 
-        .character-content h2 {
-            font-size: 29px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-        }
-
-
-        .character-title {
-            color: #e50914;
-
-            margin-top: 6px;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            letter-spacing: 1px;
-
-            text-transform: uppercase;
-        }
-
-
-        .description {
-            margin-top: 18px;
-
-            color: #999;
-
-            font-size: 13px;
-
-            line-height: 1.7;
-        }
-
-
-        /* =====================================================
-           INFO ROW
-        ===================================================== */
-
-        .info-list {
-            margin-top: 22px;
-
-            border-top:
-                1px solid #2b1717;
-        }
-
-
-        .info-row {
-            display: flex;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            padding:
-                12px 0;
-
-            border-bottom:
-                1px solid #211313;
-
-            font-size: 12px;
-        }
-
-
-        .info-label {
-            color: #666;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-        }
-
-
-        .info-value {
-            color: #ddd;
-
-            text-align: right;
-        }
-
-
-        /* =====================================================
-           STAT PREVIEW
-        ===================================================== */
-
-        .stat-section {
-            margin-top: 24px;
-        }
-
-
-        .stat-title {
-            color: #777;
-
-            margin-bottom: 14px;
-
-            font-size: 11px;
-
-            font-weight: bold;
-
-            letter-spacing: 1.5px;
-
-            text-transform: uppercase;
-        }
-
-
-        .stat {
-            margin-bottom: 11px;
-        }
-
-
-        .stat-top {
-            display: flex;
-
-            justify-content: space-between;
-
-            margin-bottom: 5px;
-
-            font-size: 11px;
-        }
-
-
-        .stat-name {
-            color: #888;
-        }
-
-
-        .stat-number {
-            color: white;
-
-            font-weight: bold;
-        }
-
-
-        .stat-bar {
-            width: 100%;
-
-            height: 5px;
-
-            overflow: hidden;
-
-            border-radius: 20px;
-
-            background: #151515;
-        }
-
-
-        .stat-fill {
-            height: 100%;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #7c0008,
-                    #e50914
-                );
-        }
-
-
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
-
-        .card-buttons {
-            display: grid;
-
+        .modal-facts {
             grid-template-columns:
-                1fr 1fr;
-
-            gap: 10px;
-
-            margin-top: 25px;
+                1fr;
         }
 
+    }
 
-        .card-button {
-            padding: 12px;
-
-            border-radius: 8px;
-
-            text-align: center;
-
-            text-decoration: none;
-
-            font-size: 11px;
-
-            font-weight: bold;
-
-            letter-spacing: 0.5px;
-
-            transition: 0.3s;
-        }
-
-
-        .compare-button {
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #e50914,
-                    #8e0007
-                );
-        }
-
-
-        .compare-button:hover {
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 8px 20px
-                rgba(229,9,20,0.25);
-        }
-
-
-        .details-button {
-            color: #aaa;
-
-            border:
-                1px solid #3b2525;
-        }
-
-
-        .details-button:hover {
-            color: white;
-
-            border-color:
-                #e50914;
-        }
-
-
-        /* =====================================================
-           EMPTY SEARCH
-        ===================================================== */
-
-        .no-results {
-            display: none;
-
-            text-align: center;
-
-            color: #777;
-
-            padding: 60px 20px;
-
-            font-size: 15px;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-            padding: 30px;
-
-            text-align: center;
-
-            color: #555;
-
-            border-top:
-                1px solid #211010;
-
-            font-size: 12px;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
-        @media (max-width: 950px) {
-
-            .character-grid {
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
-        }
-
-
-        @media (max-width: 650px) {
-
-            header {
-                height: auto;
-
-                min-height: 75px;
-
-                flex-direction: column;
-
-                gap: 13px;
-
-                padding:
-                    15px 10px;
-            }
-
-
-            nav {
-                flex-wrap: wrap;
-
-                justify-content: center;
-
-                gap: 15px;
-            }
-
-
-            nav a {
-                font-size: 11px;
-            }
-
-
-            .hero {
-                padding-top: 55px;
-            }
-
-
-            .hero h1 {
-                letter-spacing: 2px;
-            }
-
-
-            .character-grid {
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .character-image {
-                height: 400px;
-            }
-
-        }
-
-    </style>
+</style>
+```
 
 </head>
 
-
 <body>
 
+<header>
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
-
-    <header>
-
-        <div class="logo">
-            LOOK<span>ISM</span> HUB
-        </div>
+```
+<div class="logo">
+    LOOK<span>ISM</span> HUB
+</div>
 
 
-        <nav>
+<nav>
 
-            <a href="home.html">
-                Home
-            </a>
+    <a href="home.html">
+        Home
+    </a>
 
-            <a
-                href="characters.html"
-                class="active"
-            >
-                Characters
-            </a>
+    <a
+        href="characters.html"
+        class="active"
+    >
+        Characters
+    </a>
 
-            <a href="index.html">
-                Fights
-            </a>
+    <a href="index.html">
+        Fights
+    </a>
 
-            <a href="crews.html">
-                Crews
-            </a>
+    <a href="crews.html">
+        Crews
+    </a>
 
-            <a href="timeline.html">
-                Timeline
-            </a>
+    <a href="timeline.html">
+        Timeline
+    </a>
 
-        </nav>
+</nav>
+```
 
-    </header>
+</header>
 
+<section class="hero">
 
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
-    <section class="hero">
-
-        <h1>
-            <span>CHARACTERS</span>
-        </h1>
+```
+<div class="eyebrow">
+    LOOKISM HUB DATABASE
+</div>
 
 
-        <p>
-            Explore the fighters currently available in
-            the LOOKISM HUB database.
-        </p>
-
-    </section>
+<h1>
+    <span>CHARACTERS</span>
+</h1>
 
 
+<p>
+    Explore major characters, affiliations, fighting styles,
+    relationships, story roles and LOOKISM HUB's separate
+    fan-made combat ratings.
+</p>
+```
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
+</section>
 
-    <main>
+<main>
 
+```
+<!-- =====================================================
+     CONTROLS
+====================================================== -->
 
-        <!-- SEARCH -->
+<section class="controls">
 
-        <div class="search-container">
+    <div class="search-box">
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search characters..."
-                autocomplete="off"
-            >
-
-        </div>
-
-
-
-        <!-- CHARACTER GRID -->
-
-        <section
-            class="character-grid"
-            id="characterGrid"
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search a character, crew, style or role..."
+            autocomplete="off"
         >
 
+    </div>
 
-            <!-- =================================================
-                 GUN PARK
-            ================================================== -->
 
-            <article
-                class="character-card"
-                data-name="gun park"
-            >
+    <select
+        class="filter-select"
+        id="groupFilter"
+    >
 
-                <div class="character-image">
+        <option value="all">
+            All Groups
+        </option>
 
-                    <div class="character-badge">
-                        Fighter
-                    </div>
+        <option value="j-high">
+            J High / Allied
+        </option>
 
+        <option value="big-deal">
+            Big Deal
+        </option>
 
-                    <img
-                        src="https://th.bing.com/th/id/OIP.OotKeh3-ln2Kd9UVTwha9AHaJ4?w=203&h=271&c=7&r=0&o=7&pid=1.7&rm=3"
-                        alt="Gun Park"
-                    >
+        <option value="hostel">
+            Hostel
+        </option>
 
-                </div>
+        <option value="workers">
+            Workers
+        </option>
 
+        <option value="gen-zero">
+            Generation 0
+        </option>
 
-                <div class="character-content">
+        <option value="gen-one">
+            Generation 1
+        </option>
 
-                    <h2>
-                        Gun Park
-                    </h2>
+        <option value="gen-ten">
+            Ten Geniuses
+        </option>
 
+        <option value="other">
+            Other
+        </option>
 
-                    <div class="character-title">
-                        The Nurture Genius
-                    </div>
+    </select>
 
 
-                    <p class="description">
-                        Gun Park is one of the central veteran
-                        fighters in LOOKISM. He is closely connected
-                        to Charles Choi and is known for his role as
-                        a mentor and evaluator of talented fighters.
-                        His fighting ability and training experience
-                        make him one of the major figures in the
-                        series' combat world.
-                    </p>
+    <button
+        class="clear-button"
+        id="clearButton"
+        type="button"
+    >
+        Reset
+    </button>
 
+</section>
 
-                    <div class="info-list">
 
-                        <div class="info-row">
 
-                            <span class="info-label">
-                                Role
-                            </span>
+<div class="database-bar">
 
-                            <span class="info-value">
-                                Fighter / Mentor
-                            </span>
+    <div class="database-title">
 
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Known For
-                            </span>
-
-                            <span class="info-value">
-                                Martial Arts & Training
-                            </span>
-
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Major Rival
-                            </span>
-
-                            <span class="info-value">
-                                Goo Kim
-                            </span>
-
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Series
-                            </span>
-
-                            <span class="info-value">
-                                LOOKISM
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- FAN STATS -->
-
-                    <div class="stat-section">
-
-                        <div class="stat-title">
-                            Site Combat Ratings
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Strength
-                                </span>
-
-                                <span class="stat-number">
-                                    95
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:95%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Speed
-                                </span>
-
-                                <span class="stat-number">
-                                    90
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:90%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Durability
-                                </span>
-
-                                <span class="stat-number">
-                                    96
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:96%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Technique
-                                </span>
-
-                                <span class="stat-number">
-                                    98
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:98%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Battle IQ
-                                </span>
-
-                                <span class="stat-number">
-                                    98
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:98%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Experience
-                                </span>
-
-                                <span class="stat-number">
-                                    100
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:100%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="card-buttons">
-
-                        <a
-                            href="index.html"
-                            class="card-button compare-button"
-                        >
-                            COMPARE
-                        </a>
-
-
-                        <a
-                            href="#"
-                            class="card-button details-button"
-                            onclick="showInfo('Gun Park'); return false;"
-                        >
-                            INFO
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- =================================================
-                 DANIEL PARK
-            ================================================== -->
-
-            <article
-                class="character-card"
-                data-name="daniel park"
-            >
-
-                <div class="character-image">
-
-                    <div class="character-badge">
-                        Main Character
-                    </div>
-
-
-                    <img
-                        src="https://tse2.mm.bing.net/th/id/OIP.szeTzs6NqTAPjFBcEg2kGAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-                        alt="Daniel Park"
-                    >
-
-                </div>
-
-
-                <div class="character-content">
-
-                    <h2>
-                        Daniel Park
-                    </h2>
-
-
-                    <div class="character-title">
-                        The Protagonist
-                    </div>
-
-
-                    <p class="description">
-                        Daniel Park is the protagonist of LOOKISM.
-                        The official series premise introduces Daniel
-                        as a student who wakes up in a different body,
-                        beginning the story's central mystery around
-                        his two bodies, identity and personal growth.
-                    </p>
-
-
-                    <div class="info-list">
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Role
-                            </span>
-
-                            <span class="info-value">
-                                Protagonist
-                            </span>
-
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                School
-                            </span>
-
-                            <span class="info-value">
-                                J High
-                            </span>
-
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Special Trait
-                            </span>
-
-                            <span class="info-value">
-                                Two Bodies
-                            </span>
-
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Major Connection
-                            </span>
-
-                            <span class="info-value">
-                                Gun Park
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- FAN STATS -->
-
-                    <div class="stat-section">
-
-                        <div class="stat-title">
-                            Site Combat Ratings
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Strength
-                                </span>
-
-                                <span class="stat-number">
-                                    90
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:90%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Speed
-                                </span>
-
-                                <span class="stat-number">
-                                    93
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:93%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Durability
-                                </span>
-
-                                <span class="stat-number">
-                                    90
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:90%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Technique
-                                </span>
-
-                                <span class="stat-number">
-                                    92
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:92%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Battle IQ
-                                </span>
-
-                                <span class="stat-number">
-                                    94
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:94%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Experience
-                                </span>
-
-                                <span class="stat-number">
-                                    88
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:88%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="card-buttons">
-
-                        <a
-                            href="index.html"
-                            class="card-button compare-button"
-                        >
-                            COMPARE
-                        </a>
-
-
-                        <a
-                            href="#"
-                            class="card-button details-button"
-                            onclick="showInfo('Daniel Park'); return false;"
-                        >
-                            INFO
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- =================================================
-                 GOO KIM
-            ================================================== -->
-
-            <article
-                class="character-card"
-                data-name="goo kim"
-            >
-
-                <div class="character-image">
-
-                    <div class="character-badge">
-                        Weapon Genius
-                    </div>
-
-
-                    <img
-                        src="https://tse2.mm.bing.net/th/id/OIP.GHBuF7WGxfvPm8ls3uYb2AAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-                        alt="Goo Kim"
-                    >
-
-                </div>
-
-
-                <div class="character-content">
-
-                    <h2>
-                        Goo Kim
-                    </h2>
-
-
-                    <div class="character-title">
-                        The Weapon Genius
-                    </div>
-
-
-                    <p class="description">
-                        Goo Kim is a major fighter and Gun Park's
-                        longtime rival and partner. His fighting style
-                        is particularly associated with weapons: he is
-                        known for turning ordinary objects into weapons
-                        and becomes especially dangerous when armed.
-                    </p>
-
-
-                    <div class="info-list">
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Role
-                            </span>
-
-                            <span class="info-value">
-                                Fighter / Rival
-                            </span>
-
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Known For
-                            </span>
-
-                            <span class="info-value">
-                                Weapon Combat
-                            </span>
-
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Major Rival
-                            </span>
-
-                            <span class="info-value">
-                                Gun Park
-                            </span>
-
-                        </div>
-
-
-                        <div class="info-row">
-
-                            <span class="info-label">
-                                Fighting Style
-                            </span>
-
-                            <span class="info-value">
-                                Weapons / Martial Arts
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- GOO STATS NOT YET PROVIDED -->
-
-                    <div class="stat-section">
-
-                        <div class="stat-title">
-                            Site Combat Ratings
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Strength
-                                </span>
-
-                                <span class="stat-number">
-                                    —
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:0%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Speed
-                                </span>
-
-                                <span class="stat-number">
-                                    —
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:0%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Durability
-                                </span>
-
-                                <span class="stat-number">
-                                    —
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:0%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Technique
-                                </span>
-
-                                <span class="stat-number">
-                                    —
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:0%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Battle IQ
-                                </span>
-
-                                <span class="stat-number">
-                                    —
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:0%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <div class="stat-top">
-
-                                <span class="stat-name">
-                                    Experience
-                                </span>
-
-                                <span class="stat-number">
-                                    —
-                                </span>
-
-                            </div>
-
-                            <div class="stat-bar">
-
-                                <div
-                                    class="stat-fill"
-                                    style="width:0%"
-                                ></div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="card-buttons">
-
-                        <a
-                            href="index.html"
-                            class="card-button compare-button"
-                        >
-                            COMPARE
-                        </a>
-
-
-                        <a
-                            href="#"
-                            class="card-button details-button"
-                            onclick="showInfo('Goo Kim'); return false;"
-                        >
-                            INFO
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </section>
-
-
-
-        <div
-            class="no-results"
-            id="noResults"
+        Showing
+        <span
+            class="database-count"
+            id="characterCount"
         >
-            No character found.
+            0
+        </span>
+        characters
+
+    </div>
+
+
+    <div class="legend">
+
+        Ratings are LOOKISM HUB fan/site values, not canon statistics.
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CHARACTER GRID
+====================================================== -->
+
+<section
+    class="character-grid"
+    id="characterGrid"
+></section>
+
+
+
+<div
+    class="no-results"
+    id="noResults"
+>
+
+    <strong>
+        No character found
+    </strong>
+
+    Try another name, group, role or fighting style.
+
+</div>
+```
+
+</main>
+
+<footer>
+
+```
+LOOKISM HUB — Fan-made character database.
+
+<br>
+
+Canon information and fan-made combat ratings are kept
+separate for clarity.
+```
+
+</footer>
+
+<!-- =====================================================
+     MODAL
+====================================================== -->
+
+<div
+    class="modal"
+    id="characterModal"
+    aria-hidden="true"
+>
+
+```
+<div
+    class="modal-box"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalName"
+>
+
+    <button
+        class="modal-close"
+        id="modalClose"
+        type="button"
+        aria-label="Close"
+    >
+        ×
+    </button>
+
+
+    <div class="modal-top">
+
+        <div class="modal-image">
+
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+            >
+
         </div>
 
-    </main>
+
+        <div class="modal-title">
+
+            <small id="modalTitle">
+                CHARACTER
+            </small>
+
+
+            <h2 id="modalName">
+                Character
+            </h2>
+
+
+            <p id="modalDescription">
+            </p>
+
+        </div>
+
+    </div>
 
 
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <div class="modal-content">
 
-    <footer>
+        <div class="modal-section">
 
-        LOOKISM HUB — Fan-made character database.
-
-        <br><br>
-
-        Character information is presented for
-        fan/reference purposes.
-
-    </footer>
+            <h3>
+                Character Facts
+            </h3>
 
 
+            <div
+                class="modal-facts"
+                id="modalFacts"
+            ></div>
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+        </div>
 
-    <script>
 
-        /* =================================================
-           SEARCH
-        ================================================= */
 
-        const searchInput =
-            document.getElementById(
-                "searchInput"
+        <div class="modal-section">
+
+            <h3>
+                Story & Fighting Profile
+            </h3>
+
+
+            <p id="modalProfile">
+            </p>
+
+        </div>
+
+
+
+        <div class="modal-section">
+
+            <h3>
+                Important Connections
+            </h3>
+
+
+            <p id="modalConnections">
+            </p>
+
+        </div>
+
+
+
+        <div class="modal-section">
+
+            <div class="spoiler-warning">
+
+                ⚠ Some character information may involve
+                story developments. The database is intended
+                for LOOKISM fans and may contain spoilers.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+
+/* =========================================================
+   CHARACTER DATABASE
+========================================================= */
+
+const characters = [
+
+    {
+        id: "gun",
+        name: "Gun Park",
+        title: "The Nurture Genius",
+        badge: "Fighter",
+        group: "gen-ten",
+
+        image:
+            "https://th.bing.com/th/id/OIP.OotKeh3-ln2Kd9UVTwha9AHaJ4?w=203&h=271&c=7&r=0&o=7&pid=1.7&rm=3",
+
+        role:
+            "Fighter / Mentor",
+
+        crew:
+            "Ten Geniuses / Yamazaki connection",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Kyokushin Karate + multiple martial arts",
+
+        knownFor:
+            "Training, combat knowledge and Ultra Instinct",
+
+        rival:
+            "Goo Kim",
+
+        description:
+            "Gun Park is a major figure in the combat side of LOOKISM. He is closely connected to Charles Choi and has played a major role in training, evaluating and developing younger fighters.",
+
+        profile:
+            "Gun is portrayed as an extremely experienced martial artist with broad knowledge of combat systems. The Lookism Wiki describes him as having mastered multiple martial arts and as someone who integrates them into his fighting style. His relationship with Goo Kim is one of the central rivalries surrounding the Ten Geniuses. These are story and reference descriptions; the numeric ratings below are LOOKISM HUB's own fan-made values.",
+
+        connections:
+            "Charles Choi, Goo Kim, Daniel Park, Johan Seong, Jake Kim, Eli Jang and several other fighters have important connections to Gun.",
+
+        stats: {
+            strength: 95,
+            speed: 90,
+            durability: 96,
+            technique: 98,
+            battleIq: 98,
+            experience: 100
+        },
+
+        tags: [
+            "Mentor",
+            "Martial Arts",
+            "Ten Geniuses",
+            "Ultra Instinct"
+        ]
+    },
+
+
+    {
+        id: "daniel",
+        name: "Daniel Park",
+        title: "The Protagonist",
+        badge: "Main Character",
+        group: "j-high",
+
+        image:
+            "https://tse2.mm.bing.net/th/id/OIP.szeTzs6NqTAPjFBcEg2kGAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+        role:
+            "Protagonist",
+
+        crew:
+            "Allied",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Copy-based martial arts / multiple techniques",
+
+        knownFor:
+            "Two bodies and Copy ability",
+
+        rival:
+            "Multiple major fighters",
+
+        description:
+            "Daniel Park is the protagonist of LOOKISM. His story begins with the unusual phenomenon of living with two bodies, creating the central mystery around identity, appearance and his development as a fighter.",
+
+        profile:
+            "Daniel's fighting development is one of the major long-running elements of the series. The Lookism Wiki describes his Copy ability and his use of multiple techniques, while his Ultra Instinct state represents a major transformation in how he fights. His abilities and exact scaling depend heavily on the version of Daniel being discussed.",
+
+        connections:
+            "Gun Park, James Lee, Jinyoung Park, Zack Lee, Vasco, Jay Hong, Jake Kim, Johan Seong and the members of Allied are among his major connections.",
+
+        stats: {
+            strength: 90,
+            speed: 93,
+            durability: 90,
+            technique: 92,
+            battleIq: 94,
+            experience: 88
+        },
+
+        tags: [
+            "Protagonist",
+            "Copy",
+            "Two Bodies",
+            "Allied"
+        ]
+    },
+
+
+    {
+        id: "goo",
+        name: "Goo Kim",
+        title: "The Weapon Genius",
+        badge: "Weapon Genius",
+        group: "gen-ten",
+
+        image:
+            "https://tse2.mm.bing.net/th/id/OIP.GHBuF7WGxfvPm8ls3uYb2AAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+        role:
+            "Fighter / Rival",
+
+        crew:
+            "Ten Geniuses",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Weapon combat / martial arts",
+
+        knownFor:
+            "Improvised and weapon-based fighting",
+
+        rival:
+            "Gun Park",
+
+        description:
+            "Goo Kim is one of Gun Park's closest rivals and a major figure in the Ten Geniuses. His fighting identity is strongly associated with weapons and his ability to turn objects into dangerous tools.",
+
+        profile:
+            "Goo's fighting style contrasts with Gun's preference for unarmed combat. His weapon specialization is one of his defining characteristics, and community discussions frequently debate how his weapon use affects matchups. Those debates are fan interpretations rather than official numeric rankings.",
+
+        connections:
+            "Gun Park, Charles Choi and the other Ten Geniuses are among Goo's most important connections.",
+
+        stats: {
+            strength: 94,
+            speed: 94,
+            durability: 91,
+            technique: 98,
+            battleIq: 97,
+            experience: 96
+        },
+
+        tags: [
+            "Weapon Genius",
+            "Ten Geniuses",
+            "Rival",
+            "Weapons"
+        ]
+    },
+
+
+    {
+        id: "james",
+        name: "James Lee",
+        title: "Legend of the First Generation",
+        badge: "Legend",
+        group: "gen-one",
+
+        image:
+            "images/james-lee.jpg",
+
+        role:
+            "First Generation Legend",
+
+        crew:
+            "Independent",
+
+        generation:
+            "Generation 1",
+
+        style:
+            "Elite martial arts / speed-based combat",
+
+        knownFor:
+            "First Generation legend",
+
+        rival:
+            "Generation 1 Kings",
+
+        description:
+            "James Lee is one of the most important figures connected to the First Generation. His reputation was built around the conflicts involving the regional kings and the conclusion of the First Generation era.",
+
+        profile:
+            "James Lee's identity and history are deeply connected to the First Generation storyline. He is also associated with the identity known publicly as DG. Because later story developments can reveal information about identities and history, this card deliberately keeps the default presentation relatively spoiler-light.",
+
+        connections:
+            "DG, Charles Choi, the First Generation Kings and Daniel Park are among the major story connections associated with James Lee.",
+
+        stats: {
+            strength: 96,
+            speed: 100,
+            durability: 92,
+            technique: 99,
+            battleIq: 98,
+            experience: 94
+        },
+
+        tags: [
+            "First Generation",
+            "Legend",
+            "Speed",
+            "DG"
+        ]
+    },
+
+
+    {
+        id: "johan",
+        name: "Johan Seong",
+        title: "The Copy Genius",
+        badge: "Genius",
+        group: "other",
+
+        image:
+            "images/johan-seong.jpg",
+
+        role:
+            "Fighter / Crew Head",
+
+        crew:
+            "God Dog",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Copy-based martial arts",
+
+        knownFor:
+            "Copy ability and eyesight",
+
+        rival:
+            "Major Generation 2 fighters",
+
+        description:
+            "Johan Seong is a major Generation 2 fighter whose story is strongly connected to his mother, God Dog and his exceptional ability to reproduce fighting techniques.",
+
+        profile:
+            "Johan's Copy ability is one of the defining aspects of his fighting style. His storyline also involves the deterioration of his eyesight, creating an important distinction between different periods of his fighting career.",
+
+        connections:
+            "Zack Lee, Mira Kim, Gun Park, Johan's mother and the God Dog storyline are central to his character.",
+
+        stats: {
+            strength: 91,
+            speed: 97,
+            durability: 87,
+            technique: 99,
+            battleIq: 94,
+            experience: 87
+        },
+
+        tags: [
+            "Copy",
+            "God Dog",
+            "Generation 2",
+            "Genius"
+        ]
+    },
+
+
+    {
+        id: "jake",
+        name: "Jake Kim",
+        title: "Big Deal's Leader",
+        badge: "Crew Head",
+        group: "big-deal",
+
+        image:
+            "images/jake-kim.jpg",
+
+        role:
+            "Big Deal Leader",
+
+        crew:
+            "Big Deal",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Street fighting / Gapryong-style techniques",
+
+        knownFor:
+            "Big Deal and conviction",
+
+        rival:
+            "Samuel Seo / Generation 2 rivals",
+
+        description:
+            "Jake Kim is the leader of Big Deal and one of the central crew heads of Generation 2. His story is strongly connected to Big Deal, Sinu Han and his family history.",
+
+        profile:
+            "Jake combines leadership with close-range combat and has developed significantly throughout the series. His family connection to Gapryong Kim is an important part of his character and fighting development.",
+
+        connections:
+            "Sinu Han, Jerry Kwon, Samuel Seo, Gun Park, Big Deal and Jake's family are central to his story.",
+
+        stats: {
+            strength: 94,
+            speed: 88,
+            durability: 95,
+            technique: 91,
+            battleIq: 91,
+            experience: 87
+        },
+
+        tags: [
+            "Big Deal",
+            "Crew Head",
+            "Conviction",
+            "Generation 2"
+        ]
+    },
+
+
+    {
+        id: "samuel",
+        name: "Samuel Seo",
+        title: "The Independent Crew Head",
+        badge: "Crew Head",
+        group: "workers",
+
+        image:
+            "images/samuel-seo.jpg",
+
+        role:
+            "Crew Head",
+
+        crew:
+            "Workers / Independent",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Street fighting / grappling",
+
+        knownFor:
+            "Ambition and brutal fighting style",
+
+        rival:
+            "Jake Kim",
+
+        description:
+            "Samuel Seo is one of the major crew heads introduced during the Four Major Crews storyline. His ambition and complicated relationships with the other crew heads make him an important Generation 2 character.",
+
+        profile:
+            "Samuel is characterized by an aggressive fighting style and exceptional physicality. His relationship with Gun Park is particularly important because Samuel previously sought recognition as Gun's successor.",
+
+        connections:
+            "Jake Kim, Gun Park, Eugene, Workers and the other crew heads are important parts of Samuel's story.",
+
+        stats: {
+            strength: 95,
+            speed: 87,
+            durability: 96,
+            technique: 88,
+            battleIq: 90,
+            experience: 85
+        },
+
+        tags: [
+            "Workers",
+            "Crew Head",
+            "Street Fighter",
+            "Generation 2"
+        ]
+    },
+
+
+    {
+        id: "eli",
+        name: "Eli Jang",
+        title: "Hostel's Guardian",
+        badge: "Crew Head",
+        group: "hostel",
+
+        image:
+            "images/eli-jang.jpg",
+
+        role:
+            "Hostel Leader / Fighter",
+
+        crew:
+            "Hostel",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Animal-inspired movement / weapons",
+
+        knownFor:
+            "Hostel and Runaway Fam",
+
+        rival:
+            "Gun Park / major crew fighters",
+
+        description:
+            "Eli Jang is one of Generation 2's central fighters and a key figure in Hostel. His story combines fighting, family responsibility and his relationship with the children connected to Hostel.",
+
+        profile:
+            "Eli developed a distinctive fighting style influenced by his experiences and training. His relationship with Gun is especially important to his development, while Hostel gives his character a strong family-oriented storyline.",
+
+        connections:
+            "Heather, Yenna, Sally Park, Warren Chae, Hostel, Gun Park and the Runaway Fam are important connections.",
+
+        stats: {
+            strength: 91,
+            speed: 92,
+            durability: 91,
+            technique: 94,
+            battleIq: 92,
+            experience: 88
+        },
+
+        tags: [
+            "Hostel",
+            "Crew Head",
+            "Guardian",
+            "Generation 2"
+        ]
+    },
+
+
+    {
+        id: "warren",
+        name: "Warren Chae",
+        title: "Hostel's Protector",
+        badge: "Fighter",
+        group: "hostel",
+
+        image:
+            "images/warren-chae.jpg",
+
+        role:
+            "Hostel Fighter",
+
+        crew:
+            "Hostel",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "CQC / close combat",
+
+        knownFor:
+            "Combat training and loyalty",
+
+        rival:
+            "Major Generation 2 fighters",
+
+        description:
+            "Warren Chae is one of Hostel's strongest fighters and a loyal friend of Eli Jang. His development includes specialized close-quarters combat training.",
+
+        profile:
+            "Warren's combat identity is based around close-range fighting and technical combinations. His loyalty to Eli and Hostel is a major part of his characterization.",
+
+        connections:
+            "Eli Jang, Sally Park, Hostel and Manager Kim are among Warren's important connections.",
+
+        stats: {
+            strength: 89,
+            speed: 91,
+            durability: 89,
+            technique: 95,
+            battleIq: 91,
+            experience: 83
+        },
+
+        tags: [
+            "Hostel",
+            "CQC",
+            "Loyalty",
+            "Generation 2"
+        ]
+    },
+
+
+    {
+        id: "vasco",
+        name: "Vasco",
+        title: "The Hero of Burn Knuckles",
+        badge: "Hero",
+        group: "j-high",
+
+        image:
+            "images/vasco.jpg",
+
+        role:
+            "J High Fighter",
+
+        crew:
+            "Burn Knuckles / Allied",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Muay Thai / strength-based martial arts",
+
+        knownFor:
+            "Burn Knuckles",
+
+        rival:
+            "Generation 2 fighters",
+
+        description:
+            "Vasco is one of J High's most recognizable fighters and the leader of Burn Knuckles. His character is strongly associated with protecting others and confronting people he believes are exploiting weaker individuals.",
+
+        profile:
+            "Vasco's combat style emphasizes physical power and martial arts training. His development throughout the series reflects the larger theme of J High students becoming increasingly capable fighters.",
+
+        connections:
+            "Daniel Park, Zack Lee, Jace Park and Burn Knuckles are central to Vasco's story.",
+
+        stats: {
+            strength: 97,
+            speed: 84,
+            durability: 96,
+            technique: 86,
+            battleIq: 84,
+            experience: 82
+        },
+
+        tags: [
+            "Burn Knuckles",
+            "J High",
+            "Muay Thai",
+            "Strength"
+        ]
+    },
+
+
+    {
+        id: "zack",
+        name: "Zack Lee",
+        title: "The Boxer",
+        badge: "Boxer",
+        group: "j-high",
+
+        image:
+            "images/zack-lee.jpg",
+
+        role:
+            "J High Fighter",
+
+        crew:
+            "Allied",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Boxing",
+
+        knownFor:
+            "Boxing and Iron Fortress",
+
+        rival:
+            "Johan Seong",
+
+        description:
+            "Zack Lee is a boxer and one of Daniel's earliest friends at J High. His relationship with Johan is one of the recurring personal rivalries in the series.",
+
+        profile:
+            "Zack's development centers around boxing, discipline and repeated attempts to overcome his limitations. His training and later mastery development are important parts of his combat storyline.",
+
+        connections:
+            "Daniel Park, Johan Seong, Mira Kim and J High are central to Zack's story.",
+
+        stats: {
+            strength: 91,
+            speed: 95,
+            durability: 92,
+            technique: 96,
+            battleIq: 89,
+            experience: 84
+        },
+
+        tags: [
+            "Boxing",
+            "J High",
+            "Allied",
+            "Iron Fortress"
+        ]
+    },
+
+
+    {
+        id: "tom",
+        name: "Tom Lee",
+        title: "The Fighting Genius",
+        badge: "Generation 0",
+        group: "gen-zero",
+
+        image:
+            "images/tom-lee.jpg",
+
+        role:
+            "Veteran Fighter",
+
+        crew:
+            "White Tiger Job Center",
+
+        generation:
+            "Generation 0",
+
+        style:
+            "Martial arts / instinctive combat",
+
+        knownFor:
+            "Generation 0 and White Tiger",
+
+        rival:
+            "Generation 0 legends",
+
+        description:
+            "Tom Lee is a veteran fighter associated with Generation 0 and the White Tiger Job Center. He also has major connections to Gun, Goo and the Ten Geniuses.",
+
+        profile:
+            "Tom is portrayed as an extremely experienced combat veteran. His history connects the older Generation 0 fighters with the younger generation, making him particularly important when studying the development of Gun, Goo and other fighters.",
+
+        connections:
+            "Gun Park, Goo Kim, Jinyoung Park, Charles Choi and White Tiger Job Center are major connections.",
+
+        stats: {
+            strength: 99,
+            speed: 91,
+            durability: 98,
+            technique: 96,
+            battleIq: 97,
+            experience: 100
+        },
+
+        tags: [
+            "Generation 0",
+            "Veteran",
+            "White Tiger",
+            "Genius"
+        ]
+    },
+
+
+    {
+        id: "charles",
+        name: "Charles Choi",
+        title: "Founder of the Four Major Crews",
+        badge: "Chairman",
+        group: "other",
+
+        image:
+            "images/charles-choi.jpg",
+
+        role:
+            "Businessman / Former Fighter",
+
+        crew:
+            "Four Major Crews",
+
+        generation:
+            "Generation 0",
+
+        style:
+            "Elite combat / unknown full extent",
+
+        knownFor:
+            "Four Major Crews",
+
+        rival:
+            "Various Generation 0 figures",
+
+        description:
+            "Charles Choi is one of the central power figures in LOOKISM. His business empire and the Four Major Crews are deeply connected to the wider criminal and fighting structure of the series.",
+
+        profile:
+            "Charles is also connected to the Ten Geniuses and the development of Gun and Goo. His history links several generations of characters and remains important to the mystery surrounding the series' past.",
+
+        connections:
+            "Gun Park, Goo Kim, James Lee, Crystal Choi and the Ten Geniuses are among his major connections.",
+
+        stats: {
+            strength: 93,
+            speed: 95,
+            durability: 89,
+            technique: 97,
+            battleIq: 99,
+            experience: 100
+        },
+
+        tags: [
+            "Chairman",
+            "Generation 0",
+            "Four Major Crews",
+            "Ten Geniuses"
+        ]
+    },
+
+
+    {
+        id: "jinyoung",
+        name: "Jinyoung Park",
+        title: "The Medical Genius",
+        badge: "Generation 0",
+        group: "gen-zero",
+
+        image:
+            "images/jinyoung-park.jpg",
+
+        role:
+            "Medical Expert / Former Fighter",
+
+        crew:
+            "Generation 0",
+
+        generation:
+            "Generation 0",
+
+        style:
+            "Martial arts / Copy-related abilities",
+
+        knownFor:
+            "Medical knowledge and Generation 0",
+
+        rival:
+            "Generation 0 figures",
+
+        description:
+            "Jinyoung Park is a major Generation 0 character and an important figure in the mystery surrounding Daniel's family and abilities.",
+
+        profile:
+            "Jinyoung's medical expertise and history with Generation 0 make him important beyond direct combat. His connections to Daniel, Jake and the older generation are particularly significant.",
+
+        connections:
+            "Daniel Park, Jake Kim, Gapryong Kim, Tom Lee and other Generation 0 characters are important connections.",
+
+        stats: {
+            strength: 92,
+            speed: 89,
+            durability: 90,
+            technique: 97,
+            battleIq: 98,
+            experience: 99
+        },
+
+        tags: [
+            "Generation 0",
+            "Medical Genius",
+            "Copy",
+            "Mystery"
+        ]
+    },
+
+
+    {
+        id: "jerry",
+        name: "Jerry Kwon",
+        title: "Big Deal's Protector",
+        badge: "Bodyguard",
+        group: "big-deal",
+
+        image:
+            "images/jerry-kwon.jpg",
+
+        role:
+            "Big Deal Fighter",
+
+        crew:
+            "Big Deal",
+
+        generation:
+            "Generation 2",
+
+        style:
+            "Power-based combat",
+
+        knownFor:
+            "Protecting Jake",
+
+        rival:
+            "Major crew fighters",
+
+        description:
+            "Jerry Kwon is one of Big Deal's most loyal fighters and Jake Kim's personal protector. His imposing physical ability is one of his defining traits.",
+
+        profile:
+            "Jerry is characterized by his loyalty to Jake and Big Deal. His fighting style emphasizes raw physical power while his role within Big Deal is strongly tied to protecting his friends.",
+
+        connections:
+            "Jake Kim, Big Deal, Gun Park and Warren Chae are among Jerry's major connections.",
+
+        stats: {
+            strength: 96,
+            speed: 82,
+            durability: 97,
+            technique: 82,
+            battleIq: 79,
+            experience: 82
+        },
+
+        tags: [
+            "Big Deal",
+            "Bodyguard",
+            "Strength",
+            "Generation 2"
+        ]
+    }
+
+];
+
+
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
+
+const grid =
+    document.getElementById(
+        "characterGrid"
+    );
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+const groupFilter =
+    document.getElementById(
+        "groupFilter"
+    );
+
+const clearButton =
+    document.getElementById(
+        "clearButton"
+    );
+
+const characterCount =
+    document.getElementById(
+        "characterCount"
+    );
+
+const noResults =
+    document.getElementById(
+        "noResults"
+    );
+
+const modal =
+    document.getElementById(
+        "characterModal"
+    );
+
+const modalClose =
+    document.getElementById(
+        "modalClose"
+    );
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem(
+            "lookismHubFavorites"
+        ) || "[]"
+    );
+
+
+function isFavorite(id) {
+
+    return favorites.includes(id);
+
+}
+
+
+function toggleFavorite(id) {
+
+    if (isFavorite(id)) {
+
+        favorites =
+            favorites.filter(
+                favoriteId =>
+                    favoriteId !== id
             );
 
+    }
 
-        const cards =
-            document.querySelectorAll(
-                ".character-card"
-            );
+    else {
 
+        favorites.push(id);
 
-        const noResults =
-            document.getElementById(
-                "noResults"
-            );
+    }
 
 
-        searchInput.addEventListener(
-            "input",
-            function () {
-
-                const query =
-                    this.value
-                        .toLowerCase()
-                        .trim();
+    localStorage.setItem(
+        "lookismHubFavorites",
+        JSON.stringify(favorites)
+    );
 
 
-                let visibleCards = 0;
+    renderCharacters(
+        searchInput.value,
+        groupFilter.value
+    );
+
+}
 
 
-                cards.forEach(
-                    function (card) {
+/* =========================================================
+   CREATE RATING HTML
+========================================================= */
 
-                        const name =
-                            card.dataset.name;
+function createRating(
+    name,
+    value
+) {
+
+    return `
+
+        <div class="rating">
+
+            <div class="rating-top">
+
+                <span>
+                    ${name}
+                </span>
+
+                <span class="rating-number">
+                    ${value}
+                </span>
+
+            </div>
+
+            <div class="rating-track">
+
+                <div
+                    class="rating-fill"
+                    style="width:${value}%"
+                ></div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
 
 
-                        if (
-                            name.includes(query)
-                        ) {
+/* =========================================================
+   CREATE CHARACTER CARD
+========================================================= */
 
-                            card.style.display =
-                                "block";
+function createCard(character) {
 
-                            visibleCards++;
+    const card =
+        document.createElement(
+            "article"
+        );
 
-                        }
 
-                        else {
+    card.className =
+        "character-card";
 
-                            card.style.display =
-                                "none";
 
-                        }
+    card.dataset.name =
+        character.name
+            .toLowerCase();
 
-                    }
+
+    card.dataset.search =
+        [
+            character.name,
+            character.title,
+            character.role,
+            character.crew,
+            character.style,
+            character.knownFor,
+            ...character.tags
+        ]
+        .join(" ")
+        .toLowerCase();
+
+
+    const favoriteActive =
+        isFavorite(character.id)
+            ? "active"
+            : "";
+
+
+    card.innerHTML = `
+
+        <div class="character-image">
+
+            <div class="badge">
+                ${character.badge}
+            </div>
+
+
+            <button
+                class="favorite ${favoriteActive}"
+                type="button"
+                title="Favorite"
+                aria-label="Favorite ${character.name}"
+                data-favorite="${character.id}"
+            >
+                ♥
+            </button>
+
+
+            <img
+                src="${character.image}"
+                alt="${character.name}"
+                loading="lazy"
+                onerror="this.src='images/placeholder.jpg'"
+            >
+
+        </div>
+
+
+        <div class="character-content">
+
+            <h2>
+                ${character.name}
+            </h2>
+
+
+            <div class="character-title">
+                ${character.title}
+            </div>
+
+
+            <p class="description">
+                ${character.description}
+            </p>
+
+
+            <div class="tags">
+
+                ${character.tags
+                    .map(
+                        tag =>
+                            `<span class="tag">${tag}</span>`
+                    )
+                    .join("")}
+
+            </div>
+
+
+            <div class="info-list">
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        Role
+                    </span>
+
+                    <span class="info-value">
+                        ${character.role}
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        Crew
+                    </span>
+
+                    <span class="info-value">
+                        ${character.crew}
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        Generation
+                    </span>
+
+                    <span class="info-value">
+                        ${character.generation}
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        Style
+                    </span>
+
+                    <span class="info-value">
+                        ${character.style}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="rating-section">
+
+                <div class="rating-heading">
+
+                    <span>
+                        Site Combat Ratings
+                    </span>
+
+                    <span class="fan-label">
+                        FAN / CUSTOM
+                    </span>
+
+                </div>
+
+
+                ${createRating(
+                    "Strength",
+                    character.stats.strength
+                )}
+
+
+                ${createRating(
+                    "Speed",
+                    character.stats.speed
+                )}
+
+
+                ${createRating(
+                    "Durability",
+                    character.stats.durability
+                )}
+
+
+                ${createRating(
+                    "Technique",
+                    character.stats.technique
+                )}
+
+
+                ${createRating(
+                    "Battle IQ",
+                    character.stats.battleIq
+                )}
+
+
+                ${createRating(
+                    "Experience",
+                    character.stats.experience
+                )}
+
+            </div>
+
+
+            <div class="card-buttons">
+
+                <a
+                    href="index.html?left=${character.id}"
+                    class="card-button compare-button"
+                >
+                    COMPARE
+                </a>
+
+
+                <button
+                    class="card-button details-button"
+                    type="button"
+                    data-details="${character.id}"
+                >
+                    DETAILS
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    return card;
+
+}
+
+
+/* =========================================================
+   RENDER CHARACTERS
+========================================================= */
+
+function renderCharacters(
+    query = "",
+    group = "all"
+) {
+
+    grid.innerHTML = "";
+
+
+    const normalizedQuery =
+        query
+            .toLowerCase()
+            .trim();
+
+
+    const filtered =
+        characters.filter(
+            character => {
+
+                const matchesSearch =
+                    !normalizedQuery ||
+                    [
+                        character.name,
+                        character.title,
+                        character.role,
+                        character.crew,
+                        character.generation,
+                        character.style,
+                        character.knownFor,
+                        ...character.tags
+                    ]
+                    .join(" ")
+                    .toLowerCase()
+                    .includes(
+                        normalizedQuery
+                    );
+
+
+                const matchesGroup =
+                    group === "all" ||
+                    character.group === group;
+
+
+                return (
+                    matchesSearch &&
+                    matchesGroup
                 );
-
-
-                if (
-                    visibleCards === 0
-                ) {
-
-                    noResults.style.display =
-                        "block";
-
-                }
-
-                else {
-
-                    noResults.style.display =
-                        "none";
-
-                }
 
             }
         );
 
 
+    filtered.forEach(
+        character => {
 
-        /* =================================================
-           INFO BUTTON
-        ================================================= */
+            grid.appendChild(
+                createCard(character)
+            );
 
-        function showInfo(character) {
-
-            if (
-                character === "Gun Park"
-            ) {
-
-                alert(
-                    "Gun Park\n\n" +
-                    "Known as the Nurture Genius. " +
-                    "Gun is an experienced fighter, " +
-                    "mentor and major figure in the " +
-                    "LOOKISM combat world."
-                );
-
-            }
+        }
+    );
 
 
-            else if (
-                character === "Daniel Park"
-            ) {
-
-                alert(
-                    "Daniel Park\n\n" +
-                    "The protagonist of LOOKISM. " +
-                    "Daniel's story begins with the " +
-                    "mystery of his second body."
-                );
-
-            }
+    characterCount.textContent =
+        filtered.length;
 
 
-            else if (
-                character === "Goo Kim"
-            ) {
+    noResults.style.display =
+        filtered.length === 0
+            ? "block"
+            : "none";
 
-                alert(
-                    "Goo Kim\n\n" +
-                    "Known as the Weapon Genius. " +
-                    "Goo is Gun Park's rival and is " +
-                    "especially dangerous when using weapons."
-                );
+}
 
-            }
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
+
+function openModal(id) {
+
+    const character =
+        characters.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!character) {
+        return;
+    }
+
+
+    document.getElementById(
+        "modalImage"
+    ).src =
+        character.image;
+
+
+    document.getElementById(
+        "modalImage"
+    ).alt =
+        character.name;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        character.title;
+
+
+    document.getElementById(
+        "modalName"
+    ).textContent =
+        character.name;
+
+
+    document.getElementById(
+        "modalDescription"
+    ).textContent =
+        character.description;
+
+
+    document.getElementById(
+        "modalProfile"
+    ).textContent =
+        character.profile;
+
+
+    document.getElementById(
+        "modalConnections"
+    ).textContent =
+        character.connections;
+
+
+    document.getElementById(
+        "modalFacts"
+    ).innerHTML = `
+
+        <div class="modal-fact">
+
+            <span>
+                Role
+            </span>
+
+            <strong>
+                ${character.role}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-fact">
+
+            <span>
+                Crew / Group
+            </span>
+
+            <strong>
+                ${character.crew}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-fact">
+
+            <span>
+                Generation
+            </span>
+
+            <strong>
+                ${character.generation}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-fact">
+
+            <span>
+                Fighting Style
+            </span>
+
+            <strong>
+                ${character.style}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-fact">
+
+            <span>
+                Known For
+            </span>
+
+            <strong>
+                ${character.knownFor}
+            </strong>
+
+        </div>
+
+
+        <div class="modal-fact">
+
+            <span>
+                Major Rival
+            </span>
+
+            <strong>
+                ${character.rival}
+            </strong>
+
+        </div>
+
+    `;
+
+
+    modal.classList.add(
+        "open"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal() {
+
+    modal.classList.remove(
+        "open"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================================================
+   CARD CLICK EVENTS
+========================================================= */
+
+grid.addEventListener(
+    "click",
+    function(event) {
+
+        const favoriteButton =
+            event.target.closest(
+                "[data-favorite]"
+            );
+
+
+        if (favoriteButton) {
+
+            toggleFavorite(
+                favoriteButton.dataset.favorite
+            );
+
+            return;
 
         }
 
-    </script>
+
+        const detailsButton =
+            event.target.closest(
+                "[data-details]"
+            );
+
+
+        if (detailsButton) {
+
+            openModal(
+                detailsButton.dataset.details
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+searchInput.addEventListener(
+    "input",
+    function() {
+
+        renderCharacters(
+            this.value,
+            groupFilter.value
+        );
+
+    }
+);
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+groupFilter.addEventListener(
+    "change",
+    function() {
+
+        renderCharacters(
+            searchInput.value,
+            this.value
+        );
+
+    }
+);
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+clearButton.addEventListener(
+    "click",
+    function() {
+
+        searchInput.value =
+            "";
+
+        groupFilter.value =
+            "all";
+
+        renderCharacters();
+
+    }
+);
+
+
+/* =========================================================
+   MODAL EVENTS
+========================================================= */
+
+modalClose.addEventListener(
+    "click",
+    closeModal
+);
+
+
+modal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            modal
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderCharacters();
+
+
+</script>
 
 </body>
 
 </html>
-```
