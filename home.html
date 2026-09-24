@@ -1,0 +1,2753 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LOOKISM HUB | Characters</title>
+
+    <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #fff;
+
+            min-height: 100vh;
+
+            background:
+                #050505;
+        }
+
+
+        /* =========================================================
+           BACKGROUND EFFECT
+        ========================================================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(229, 9, 20, 0.15),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 35%,
+                    rgba(100, 0, 10, 0.12),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #100404 0%,
+                    #050505 35%,
+                    #020202 100%
+                );
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            height: 76px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(3, 3, 3, 0.94);
+
+            backdrop-filter:
+                blur(18px);
+
+            border-bottom:
+                1px solid #261010;
+        }
+
+
+        .logo {
+            color: #fff;
+
+            font-size: 24px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            white-space: nowrap;
+        }
+
+
+        .logo span {
+            color: #e50914;
+        }
+
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        nav a {
+            position: relative;
+
+            color: #777;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #e50914;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover,
+        nav a.active {
+            color: #fff;
+        }
+
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 420px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-bottom:
+                1px solid #241010;
+        }
+
+
+        .hero::before {
+            content: "CHARACTERS";
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            font-size:
+                clamp(90px, 17vw, 230px);
+
+            font-weight: 900;
+
+            color:
+                rgba(255,255,255,0.018);
+
+            white-space: nowrap;
+
+            pointer-events: none;
+        }
+
+
+        .hero-content {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 850px;
+        }
+
+
+        .eyebrow {
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            padding:
+                7px 14px;
+
+            border:
+                1px solid #552020;
+
+            border-radius: 30px;
+
+            color: #e50914;
+
+            background:
+                rgba(229,9,20,0.06);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+        }
+
+
+        .hero h1 {
+            font-size:
+                clamp(55px, 9vw, 105px);
+
+            line-height: 0.9;
+
+            font-weight: 1000;
+
+            letter-spacing: -3px;
+
+            text-transform: uppercase;
+        }
+
+
+        .hero h1 span {
+            color: #e50914;
+
+            text-shadow:
+                0 0 50px
+                rgba(229,9,20,0.25);
+        }
+
+
+        .hero p {
+            max-width: 650px;
+
+            margin:
+                28px auto 0;
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        main {
+            width:
+                min(1300px, 92%);
+
+            margin: auto;
+
+            padding:
+                60px 0 110px;
+        }
+
+
+        /* =========================================================
+           DATABASE TOOLBAR
+        ========================================================= */
+
+        .database-header {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .database-title h2 {
+            font-size: 28px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .database-title p {
+            margin-top: 7px;
+
+            color: #666;
+
+            font-size: 12px;
+        }
+
+
+        .character-count {
+            color: #e50914;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           SEARCH + FILTERS
+        ========================================================= */
+
+        .tools {
+            display: grid;
+
+            grid-template-columns:
+                1fr auto;
+
+            gap: 15px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .search-box {
+            position: relative;
+        }
+
+
+        .search-box input {
+            width: 100%;
+
+            height: 52px;
+
+            padding:
+                0 20px 0 50px;
+
+            border:
+                1px solid #2b1717;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            color: #fff;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+
+        .search-box input:focus {
+            border-color: #8b1118;
+
+            background:
+                rgba(229,9,20,0.025);
+
+            box-shadow:
+                0 0 30px
+                rgba(229,9,20,0.07);
+        }
+
+
+        .search-icon {
+            position: absolute;
+
+            left: 19px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color: #666;
+
+            font-size: 17px;
+        }
+
+
+        .filters {
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .filter {
+            height: 52px;
+
+            padding:
+                0 17px;
+
+            border:
+                1px solid #2b1717;
+
+            border-radius: 10px;
+
+            color: #777;
+
+            background: #090909;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+
+        .filter:hover,
+        .filter.active {
+            color: #fff;
+
+            border-color: #e50914;
+
+            background:
+                rgba(229,9,20,0.09);
+        }
+
+
+        /* =========================================================
+           CHARACTER GRID
+        ========================================================= */
+
+        .character-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* =========================================================
+           CHARACTER CARD
+        ========================================================= */
+
+        .character-card {
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 590px;
+
+            border:
+                1px solid #291414;
+
+            border-radius: 16px;
+
+            background:
+                #0a0a0a;
+
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+
+            cursor: pointer;
+        }
+
+
+        .character-card:hover {
+            transform:
+                translateY(-8px);
+
+            border-color:
+                #6b1118;
+
+            box-shadow:
+                0 30px 70px
+                rgba(0,0,0,0.65);
+        }
+
+
+        /* =========================================================
+           CARD IMAGE
+        ========================================================= */
+
+        .card-image {
+            height: 430px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #3b1010,
+                    #080808 70%
+                );
+        }
+
+
+        .card-image img {
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.7s ease;
+        }
+
+
+        .character-card:hover
+        .card-image img {
+            transform:
+                scale(1.08);
+        }
+
+
+        .card-image::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent 40%,
+                    rgba(0,0,0,0.95) 100%
+                );
+        }
+
+
+        /* =========================================================
+           CARD TAG
+        ========================================================= */
+
+        .card-tag {
+            position: absolute;
+
+            left: 18px;
+
+            top: 18px;
+
+            z-index: 5;
+
+            padding:
+                7px 11px;
+
+            border:
+                1px solid rgba(229,9,20,0.4);
+
+            border-radius: 5px;
+
+            background:
+                rgba(0,0,0,0.65);
+
+            color: #e50914;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           CARD NUMBER
+        ========================================================= */
+
+        .card-number {
+            position: absolute;
+
+            right: 18px;
+
+            top: 18px;
+
+            z-index: 5;
+
+            color:
+                rgba(255,255,255,0.22);
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+           CARD CONTENT
+        ========================================================= */
+
+        .card-content {
+            position: absolute;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 0;
+
+            z-index: 5;
+
+            padding: 25px;
+        }
+
+
+        .card-content h3 {
+            font-size: 34px;
+
+            line-height: 1;
+
+            text-transform: uppercase;
+
+            letter-spacing: -1px;
+        }
+
+
+        .alias {
+            margin-top: 8px;
+
+            color: #e50914;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .card-description {
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            margin-top: 0;
+
+            color: #999;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            transition:
+                max-height 0.4s ease,
+                opacity 0.4s ease,
+                margin 0.4s ease;
+        }
+
+
+        .character-card:hover
+        .card-description {
+            max-height: 100px;
+
+            opacity: 1;
+
+            margin-top: 13px;
+        }
+
+
+        /* =========================================================
+           CARD FOOTER
+        ========================================================= */
+
+        .card-footer {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-top: 18px;
+
+            padding-top: 15px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .affiliation {
+            color: #666;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .view-button {
+            padding:
+                9px 14px;
+
+            border:
+                1px solid #4a2222;
+
+            border-radius: 6px;
+
+            color: #aaa;
+
+            background:
+                rgba(255,255,255,0.02);
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+
+        .character-card:hover
+        .view-button {
+            color: #fff;
+
+            border-color: #e50914;
+
+            background:
+                rgba(229,9,20,0.1);
+        }
+
+
+        /* =========================================================
+           NO RESULTS
+        ========================================================= */
+
+        .no-results {
+            display: none;
+
+            padding: 90px 20px;
+
+            text-align: center;
+
+            color: #555;
+        }
+
+
+        .no-results strong {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #888;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================================================
+           MODAL
+        ========================================================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 2000;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 25px;
+
+            background:
+                rgba(0,0,0,0.82);
+
+            backdrop-filter:
+                blur(12px);
+        }
+
+
+        .modal.show {
+            display: flex;
+
+            animation:
+                modalFade 0.25s ease;
+        }
+
+
+        @keyframes modalFade {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        .modal-box {
+            width:
+                min(1000px, 100%);
+
+            max-height:
+                90vh;
+
+            overflow-y: auto;
+
+            position: relative;
+
+            border:
+                1px solid #492020;
+
+            border-radius: 18px;
+
+            background:
+                #090909;
+
+            box-shadow:
+                0 40px 100px
+                rgba(0,0,0,0.8);
+        }
+
+
+        .modal-close {
+            position: absolute;
+
+            right: 20px;
+
+            top: 20px;
+
+            z-index: 10;
+
+            width: 38px;
+
+            height: 38px;
+
+            border:
+                1px solid #542020;
+
+            border-radius: 50%;
+
+            color: #aaa;
+
+            background:
+                rgba(0,0,0,0.75);
+
+            cursor: pointer;
+
+            font-size: 20px;
+
+            transition: 0.3s;
+        }
+
+
+        .modal-close:hover {
+            color: #fff;
+
+            border-color: #e50914;
+
+            background: #e50914;
+        }
+
+
+        .modal-grid {
+            display: grid;
+
+            grid-template-columns:
+                330px 1fr;
+        }
+
+
+        .modal-image {
+            min-height: 570px;
+
+            overflow: hidden;
+
+            background:
+                #170505;
+        }
+
+
+        .modal-image img {
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+        }
+
+
+        .modal-content {
+            padding: 45px;
+        }
+
+
+        .modal-label {
+            color: #e50914;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .modal-content h2 {
+            margin-top: 10px;
+
+            font-size:
+                clamp(40px, 5vw, 65px);
+
+            line-height: 0.95;
+
+            text-transform: uppercase;
+
+            letter-spacing: -2px;
+        }
+
+
+        .modal-alias {
+            margin-top: 12px;
+
+            color: #777;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        .modal-description {
+            margin-top: 25px;
+
+            color: #aaa;
+
+            font-size: 13px;
+
+            line-height: 1.9;
+        }
+
+
+        /* =========================================================
+           INFORMATION GRID
+        ========================================================= */
+
+        .information-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+
+            margin-top: 30px;
+        }
+
+
+        .information-box {
+            padding: 15px;
+
+            border:
+                1px solid #241515;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,0.02);
+        }
+
+
+        .information-box span {
+            display: block;
+
+            color: #555;
+
+            margin-bottom: 6px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        .information-box strong {
+            color: #ddd;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           ABILITIES
+        ========================================================= */
+
+        .abilities {
+            margin-top: 30px;
+        }
+
+
+        .section-heading {
+            margin-bottom: 15px;
+
+            color: #777;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .ability-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+
+        .ability {
+            padding:
+                8px 12px;
+
+            border:
+                1px solid #372020;
+
+            border-radius: 5px;
+
+            color: #aaa;
+
+            background:
+                #0c0c0c;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           FAN STATS
+        ========================================================= */
+
+        .fan-stats {
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid #211313;
+        }
+
+
+        .fan-stat {
+            display: grid;
+
+            grid-template-columns:
+                90px 1fr 35px;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 11px;
+        }
+
+
+        .fan-stat-name {
+            color: #777;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+
+        .fan-stat-bar {
+            height: 5px;
+
+            overflow: hidden;
+
+            border-radius: 10px;
+
+            background: #181818;
+        }
+
+
+        .fan-stat-fill {
+            height: 100%;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7a0008,
+                    #e50914
+                );
+        }
+
+
+        .fan-stat-number {
+            color: #ddd;
+
+            text-align: right;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        .compare-link {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding:
+                13px 20px;
+
+            border-radius: 7px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e50914,
+                    #870008
+                );
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+
+        .compare-link:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(229,9,20,0.25);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding:
+                35px 20px;
+
+            border-top:
+                1px solid #211010;
+
+            color: #444;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+        }
+
+
+        footer span {
+            color: #e50914;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .character-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .tools {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                overflow-x: auto;
+
+                padding-bottom: 5px;
+            }
+
+            .filter {
+                white-space: nowrap;
+            }
+
+            .modal-grid {
+                grid-template-columns:
+                    280px 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+                height: auto;
+
+                padding:
+                    17px 12px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 17px;
+            }
+
+            nav a {
+                font-size: 10px;
+            }
+
+            .hero {
+                min-height: 360px;
+
+                padding:
+                    60px 15px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .database-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+            .character-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .character-card {
+                min-height: 600px;
+            }
+
+            .modal {
+                padding: 10px;
+            }
+
+            .modal-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .modal-image {
+                height: 350px;
+
+                min-height: 350px;
+            }
+
+            .modal-content {
+                padding: 30px 22px;
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .card-image {
+                height: 390px;
+            }
+
+            .card-content h3 {
+                font-size: 29px;
+            }
+
+            .information-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header>
+
+        <div class="logo">
+            LOOK<span>ISM</span> HUB
+        </div>
+
+
+        <nav>
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a
+                href="characters.html"
+                class="active"
+            >
+                Characters
+            </a>
+
+            <a href="index.html">
+                Fights
+            </a>
+
+            <a href="crews.html">
+                Crews
+            </a>
+
+            <a href="timeline.html">
+                Timeline
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                LOOKISM DATABASE
+            </div>
+
+
+            <h1>
+                KNOW THE
+                <span>FIGHTERS.</span>
+            </h1>
+
+
+            <p>
+                Explore the characters of the LOOKISM universe,
+                their affiliations, aliases, fighting styles,
+                abilities and story roles.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main>
+
+
+        <!-- DATABASE HEADER -->
+
+        <div class="database-header">
+
+            <div class="database-title">
+
+                <h2>
+                    Character Archive
+                </h2>
+
+                <p>
+                    Currently indexed characters
+                </p>
+
+            </div>
+
+
+            <div
+                class="character-count"
+                id="characterCount"
+            >
+                3 Characters
+            </div>
+
+        </div>
+
+
+
+        <!-- SEARCH + FILTERS -->
+
+        <div class="tools">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by character, alias or affiliation..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="filters">
+
+                <button
+                    class="filter active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+
+                <button
+                    class="filter"
+                    data-filter="fighter"
+                >
+                    Fighters
+                </button>
+
+
+                <button
+                    class="filter"
+                    data-filter="main"
+                >
+                    Main
+                </button>
+
+
+                <button
+                    class="filter"
+                    data-filter="genius"
+                >
+                    Geniuses
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             CHARACTER GRID
+        ====================================================== -->
+
+        <section
+            class="character-grid"
+            id="characterGrid"
+        >
+
+
+            <!-- =================================================
+                 GUN PARK
+            ================================================== -->
+
+            <article
+                class="character-card"
+                data-name="gun park"
+                data-alias="the nurture genius"
+                data-affiliation="charles choi"
+                data-category="fighter genius"
+                data-character="gun"
+            >
+
+                <div class="card-image">
+
+                    <span class="card-tag">
+                        Fighter
+                    </span>
+
+
+                    <span class="card-number">
+                        001
+                    </span>
+
+
+                    <img
+                        src="https://th.bing.com/th/id/OIP.OotKeh3-ln2Kd9UVTwha9AHaJ4?w=203&h=271&c=7&r=0&o=7&pid=1.7&rm=3"
+                        alt="Gun Park"
+                    >
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Gun Park
+                    </h3>
+
+
+                    <div class="alias">
+                        The Nurture Genius
+                    </div>
+
+
+                    <p class="card-description">
+                        A veteran fighter and mentor figure
+                        associated with Charles Choi and the
+                        development of talented fighters.
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span class="affiliation">
+                            Charles Choi
+                        </span>
+
+
+                        <span class="view-button">
+                            View Profile →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 DANIEL PARK
+            ================================================== -->
+
+            <article
+                class="character-card"
+                data-name="daniel park"
+                data-alias="main protagonist"
+                data-affiliation="j high"
+                data-category="fighter main"
+                data-character="daniel"
+            >
+
+                <div class="card-image">
+
+                    <span class="card-tag">
+                        Main
+                    </span>
+
+
+                    <span class="card-number">
+                        002
+                    </span>
+
+
+                    <img
+                        src="https://tse2.mm.bing.net/th/id/OIP.szeTzs6NqTAPjFBcEg2kGAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+                        alt="Daniel Park"
+                    >
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Daniel Park
+                    </h3>
+
+
+                    <div class="alias">
+                        Main Protagonist
+                    </div>
+
+
+                    <p class="card-description">
+                        The central character of LOOKISM whose
+                        story begins with the mysterious existence
+                        of a second body.
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span class="affiliation">
+                            J High
+                        </span>
+
+
+                        <span class="view-button">
+                            View Profile →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 GOO KIM
+            ================================================== -->
+
+            <article
+                class="character-card"
+                data-name="goo kim"
+                data-alias="weapon genius"
+                data-affiliation="charles choi"
+                data-category="fighter genius"
+                data-character="goo"
+            >
+
+                <div class="card-image">
+
+                    <span class="card-tag">
+                        Genius
+                    </span>
+
+
+                    <span class="card-number">
+                        003
+                    </span>
+
+
+                    <img
+                        src="https://tse2.mm.bing.net/th/id/OIP.GHBuF7WGxfvPm8ls3uYb2AAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+                        alt="Goo Kim"
+                    >
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        Goo Kim
+                    </h3>
+
+
+                    <div class="alias">
+                        The Weapon Genius
+                    </div>
+
+
+                    <p class="card-description">
+                        A major fighter and Gun Park's longtime
+                        rival whose combat identity is strongly
+                        associated with weapons.
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span class="affiliation">
+                            Charles Choi
+                        </span>
+
+
+                        <span class="view-button">
+                            View Profile →
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- NO RESULTS -->
+
+        <div
+            class="no-results"
+            id="noResults"
+        >
+
+            <strong>
+                No character found
+            </strong>
+
+            Try another name, alias or category.
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         CHARACTER MODAL
+    ========================================================== -->
+
+    <div
+        class="modal"
+        id="characterModal"
+    >
+
+        <div class="modal-box">
+
+
+            <button
+                class="modal-close"
+                id="closeModal"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-grid">
+
+
+                <!-- MODAL IMAGE -->
+
+                <div class="modal-image">
+
+                    <img
+                        id="modalImage"
+                        src=""
+                        alt=""
+                    >
+
+                </div>
+
+
+
+                <!-- MODAL CONTENT -->
+
+                <div class="modal-content">
+
+                    <div
+                        class="modal-label"
+                        id="modalLabel"
+                    >
+                        CHARACTER PROFILE
+                    </div>
+
+
+                    <h2
+                        id="modalName"
+                    >
+                        Character
+                    </h2>
+
+
+                    <div
+                        class="modal-alias"
+                        id="modalAlias"
+                    >
+                        Alias
+                    </div>
+
+
+                    <p
+                        class="modal-description"
+                        id="modalDescription"
+                    >
+                    </p>
+
+
+
+                    <!-- INFORMATION -->
+
+                    <div class="information-grid">
+
+
+                        <div class="information-box">
+
+                            <span>
+                                Role
+                            </span>
+
+                            <strong id="modalRole">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="information-box">
+
+                            <span>
+                                Affiliation
+                            </span>
+
+                            <strong id="modalAffiliation">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="information-box">
+
+                            <span>
+                                Fighting Style
+                            </span>
+
+                            <strong id="modalStyle">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="information-box">
+
+                            <span>
+                                Status
+                            </span>
+
+                            <strong id="modalStatus">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ABILITIES -->
+
+                    <div class="abilities">
+
+                        <div class="section-heading">
+                            Known Abilities
+                        </div>
+
+
+                        <div
+                            class="ability-list"
+                            id="modalAbilities"
+                        >
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FAN STATS -->
+
+                    <div class="fan-stats">
+
+                        <div class="section-heading">
+                            Fan Database Ratings
+                        </div>
+
+
+                        <div id="modalStats">
+                        </div>
+
+
+                        <a
+                            href="index.html"
+                            class="compare-link"
+                        >
+                            Open Fight Comparison →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        LOOKISM HUB
+
+        <br>
+
+        A fan-made character and fight database.
+
+        <br><br>
+
+        <span>LOOKISM</span>
+        is created by Taejun Pak.
+        Character information is presented for
+        fan/reference purposes.
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           CHARACTER DATA
+        ===================================================== */
+
+        const characters = {
+
+            gun: {
+
+                name: "Gun Park",
+
+                alias:
+                    "The Nurture Genius",
+
+                label:
+                    "FIGHTER PROFILE",
+
+                role:
+                    "Veteran Fighter / Mentor",
+
+                affiliation:
+                    "Charles Choi",
+
+                style:
+                    "Martial Arts / Combat Training",
+
+                status:
+                    "Active",
+
+                description:
+                    "Gun Park is one of the major combat figures " +
+                    "in LOOKISM. He is closely connected to Charles " +
+                    "Choi and has played an important role in training " +
+                    "and evaluating talented fighters. Gun's long " +
+                    "experience and combat knowledge make him a major " +
+                    "figure in the series' fighting world.",
+
+                image:
+                    "https://th.bing.com/th/id/OIP.OotKeh3-ln2Kd9UVTwha9AHaJ4?w=203&h=271&c=7&r=0&o=7&pid=1.7&rm=3",
+
+                abilities: [
+
+                    "Martial Arts",
+
+                    "Combat Training",
+
+                    "Advanced Fighting Technique",
+
+                    "Hand-to-Hand Combat",
+
+                    "Battle Experience"
+
+                ],
+
+                stats: {
+
+                    Strength: 95,
+
+                    Speed: 90,
+
+                    Durability: 96,
+
+                    Technique: 98,
+
+                    "Battle IQ": 98,
+
+                    Experience: 100
+
+                }
+
+            },
+
+
+            daniel: {
+
+                name: "Daniel Park",
+
+                alias:
+                    "Main Protagonist",
+
+                label:
+                    "MAIN CHARACTER",
+
+                role:
+                    "Protagonist / Student",
+
+                affiliation:
+                    "J High",
+
+                style:
+                    "Multiple Martial Arts",
+
+                status:
+                    "Active",
+
+                description:
+                    "Daniel Park is the protagonist of LOOKISM. " +
+                    "The story begins when Daniel, an unpopular " +
+                    "student, wakes up in a different body. The mystery " +
+                    "surrounding his two bodies becomes one of the " +
+                    "central elements of the story as Daniel develops " +
+                    "and encounters increasingly powerful fighters.",
+
+                image:
+                    "https://tse2.mm.bing.net/th/id/OIP.szeTzs6NqTAPjFBcEg2kGAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+                abilities: [
+
+                    "Copy Ability",
+
+                    "Martial Arts",
+
+                    "Combat Adaptation",
+
+                    "High-Speed Technique",
+
+                    "Two-Body Mystery"
+
+                ],
+
+                stats: {
+
+                    Strength: 90,
+
+                    Speed: 93,
+
+                    Durability: 90,
+
+                    Technique: 92,
+
+                    "Battle IQ": 94,
+
+                    Experience: 88
+
+                }
+
+            },
+
+
+            goo: {
+
+                name: "Goo Kim",
+
+                alias:
+                    "The Weapon Genius",
+
+                label:
+                    "FIGHTER PROFILE",
+
+                role:
+                    "Veteran Fighter / Rival",
+
+                affiliation:
+                    "Charles Choi",
+
+                style:
+                    "Weapon-Based Combat",
+
+                status:
+                    "Active",
+
+                description:
+                    "Goo Kim is a major fighter whose combat identity " +
+                    "is strongly associated with weapons. He is closely " +
+                    "linked to Gun Park, with the two characters serving " +
+                    "as longtime rivals and partners within the wider " +
+                    "LOOKISM power structure.",
+
+                image:
+                    "https://tse2.mm.bing.net/th/id/OIP.GHBuF7WGxfvPm8ls3uYb2AAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+                abilities: [
+
+                    "Weapon Combat",
+
+                    "Improvised Weapons",
+
+                    "Swordsmanship",
+
+                    "Martial Arts",
+
+                    "Combat Adaptation"
+
+                ],
+
+                stats: {
+
+                    Strength: null,
+
+                    Speed: null,
+
+                    Durability: null,
+
+                    Technique: null,
+
+                    "Battle IQ": null,
+
+                    Experience: null
+
+                }
+
+            }
+
+        };
+
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const cards =
+            document.querySelectorAll(
+                ".character-card"
+            );
+
+
+        const filters =
+            document.querySelectorAll(
+                ".filter"
+            );
+
+
+        const noResults =
+            document.getElementById(
+                "noResults"
+            );
+
+
+        const characterCount =
+            document.getElementById(
+                "characterCount"
+            );
+
+
+        const modal =
+            document.getElementById(
+                "characterModal"
+            );
+
+
+        const closeModal =
+            document.getElementById(
+                "closeModal"
+            );
+
+
+
+        let currentFilter =
+            "all";
+
+
+
+        /* =====================================================
+           FILTER CHARACTERS
+        ===================================================== */
+
+        function filterCharacters() {
+
+            const search =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            let visible =
+                0;
+
+
+            cards.forEach(
+                card => {
+
+                    const name =
+                        card.dataset.name
+                            .toLowerCase();
+
+
+                    const alias =
+                        card.dataset.alias
+                            .toLowerCase();
+
+
+                    const affiliation =
+                        card.dataset.affiliation
+                            .toLowerCase();
+
+
+                    const categories =
+                        card.dataset.category
+                            .toLowerCase();
+
+
+                    const matchesSearch =
+                        name.includes(search) ||
+                        alias.includes(search) ||
+                        affiliation.includes(search);
+
+
+                    const matchesFilter =
+                        currentFilter === "all" ||
+                        categories.includes(
+                            currentFilter
+                        );
+
+
+                    if (
+                        matchesSearch &&
+                        matchesFilter
+                    ) {
+
+                        card.style.display =
+                            "block";
+
+                        visible++;
+
+                    }
+
+                    else {
+
+                        card.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+
+            characterCount.textContent =
+                visible +
+                (
+                    visible === 1
+                        ? " Character"
+                        : " Characters"
+                );
+
+
+            noResults.style.display =
+                visible === 0
+                    ? "block"
+                    : "none";
+
+        }
+
+
+
+        /* =====================================================
+           SEARCH EVENT
+        ===================================================== */
+
+        searchInput.addEventListener(
+            "input",
+            filterCharacters
+        );
+
+
+
+        /* =====================================================
+           FILTER BUTTONS
+        ===================================================== */
+
+        filters.forEach(
+            filter => {
+
+                filter.addEventListener(
+                    "click",
+                    function () {
+
+                        filters.forEach(
+                            item =>
+                                item.classList.remove(
+                                    "active"
+                                )
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        currentFilter =
+                            this.dataset.filter;
+
+
+                        filterCharacters();
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           OPEN PROFILE
+        ===================================================== */
+
+        cards.forEach(
+            card => {
+
+                card.addEventListener(
+                    "click",
+                    function () {
+
+                        const id =
+                            this.dataset.character;
+
+
+                        openCharacter(
+                            id
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           OPEN CHARACTER FUNCTION
+        ===================================================== */
+
+        function openCharacter(id) {
+
+            const character =
+                characters[id];
+
+
+            if (!character) {
+                return;
+            }
+
+
+            document.getElementById(
+                "modalImage"
+            ).src =
+                character.image;
+
+
+            document.getElementById(
+                "modalImage"
+            ).alt =
+                character.name;
+
+
+            document.getElementById(
+                "modalLabel"
+            ).textContent =
+                character.label;
+
+
+            document.getElementById(
+                "modalName"
+            ).textContent =
+                character.name;
+
+
+            document.getElementById(
+                "modalAlias"
+            ).textContent =
+                character.alias;
+
+
+            document.getElementById(
+                "modalDescription"
+            ).textContent =
+                character.description;
+
+
+            document.getElementById(
+                "modalRole"
+            ).textContent =
+                character.role;
+
+
+            document.getElementById(
+                "modalAffiliation"
+            ).textContent =
+                character.affiliation;
+
+
+            document.getElementById(
+                "modalStyle"
+            ).textContent =
+                character.style;
+
+
+            document.getElementById(
+                "modalStatus"
+            ).textContent =
+                character.status;
+
+
+
+            /* =================================================
+               ABILITIES
+            ================================================= */
+
+            const abilityContainer =
+                document.getElementById(
+                    "modalAbilities"
+                );
+
+
+            abilityContainer.innerHTML =
+                "";
+
+
+            character.abilities.forEach(
+                ability => {
+
+                    const element =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    element.className =
+                        "ability";
+
+
+                    element.textContent =
+                        ability;
+
+
+                    abilityContainer.appendChild(
+                        element
+                    );
+
+                }
+            );
+
+
+
+            /* =================================================
+               FAN STATS
+            ================================================= */
+
+            const statsContainer =
+                document.getElementById(
+                    "modalStats"
+                );
+
+
+            statsContainer.innerHTML =
+                "";
+
+
+            Object.entries(
+                character.stats
+            ).forEach(
+                ([name, value]) => {
+
+                    const row =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    row.className =
+                        "fan-stat";
+
+
+                    const number =
+                        value === null
+                            ? "—"
+                            : value;
+
+
+                    const width =
+                        value === null
+                            ? 0
+                            : value;
+
+
+                    row.innerHTML = `
+
+                        <div class="fan-stat-name">
+                            ${name}
+                        </div>
+
+                        <div class="fan-stat-bar">
+
+                            <div
+                                class="fan-stat-fill"
+                                style="width:${width}%"
+                            ></div>
+
+                        </div>
+
+                        <div class="fan-stat-number">
+                            ${number}
+                        </div>
+
+                    `;
+
+
+                    statsContainer.appendChild(
+                        row
+                    );
+
+                }
+            );
+
+
+
+            /* =================================================
+               SHOW MODAL
+            ================================================= */
+
+            modal.classList.add(
+                "show"
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+
+        /* =====================================================
+           CLOSE MODAL
+        ===================================================== */
+
+        function closeCharacterModal() {
+
+            modal.classList.remove(
+                "show"
+            );
+
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        closeModal.addEventListener(
+            "click",
+            closeCharacterModal
+        );
+
+
+
+        /* =====================================================
+           CLICK OUTSIDE MODAL
+        ===================================================== */
+
+        modal.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target === modal
+                ) {
+
+                    closeCharacterModal();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ESC KEY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeCharacterModal();
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           INITIALIZE
+        ===================================================== */
+
+        filterCharacters();
+
+    </script>
+
+</body>
+
+</html>
+```
